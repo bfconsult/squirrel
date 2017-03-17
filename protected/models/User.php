@@ -47,13 +47,12 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('password','safe', 'on'=>'update'),
-                        array('email','email'),
-                        array('username', 'unique','message'=>'User ID/email must be unique.'),
-                    
-                        array('email', 'required', 'on' => 'resendConfirmation'),
-                        array('password, cpassword', 'required', 'on' => 'newPassword'),
-                        array('password', 'compare', 'skipOnError'=>false, 'compareAttribute'=>'cpassword', 'on' => 'newPassword'),
-                        array('password', 'length', 'min' => 4),                    
+            array('email','email'),
+            array('username', 'unique','message'=>'User ID/email must be unique.'),
+            array('email', 'required', 'on' => 'resendConfirmation'),
+            array('password, cpassword', 'required', 'on' => 'newPassword'),
+            array('password', 'compare', 'skipOnError'=>false, 'compareAttribute'=>'cpassword', 'on' => 'newPassword'),
+             array('password', 'length', 'min' => 4),
 			array('firstname, lastname, email, username', 'required', 'on'=>'update'),
 			array('firstname, lastname, email, password, salt, username', 'required','except' => 'register, resendConfirmation, newPassword'),
 			array('address_id', 'numerical', 'integerOnly'=>true),
@@ -72,8 +71,11 @@ class User extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
+		return
+            array(
 			'company' => array(self::BELONGS_TO, 'Company', 'company_id'),
+            'mycompany' => array(self::HAS_ONE,'Company', 'id')
+
 			/*'contact' => array(self::HAS_MANY,'Contact','user_id'),*/
 		);
 	}

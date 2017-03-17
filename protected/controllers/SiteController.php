@@ -83,7 +83,7 @@ class SiteController extends Controller
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
 
-        $this -> redirect('/batch/index');
+        $this -> render('index');
     }
 
     /**

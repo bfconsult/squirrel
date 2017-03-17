@@ -16,32 +16,20 @@
 class Company extends CActiveRecord
 {
 
-    public static $companytype = array(1 => 'Developer or Analyst', 3 => 'Client or Project Manager', 4 => 'Tester');
-    public static $companytypestatus = array(1 => 'This company is an analyst', 2 => 'you are a contact?', 3 => 'This company is client or project manager', 4 => 'This is a tester');
-    public static $termtypes = array('Singular' => '', 'Plural' => 's', 'Prefix' => 'prefix', 'Output' => 'outputs', 'Output(Plural)' => 'outputs');
-    public static $languages = array('en' => 'English', 'fr' => 'Francais', 'hi' => 'हिन्दी भाषा');
 
-    /**
-     * Returns the static model of the specified AR class.
-     * @param string $className active record class name.
-     * @return Company the static model class
-     */
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
     }
 
-    /**
-     * @return string the associated database table name
-     */
+
     public function tableName()
     {
         return 'company';
     }
 
-    /**
-     * @return array validation rules for model attributes.
-     */
+
     public function rules()
     {
         // NOTE: you should only define rules for those attributes that
@@ -54,7 +42,7 @@ class Company extends CActiveRecord
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, foreignid, name, description, owner_id, type, organisationtype, trade_id', 'safe', 'on' => 'search'),
+            array('id, foreignid, name, description, owner_id, type, organisationtype', 'safe', 'on' => 'search'),
         );
     }
 
@@ -67,10 +55,9 @@ class Company extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'owner' => array(self::BELONGS_TO, 'User', 'owner_id'),
-            'trade' => array(self::BELONGS_TO, 'Trade', 'trade_id'),
-            'documentType' => array(self::HAS_MANY, 'Documenttype', 'company_id'),
-            'contact' => array(self::HAS_MANY, 'Contact', 'company_id')
-        );
+
+            'project' => array(self::HAS_MANY, 'Project', 'company_id'),
+              );
     }
 
     /**
@@ -116,210 +103,6 @@ class Company extends CActiveRecord
         ));
     }
 
-
-    public function Admins()
-    {
-        $company = User::model()->myCompany();
-
-        $sql = "SELECT `u`.`firstname`, `u`.`id`, `u`.`lastname`, `u`.`admin`, `u`.`email`
-          FROM `user` `u`
-          Join `company` `c`
-          on `u`.`company_id`=`c`.`id`
-          WHERE
-          `u`.`admin`=1
-          AND
-          `c`.`id`=" . $company;
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $admins = $command->queryAll();
-        return $admins;
-    }
-
-    public function checkOwnershipUser($id)
-    {
-        //check the user belongs to the company
-        $company = User::model()->myCompany();
-
-        $sql = "SELECT `c`.`id`
-          FROM `company` `c`
-          Join `user` `u`
-          on `u`.`company_id`=`c`.`id`
-          WHERE
-         `u`.`id`=" . $id;
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $usercompany = $command->queryAll();
-        $result = FALSE;
-        if ($usercompany[0]['id'] == $company) $result = TRUE;
-
-        return $result;
-    }
-
-    public function getCompanyOwner($id)
-    {
-
-        $sql = "SELECT `u`.`id`,`u`.`firstname`,`u`.`lastname`,`c`.`name` as companyname
-          FROM `user` `u`
-          Join  `company` `c`
-          on `c`.`companyowner_id`=`u`.`id`
-          WHERE
-         `c`.`id`=" . $id;
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $user = $command->queryAll();
-        return $user;
-    }
-
-
-    public function userDestroy($id)
-    {
-
-
-        $sql = "DELETE
-                FROM
-                `company`
-                WHERE
-                `id`=" . $id;
-
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $command->execute();
-
-    }
-
-    public function getProjects($id)
-    {
-
-        $sql = "SELECT `p`.*
-          FROM `project` `p`
-          WHERE
-         `p`.`company_id`=" . $id;
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $user = $command->queryAll();
-        return $user;
-    }
-
-
-    public function myCompanies()
-    {
-        $company = User::model()->myCompany();
-        $criteria = new CDbCriteria;
-        $criteria->addCondition('companyowner_id=' . $company);
-        $criteria->addCondition('type=2');
-        return new CActiveDataProvider($this, array(
-            'criteria' => $criteria,
-        ));
-    }
-
-    public function matchExistingbyFK($fk)
-    {
-        $candidates = Yii::app()->db->createCommand()
-            ->select('id')
-            ->from('company u')
-            ->where('foreignid like :external_id and companyowner_id = :mycompany',
-                array(':external_id' => $fk, ':mycompany' => User::model()->myCompany()))
-            ->queryRow();
-        return $candidates['id'];
-    }
-
-    public function matchExistingbyName($name)
-    {
-        $candidates = Yii::app()->db->createCommand()
-            ->select('id')
-            ->from('company u')
-            ->where('name like :name and companyowner_id = :mycompany',
-                array(':name' => $name, ':mycompany' => User::model()->myCompany()))
-            ->queryRow();
-        return $candidates['id'];
-    }
-
-
-    public function getUpload()
-    {
-        $company = User::model()->myCompany();
-
-        $sql = "Select *
-        FROM `company_temp`
-        WHERE
-        `companyowner_id`=" . $company;
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $companies = $command->queryAll();
-        return $companies;
-    }
-
-
-    public function savetempcompany($company, $record)
-    {
-        $user = Yii::app()->user->id;
-
-        $sql = "INSERT INTO `company_temp` (
-          `foreignid`,
-          `name`,
-          `companyowner_id`,
-          `type`,
-          `organisationtype`
-          ) VALUES
-          (
-          '" . $record['foreignid'] . "',
-          '" . $record['name'] . "',
-          '" . $company . "',
-          '2',
-          '2')";
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $command->execute();
-    }
-
-    public function newuploadcompany($record)
-    {
-        $sql = "INSERT INTO `company` (
-      `foreignid`,
-      `name`,
-      `owner_id`,
-      `companyowner_id`,
-      `type`,
-      `organisationtype`
-      ) VALUES
-      (
-      '" . $record['foreignid'] . "',
-      '" . $record['name'] . "',
-      '" . $record['owner_id'] . "',
-      '" . $record['companyowner_id'] . "',
-      '2',
-      '2')";
-
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $command->execute();
-    }
-
-    public function dumpUpload($company)
-    {
-        $sql = "DELETE
-          FROM `company_temp`
-          WHERE
-          `companyowner_id`=" . $company;
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $command->execute();
-    }
-
-    protected function beforeValidate()
-    {
-
-        if (empty($this->owner_id))
-            $this->owner_id = Yii::app()->user->id;
-
-        if (empty($this->companyowner_id))
-            $this->companyowner_id = User::model()->myCompany();
-
-        if (empty($this->modified_date))
-            $this->modified_date = date('Y-m-d H:i:s');
-
-        return parent::beforeValidate();
-    }
 
     public function behaviors()
     {

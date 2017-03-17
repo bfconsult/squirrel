@@ -40,7 +40,7 @@
 			'class'=>'bootstrap.widgets.TbMenu','encodeLabel'=>false,
 			'items'=>array(
                                     array(
-                                       'label'=>'CPI OCR',
+                                       'label'=>'Squirrel',
                                         'visible'=>Yii::app()->user->isGuest),
                                   
 				                    array('label'=>'Home',
@@ -91,7 +91,7 @@
                 ),
 
             ),
-            '<span class="pull-right">CPP-CPI OCR</span>',
+            '<span class="pull-right">SQUIRREL</span>',
 
         ),
     )
