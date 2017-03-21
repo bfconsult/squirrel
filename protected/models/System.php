@@ -24,7 +24,7 @@ class System extends CActiveRecord {
     return array(
         array('name', 'required'),
          array('name', 'length', 'max' => 255),
-        array('number, name', 'safe'),
+        array('number, name, description', 'safe'),
         // The following rule is used by search().
         // @todo Please remove those attributes that should not be searched.
         array('id, name, create_date, create_user, number', 'safe', 'on' => 'search'),
@@ -72,7 +72,15 @@ class System extends CActiveRecord {
     );
   }
 
+public function getNextNumber() {
+$result = 0;
+    $max = System::model()->findAll(array('order'=>'number DESC','limit'=>'1', 'condition'=>'deleted=:x', 'params'=>array(':x'=>0)));
 
+    if (isset($max[0]['number'])) $result = $max[0]['number'] +1;
+    return $result;
+
+
+}
 
 
 }

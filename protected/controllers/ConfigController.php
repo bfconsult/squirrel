@@ -32,7 +32,7 @@ class ConfigController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','edit'),
+                'actions' => array('view','edit','create'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -58,6 +58,34 @@ class ConfigController extends Controller
 
 
     }
+
+
+
+    public function actionCreate($id)
+    {
+        $model = new Config;
+
+
+        if (isset($_POST['Config'])) {
+            $model->attributes = $_POST['Config'];
+            $model->create_user = Yii::App()->user->id;
+            $model->system_id=$id;
+            $model->number = Config::model()->getNextNumber($id);
+            if ($model->save())
+
+                $this->redirect('/system/view/id/'.$id);
+
+
+        }
+
+        $this->render('create', array(
+            'model' => $model,
+
+        ));
+
+
+    }
+
 
     public function loadModel($id)
     {

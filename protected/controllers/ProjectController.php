@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit'),
+                'actions' => array('todo','set','view','edit','create'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -94,10 +94,68 @@ class ProjectController extends Controller
 
     public function actionView()
     {
+
 $this->render('view');
 
 
     }
+
+
+    public function actionCreate()
+    {
+        $model = new Project;
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if (isset($_POST['Project'])) {
+            $model->attributes = $_POST['Project'];
+            $model->company_id = User::model()->myCompany();
+            $model->extlink = md5(uniqid(rand(), true));
+            $model->stage = 1;
+            if ($model->save())
+            $project = $model->getPrimaryKey();
+            Yii::app()->session['project'] = $project;
+            $this->redirect('/');
+
+
+        }
+
+        $this->render('create', array(
+            'model' => $model,
+
+        ));
+
+
+    }
+
+
+    public function actionEdit()
+    {
+        $model = $this->loadModel(Yii::App()->session['project']);
+
+          if (isset($_POST['Project'])) {
+            $model->attributes = $_POST['Project'];
+            $model->company_id = User::model()->myCompany();
+            $model->extlink = md5(uniqid(rand(), true));
+            $model->stage = 1;
+            if ($model->save())
+                $project = $model->getPrimaryKey();
+            Yii::app()->session['project'] = $project;
+            $this->redirect('/project/view');
+
+
+        }
+
+        $this->render('edit', array(
+            'model' => $model,
+
+        ));
+
+
+    }
+
+
     public function loadModel($id)
     {
         $model=Project::model()->findByPk($id);

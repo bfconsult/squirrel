@@ -82,9 +82,12 @@ class SiteController extends Controller
      */
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
-
+$this->layout='main';
         $this -> render('index');
     }
+
+
+
 
     /**
      * This is the action to handle external exceptions.

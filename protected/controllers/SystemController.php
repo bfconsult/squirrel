@@ -32,7 +32,7 @@ class SystemController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','edit'),
+                'actions' => array('view','edit','create'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -56,6 +56,58 @@ class SystemController extends Controller
    $system=$this->loadModel($id);
 
         $this->render('view',array('system'=>$system));
+
+
+    }
+
+
+
+    public function actionCreate()
+    {
+        $model = new System;
+
+
+        if (isset($_POST['System'])) {
+            $model->attributes = $_POST['System'];
+            $model->project_id =    Yii::app()->session['project'];
+            $model->create_user = Yii::App()->user->id;
+            $model->number = System::model()->getNextNumber();
+            if ($model->save())
+
+            $this->redirect('/project/view');
+
+
+        }
+
+        $this->render('create', array(
+            'model' => $model,
+
+        ));
+
+
+    }
+
+    public function actionEdit($id)
+    {
+        $model = $this->loadModel($id);
+
+
+        if (isset($_POST['System'])) {
+            $model->attributes = $_POST['System'];
+            $model->project_id =    Yii::app()->session['project'];
+            $model->create_user = Yii::App()->user->id;
+            $model->number = System::model()->getNextNumber();
+            if ($model->save())
+
+                $this->redirect('/system/view/id/'.$id);
+
+
+        }
+
+        $this->render('edit', array(
+            'model' => $model,
+
+        ));
 
 
     }

@@ -1,10 +1,19 @@
-System
 
 <?php $project=Project::model()->findbyPK(Yii::App()->session['project']);
 
-echo $project->name.'<br />';
+echo '<h1>'.$project->name;
 
-echo $system->name;
+echo ' <a href = "/project/view"><i class="icon-arrow-left"></i></a></h1>';
+
+echo '<h2>'.$system->name;
+
+echo ' <a href = "/system/edit/id/'.$system->id.'"><i class="icon-edit"></i></a>';
+
+echo ' <a href = "/system/remove/id/'.$system->id.'"><i class="icon-remove-sign"></i></a>';
+
+echo ' <a href = "/system/delete/id/'.$system->id.'"><i class="icon-trash"></i></a>';
+
+echo '</h2>';
 
 
 $data = $system->configs;
@@ -18,12 +27,14 @@ $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
     'htmlOptions' => array('class' => 'bootstrap-widget-table'),
     'headerButtons' => array(
 
+
+
         array(
             'class' => 'bootstrap.widgets.TbButton',
             'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
             'label' => 'Add Config  +',
 
-            'url' => UrlHelper::getPrefixLink('/config/create'),
+            'url' => UrlHelper::getPrefixLink('/config/create/id/'.$system->id),
         ),
 
     )

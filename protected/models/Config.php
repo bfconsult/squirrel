@@ -40,7 +40,12 @@ class Config extends CActiveRecord {
         'parent_system' => array(
             self::BELONGS_TO,
             'System',
-            'id'
+            'system_id'
+        ),
+        'creator' => array(
+            self::BELONGS_TO,
+            'User',
+            'create_user'
         ),
     );
   }
@@ -64,7 +69,34 @@ class Config extends CActiveRecord {
     );
   }
 
+    public function getNextNumber($id) {
+        $result = 0;
+        $max = Config::model()->findAll(array('order'=>'number DESC','limit'=>'1', 'condition'=>'system_id=:x', 'params'=>array(':x'=>$id)));
+
+        if (isset($max[0]['number'])) {
+
+            $result = $max[0]['number'] +1;
+
+        }
+        return $result;
 
 
+    }
+
+    public function getRecentConfigs() {
+        $project=Project::model()->findbyPK(Yii::App()->session['project']);
+       $systemList='(-2,';
+        foreach ($project->systems as $system) {
+            $systemList .= $system['id'].",";
+        }
+$systemList=rtrim($systemList, ",").')';
+            $configs = Config::model()->findAll(array('order' => 'create_date DESC', 'limit'=>10, 'condition' => 'system_id in '.$systemList));
+
+
+
+        return $configs;
+
+
+    }
 
 }

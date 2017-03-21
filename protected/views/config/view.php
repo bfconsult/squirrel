@@ -1,8 +1,8 @@
-Project
-
 <?php $project=Project::model()->findbyPK(Yii::App()->session['project']);
 
-echo $project->name;
+echo '<h1>'.$project->name.'</h1>';
+
+echo '<h2>'.$configs->parent_system->name.'</h2>';
 
 
 
@@ -33,33 +33,30 @@ $data = $configs;
 
     ?>
     <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
 
-
-        </tr>
-        </thead>
         <tbody>
-        <?php if (count($data)): ?>
-
-
-
 
 
                 <tr class="odd">
                     <td>
                         <?php echo
                         $data->name; ?>
+                    </td>
+                    <td>
+                        <?php echo $data->creator->firstname; ?> : <?php echo $data->create_date; ?>
+                    </td>
+
+
+                </tr>
+
+                <tr class="odd">
+                  <td>
                         - <?php echo $data->description; ?>
                     </td>
 
 
                 </tr>
 
-
-
-        <?php endif; ?>
 
 
         </tbody>
