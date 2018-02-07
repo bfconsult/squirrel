@@ -61,26 +61,28 @@ class ConfigController extends Controller
 
 
 
-    public function actionCreate($id)
+    public function actionCreate()
     {
         $model = new Config;
-
+$project = Project::model()->findbyPk(Yii::App()->session['project']);
+       // print_r($project);die;
 
         if (isset($_POST['Config'])) {
+
+            //echo 'system id is'.$_POST['Config']['system_id'];die;
             $model->attributes = $_POST['Config'];
             $model->create_user = Yii::App()->user->id;
-            $model->system_id=$id;
-            $model->number = Config::model()->getNextNumber($id);
+            $model->number = Config::model()->getNextNumber($_POST['Config']['system_id']);
             if ($model->save())
 
-                $this->redirect('/system/view/id/'.$id);
+
+                $this->redirect('/project/view/id/'.$project->id);
 
 
         }
 
         $this->render('create', array(
-            'model' => $model,
-
+            'model' => $model,'project'=>$project
         ));
 
 

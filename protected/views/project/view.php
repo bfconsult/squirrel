@@ -18,6 +18,18 @@ if (!empty($data)) {
         // when displaying a table, if we include bootstra-widget-table class
         // the table will be 0-padding to the box
         'htmlOptions' => array('class' => 'bootstrap-widget-table'),
+        'headerButtons' => array(
+
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'Add Configuration  +',
+
+                'url' => UrlHelper::getPrefixLink('/config/create/'),
+            ),
+
+
+        )
 
     ));
 

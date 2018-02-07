@@ -19,13 +19,24 @@
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
+
+	<div class="row ">
+		<select name="Config[system_id]" id="system_id">
+			<?php
+			$systems= $project->systems;
+
+			foreach ($systems as $system){ ?>
+				<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
+			<?php } ?>
+		</select>
+	</div>
+
         <div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<?php echo $form->hiddenField($model,'system_id',array('value'=>$model->system_id)); ?>
 
         
        
