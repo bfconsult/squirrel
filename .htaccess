@@ -1,0 +1,14 @@
+# Rewrite Engine
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+
+	RewriteCond %{REQUEST_FILENAME} favicon.ico$ [OR]
+	RewriteCond %{REQUEST_FILENAME} -s [OR]
+	RewriteCond %{REQUEST_FILENAME} -l [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+
+	# Redirect all incoming urls to the application
+	RewriteRule ^.*$ - [NC,L]
+	RewriteRule ^.*$ index.php [NC,L]
+</IfModule>
