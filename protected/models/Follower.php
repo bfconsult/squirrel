@@ -183,12 +183,12 @@ echo '</table>';
         $mail->AddAddress($follower->email,$follower->firstname.' '.$follower->lastname);
         $mail->setLayout('mail');
         $mail->setData(array('follower'=>$follower,'extlink'=>$project->extlink));
-
+        $mail->setSubject('You have been invited to follow a project on Squirrel');
         if (!empty($matchuser))
         {
             //if the user has an account send an email saying they've been invite to follow
 
-            $mail->setSubject('You have been invited to follow a project (existing)');
+
             $mail->setView('follow_existuser');
 
 
@@ -196,7 +196,7 @@ echo '</table>';
         } else {
             //if the user has no account send an instruction to join.
 
-            $mail->setSubject('You have been invited to follow a project (new)');
+
             $mail->setView('follow_newuser');
 
         }

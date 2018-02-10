@@ -50494,3 +50494,55 @@ REQUEST_URI=/follower/sendInvite/id/7
 in D:\www\squirrel\protected\extensions\YiiMailer\PHPMailer\class.smtp.php (248)
 in D:\www\squirrel\protected\extensions\YiiMailer\PHPMailer\class.phpmailer.php (1066)
 in D:\www\squirrel\protected\extensions\YiiMailer\PHPMailer\class.phpmailer.php (963)
+2018/02/10 08:52:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "app/user".' in D:\www\squirrel\yii\framework\yiilite.php:1765
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('app/user')
+#1 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#2 D:\www\squirrel\index.php(25): CApplication->run()
+#3 {main}
+REQUEST_URI=/app/user/joinfollower/id/12
+---
+2018/02/10 08:52:45 [error] [php] Undefined variable: user (D:\www\squirrel\protected\views\user\joinfollower.php:16)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): UserController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): UserController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\UserController.php(198): UserController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): UserController->actionJoinfollower()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): UserController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): UserController->filterAccessControl()
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): UserController->runActionWithFilters()
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): UserController->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/user/joinfollower/id/12
+in D:\www\squirrel\protected\views\user\joinfollower.php (16)
+in D:\www\squirrel\protected\controllers\UserController.php (198)
+in D:\www\squirrel\index.php (25)
+2018/02/11 00:52:46 [error] [exception.CException] exception 'CException' with message 'ProjectController contains improperly nested widget tags in its view "D:\www\squirrel\protected\views\project\view.php". A TbBox widget does not have an endWidget() call.' in D:\www\squirrel\yii\framework\yiilite.php:3478
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('view', NULL, true)
+#2 D:\www\squirrel\protected\controllers\ProjectController.php(98): CController->render('view')
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionView()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('view')
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/view')
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/view/
+HTTP_REFERER=http://squirrel/
+---

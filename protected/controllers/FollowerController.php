@@ -366,6 +366,7 @@ $follower=Follower::model()->findByPk($id);
 
     public function actionAccept($id)
     {
+        try {
         // unencode the link, and see if it matches.
         $link = urldecode($id);
         $criteria = new CDbCriteria;
@@ -373,7 +374,7 @@ $follower=Follower::model()->findByPk($id);
         $follower = Follower::model()->find($criteria);
 
         if (!isset($follower->id)) {
-            $this->redirect('/app/follower/expired');
+            $this->redirect('/follower/expired');
         }
 
 
@@ -392,10 +393,16 @@ $follower=Follower::model()->findByPk($id);
         //give them a join form.
         if (!isset($matchuser->id)) {
             Yii::app()->user->logout();
-            $joinfollowerUrl = '/app/user/joinfollower/id/' . $follower->id;
+            $joinfollowerUrl = '/user/joinfollower/id/' . $follower->id;
             $this->redirect($joinfollowerUrl);
         }
+    } catch  (Exception $ex) {
 
+
+    $status = 0;
+    $message = 'exception: '.$ex->getMessage();
+    $content = null;
+    }
         $this->redirect('/app');
 
 

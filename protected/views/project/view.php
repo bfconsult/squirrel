@@ -11,7 +11,7 @@ echo '<h1>'.$project->name;?>
 
 $data = Config::model()->getRecentConfigs();
 
-if (!empty($data)) {
+
     $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
         'title' => 'Recent Configuration Changes',
         'headerIcon' => 'icon-briefcase',
@@ -33,6 +33,7 @@ if (!empty($data)) {
 
     ));
 
+if (!empty($data)) {
 
     ?>
     <table class="table">
@@ -70,10 +71,10 @@ if (!empty($data)) {
         </tbody>
     </table>
 
-    <?php $this->endWidget();
+    <?php
 }
 
-
+$this->endWidget();
 
 $data = $project->systems;
 
