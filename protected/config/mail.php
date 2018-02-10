@@ -29,10 +29,10 @@ return array(
 		'variable_set'         => Yii::t('YiiMailer','Cannot set or reset variable: ')
     ),
 	'Mailer' => 'smtp',
-	'Host' => 'smtp.gmail.com',
+	'Host' => 'mail.smtp2go.com',
 	'Port' => 465,
 	'SMTPSecure' => 'ssl',
 	'SMTPAuth' => true,
-	'Username' => 'mailer@billson.com',
-	'Password' => '(~6kR499O[BR1U',
+	'Username' => 'bfcmailer',
+	'Password' => 'email4JMB!',
 );

@@ -175,14 +175,14 @@ echo '</table>';
 
         $follower = Follower::model()->findByPk($id);
         $creator = User::model()->findbyPk(Yii::app()->user->id);
-
+        $project = Project::model()->findByPk(Yii::App()->session['project']);
         $matchuser = User::model()->find("username = '".$follower->email."'");
 
         $mail = new YiiMailer();
         $mail->setFrom($creator->username,$creator->firstname.' '.$creator->lastname);
-        $mail->setTo($follower->email);
+        $mail->AddAddress($follower->email,$follower->firstname.' '.$follower->lastname);
         $mail->setLayout('mail');
-
+        $mail->setData(array('follower'=>$follower,'extlink'=>$project->extlink));
 
         if (!empty($matchuser))
         {
@@ -192,6 +192,7 @@ echo '</table>';
             $mail->setView('follow_existuser');
 
 
+
         } else {
             //if the user has no account send an instruction to join.
 
@@ -199,7 +200,7 @@ echo '</table>';
             $mail->setView('follow_newuser');
 
         }
-        $mail->Send();
+        $mail->send();
     }
 
 

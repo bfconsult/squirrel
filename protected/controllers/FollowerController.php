@@ -29,7 +29,7 @@ class FollowerController extends Controller
                     'resendinvite',
                     'reactGetCollaborators',
                     'reactInviteCollaborator',
-                    'reactSendReInvite',
+                    'SendInvite',
                     'reactAccept',
                     'reactDelete',
                     'followerAction'
@@ -304,68 +304,21 @@ if ($follower===null)
     }
 
 
-    public function sendInvite($id)
+    public function actionSendInvite($id)
     {
- //echo 'sending mail for follower '.$id;
-        $follower = Follower::model()->findByPk($id);
-        $project=Project::model()->findbyPK($follower->project_id);
-        $extlink=$project->extlink;
-        //echo ' with email '.$follower->email;
 
-        $creator = User::model()->findbyPk(Yii::app()->user->id);
-        //echo 'creator name '.$creator->firstname;
-        $matchuser = User::model()->find("username = '".$follower->email."'");
-
+$follower=Follower::model()->findByPk($id);
         $mail = new YiiMailer();
-        $mail->setFrom($creator->username,$creator->firstname.' '.$creator->lastname);
-        $mail->setTo($follower->email);
+        $mail->setFrom('test@billson.com','test mailer');
+        $mail->AddAddress('jamesb@reqfire.com','weird beard');
         $mail->setLayout('mail');
+        $mail->setSubject('You have been invited to follow a project (new)');
+        $mail->setView('follow_newuser');
+        $mail->setData(array('follower'=>$follower,'extlink'=>'mylink@@@@@@@#######'));
 
 
-        if (!empty($matchuser))
-        {
-            //if the user has an account send an email saying they've been invite to follow
-
-            $mail->setSubject('You have been invited to follow a project (existing)');
-            $mail->setView('follow_existuser');
-
-            /*
-            $mail->setBody($follower->firstname.',
-            <br /><br />
-            You\'ve been invited to follow a ReqFire project.
-            <br />As you already have a ReqFire
-            account, just click the link below to get instant access to the project\'s
-                    resources.
-            <br />
-            Click here to accept <a href="'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/follower/accept/id/'.$follower->link.'">'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/follower/accept/id/'.$follower->link.'</a>
-            <br />
-            You can access the project documents without logging in directly here:
-            <a href="'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/project/extview/id/'.$extlink.'">'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/project/extview/id/'.$extlink.'</a>
-
-
-            ');
-*/
-        } else {
-            //if the user has no account send an instruction to join.
-
-            $mail->setSubject('You have been invited to follow a project (new)');
-            $mail->setView('follow_newuser');
-            /*
-            $mail->setBody($follower->firstname.',
-            <br /><br />
-            You\'ve been invited to follow a ReqFire project.  You can follow the link below
-            to create an account on ReqFire and to get access to project resources.
-            <br />
-            Click here to accept <a href="'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/follower/accept/id/'.$follower->link.'">'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/follower/accept/id/'.$follower->link.'</a>
-            <br />
-             You can access the project documents without logging in directly here:
-            <a href="'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/project/extview/id/'.$extlink.'">'.Yii::app()->params['protocol'].Yii::app()->params['server'].'/app/project/extview/id/'.$extlink.'</a>
-
-            ');
-            */
-        }
-        $mail->Send();
-        //echo 'mail has been sent';
+        $mail->send();
+        echo 'mail has been sent';
     }
 
 
