@@ -34,5 +34,5 @@ return array(
 	'SMTPSecure' => 'ssl',
 	'SMTPAuth' => true,
 	'Username' => 'bfcmailer',
-	'Password' => 'email4JMB!',
+	'Password' => 'm1aApIgXqkjT',
 );

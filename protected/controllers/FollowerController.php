@@ -311,14 +311,22 @@ $follower=Follower::model()->findByPk($id);
         $mail = new YiiMailer();
         $mail->setFrom('test@billson.com','test mailer');
         $mail->AddAddress('jamesb@reqfire.com','weird beard');
-        $mail->setLayout('mail');
+        //$mail->setLayout('mail');
         $mail->setSubject('You have been invited to follow a project (new)');
-        $mail->setView('follow_newuser');
-        $mail->setData(array('follower'=>$follower,'extlink'=>'mylink@@@@@@@#######'));
+        //$mail->setView('follow_newuser');
+       // $mail->setData(array('follower'=>$follower,'extlink'=>'mylink@@@@@@@#######'));
 
 
-        $mail->send();
-        echo 'mail has been sent';
+        $mail->Body = "Hi! How are you?";
+        $mail->WordWrap = 50;
+
+        if(!$mail->Send()) {
+            echo 'Message was not sent.';
+            echo 'Mailer error: ' . $mail->ErrorInfo;
+            exit;
+        } else {
+            echo 'Message has been sent.';
+        }
     }
 
 
