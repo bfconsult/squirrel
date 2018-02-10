@@ -192,8 +192,8 @@ class User extends CActiveRecord
           return -1;
           }
     }
-    
-  
+
+
     
     
      public function sendInvite($id)

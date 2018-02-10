@@ -6,7 +6,7 @@ class CompanyController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='main';
 
 	/**
 	 * @return array action filters
@@ -202,42 +202,7 @@ class CompanyController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Company');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
 
-	/**
-	 * Manages all models.
-	 */
-
-    public function actionLang($id)
-    {
-        User::model()->MetaStore('lang',array('id'=>$id));
-        Yii::app()->session['lang']=$id;
-
-        $vocab=Yii::App()->params['vocab']['en'];
-        $terms=Yii::App()->params['terms']['en'];
-        $vocab=Yii::App()->params['vocab'][$id];
-        $terms=Yii::App()->params['terms'][$id];
-
-
-
-        foreach($vocab as $term=>$word){ // PUT EDITABLE TERMS INTO PARAMETErs
-            Yii::App()->params[$term]=$word;
-        }
-
-
-        foreach($terms as $term=>$word){// PUT FIXED TERMS INTO PARAMETER
-            Yii::App()->params[$term]=$word;
-        }
-
-        $this->redirect('/req/company/mycompany');
-
-    }
 
 
 	public function actionAdmin()
@@ -252,24 +217,7 @@ class CompanyController extends Controller
 		));
 	}
 
-        public function actionMyCompanies()
-	{
-		$model=new Company('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Company']))
-			$model->attributes=$_GET['Company'];
-
-		$this->render('mycompanies',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
-	public function loadModel($id)
+    public function loadModel($id)
 	{
 		$model=Company::model()->findByPk($id);
 		if($model===null)
@@ -290,12 +238,14 @@ class CompanyController extends Controller
 		}
 	}
 
-        	public function actionmyCompany()
+        	public function actionindex()
 	{
-		 $id=User::model()->MyCompany();
+        $user= User::model()->findByPk(Yii::App()->user->id);
+        $data = User::model()->findAll('company_id = '.$user->company_id);
+        $admin = User::model()->findAll('company_id = '.$user->company_id.' and admin=1');
 
-                    $this->render('mycompany',array(
-			'model'=>$this->loadModel($id),
+        $this->render('mycompany',array(
+			'user'=>$user,'data'=>$data,'admin'=>$admin
 		));
 	}
 

@@ -4,7 +4,7 @@ class Follower extends CActiveRecord
 {
 
 
-    public static function model($className=__CLASS__)
+    public static function model($className = __CLASS__)
     {
         return parent::model($className);
     }
@@ -27,10 +27,10 @@ class Follower extends CActiveRecord
         return array(
             array('project_id, email, confirmed, firstname, lastname, modified, modified_date', 'required'),
             array('email', 'email'),
-            array('firstname,lastname','text'),
-            array('id,project_id, confirmed, modified', 'numerical', 'integerOnly'=>true),
+            array('firstname,lastname', 'text'),
+            array('id,project_id, confirmed, modified', 'numerical', 'integerOnly' => true),
             array('id, email, project_id, link, confirmed, firstname, lastname, modified, modified_date', 'safe'),
-            array('id, email, project_id, link, confirmed, firstname, lastname, modified, modified_date', 'safe', 'on'=>'search'),
+            array('id, email, project_id, link, confirmed, firstname, lastname, modified, modified_date', 'safe', 'on' => 'search'),
         );
     }
 
@@ -40,10 +40,10 @@ class Follower extends CActiveRecord
     public function relations()
     {
         return array(
-             'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
+            'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
 
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
+            // NOTE: you may need to adjust the relation name and the related
+            // class name for the relations automatically generated below.
 
 
         );
@@ -56,11 +56,11 @@ class Follower extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'email'=> 'Email',
+            'email' => 'Email',
             'link' => 'Link',
-            'firstname'=>'First Name',
-            'lastname'=>'Last Name',
-            'project_id'=>'Project',
+            'firstname' => 'First Name',
+            'lastname' => 'Last Name',
+            'project_id' => 'Project',
             'confirmed' => 'Confirmed',
             'modified' => 'Modified',
             'modified_date' => 'Modified Date',
@@ -76,25 +76,25 @@ class Follower extends CActiveRecord
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
 
-        $criteria=new CDbCriteria;
+        $criteria = new CDbCriteria;
 
-        $criteria->compare('id',$this->id);
-        $criteria->compare('email',$this->contact_id);
-        $criteria->compare('confirmed',$this->confirmed);
-        $criteria->compare('modified',$this->modified);
-        $criteria->compare('link',$this->modified);
+        $criteria->compare('id', $this->id);
+        $criteria->compare('email', $this->contact_id);
+        $criteria->compare('confirmed', $this->confirmed);
+        $criteria->compare('modified', $this->modified);
+        $criteria->compare('link', $this->modified);
 
-        $criteria->compare('modified_date',$this->modified_date,true);
+        $criteria->compare('modified_date', $this->modified_date, true);
 
         return new CActiveDataProvider($this, array(
-            'criteria'=>$criteria,
+            'criteria' => $criteria,
         ));
     }
 
-    public function getFollowers($fk=-1)
+    public function getFollowers($fk = -1)
     {
-       if($fk==-1) Yii::app()->session['project'];
-        $sql="SELECT  `u`.`firstname` ,  `u`.`lastname` ,  
+        if ($fk == -1) Yii::app()->session['project'];
+        $sql = "SELECT  `u`.`firstname` ,  `u`.`lastname` ,  
                 `f`.`email` ,  `f`.`confirmed` ,  `f`.`id` AS follower_id,
                 `u`.`id` AS user_id
             FROM  `follower`  `f` 
@@ -105,16 +105,45 @@ class Follower extends CActiveRecord
                  `f`.`confirmed`=1
 
             AND
-                `f`.`project_id`=".$fk;
+                `f`.`project_id`=" . $fk;
 
 
-
-        $connection=Yii::app()->db;
+        $connection = Yii::app()->db;
         $command = $connection->createCommand($sql);
         $contacts = $command->queryAll();
 
         return $contacts;
     }
+
+    public function projectFollowsGrid()
+    {
+       echo '<table>
+	<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Actions</th>
+	</tr>';
+
+        $followers = Follower::model()->findAll('project_id=' . Yii::App()->session['project']);
+        foreach ($followers as $follower) {
+            echo '<tr><td >' . $follower->firstname . ' '.$follower->lastname.'</td>
+            <td >'. $follower->email . '</td>
+            <td > ' . $follower->confirmed . '</td>
+            <td >
+            <a href="/follower/reinvite/id/'.$follower->id.'">Resend invite</a><br> 
+            <a href="/follower/remove/id/'.$follower->id.'">Remove</a>
+            </td>
+            </tr>';
+
+
+
+        }
+
+echo '</table>';
+
+
+}
 
 
 

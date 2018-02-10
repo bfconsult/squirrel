@@ -32,6 +32,7 @@ class FollowerController extends Controller
                     'reactSendReInvite',
                     'reactAccept',
                     'reactDelete',
+                    'followerAction'
                 ),
                 'users'=>array('@'),
             ),
@@ -78,6 +79,46 @@ class FollowerController extends Controller
    }
 
 
+    public function actionFollowerAction()
+    {
+
+        try {
+            $project=Project::model()->findByPk(Yii::App()->session['project']);
+            if (!isset($_POST['employee'])) throw new Exception('No post');
+
+              $existingInvite = Follower::model()->find("email = '" . $_POST['employee']['email'] . "'
+                AND project_id = " . $project->id);
+
+                if (!empty($existingInvite)) throw new Exception('Already has invite.');
+
+                if ($_POST['employee']['email'] == '') throw new Exception('No email');
+                if ($_POST['employee']['firstname'] == '') $_POST['employee']['firstname'] = 'First Name';
+                if ($_POST['employee']['lastname'] == '') $_POST['employee']['lastname'] = 'Last Name';
+
+
+                    $model = new Follower;
+
+                    $model->email = $_POST['employee']['email'];
+                    $model->firstname = $_POST['employee']['firstname'];
+                    $model->lastname = $_POST['employee']['lastname'];
+                    $model->link = uniqid('', true);
+                $model->project_id = $project->id;
+                $model->save(false);
+
+                Follower::model()->sendInvite($model->primaryKey);
+
+            $response = Follower::model()->projectFollowsGrid();
+
+        } catch (Exception $ex) {
+            $response = Follower::model()->projectFollowsGrid();
+            $response .= '<h3 style="color:red;">exception: ' . $ex->getMessage().'</h3>';
+        }
+
+        // format up the grid.
+
+        echo $response;
+
+    }
 
     public function actionReactDelete()
     {
