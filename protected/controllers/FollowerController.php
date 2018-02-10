@@ -102,6 +102,7 @@ class FollowerController extends Controller
                     $model->firstname = $_POST['employee']['firstname'];
                     $model->lastname = $_POST['employee']['lastname'];
                     $model->link = uniqid('', true);
+            $model->modified=Yii::App()->user->id;
                 $model->project_id = $project->id;
                 $model->save(false);
 
