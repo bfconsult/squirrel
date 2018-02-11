@@ -7,7 +7,7 @@
         'db_host'           => 'localhost',
         'server'            => 'squirrel',
         'app_name'          => 'Squirrel',
-        'app_dir'           => '/',
+        'app_dir'           => '',
         'protocol'          => 'http://',
     
 );

@@ -69,12 +69,28 @@ class SystemController extends Controller
 
         if (isset($_POST['System'])) {
             $model->attributes = $_POST['System'];
-            $model->project_id =    Yii::app()->session['project'];
             $model->create_user = Yii::App()->user->id;
             $model->number = System::model()->getNextNumber();
-            if ($model->save())
+            if ($model->save()) {
+                $link = new Projectsystem;
+                $link->project_id = Yii::app()->session['project'];
+                $link->create_user = Yii::App()->user->id;
+                $link->description = '';
+                $link->system_id = $model->getPrimaryKey();
+                if ($link->save()) $this->redirect('/project/view');
+            }
 
-            $this->redirect('/project/view');
+        }
+
+        if (isset($_POST['Link'])) {
+            $link = new Projectsystem;
+            $link->project_id =    Yii::app()->session['project'];
+            $link->create_user = Yii::App()->user->id;
+            $link->description = $_POST['Link']['description'];
+            $link->system_id = $_POST['Link']['system_id'];
+            if ($link->save())
+
+                $this->redirect('/project/view');
 
 
         }

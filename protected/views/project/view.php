@@ -8,7 +8,6 @@ echo '<h1>'.$project->name;?>
  <a href = "/project/edit"><i class="icon-edit"></i></a></h1>
 <?php
 
-
 $data = Config::model()->getRecentConfigs();
 
 
@@ -75,8 +74,8 @@ if (!empty($data)) {
 }
 
 $this->endWidget();
-
 $data = $project->systems;
+
 
 
 
@@ -122,8 +121,16 @@ $data = $project->systems;
                 <tr class="odd">
                     <td>
                         <a href="<?php echo UrlHelper::getPrefixLink('/system/view/id/') ?><?php echo $item->id; ?>"><?php echo $item->name; ?></a>
-                        - <?php echo $item->description;
+                        - <?php echo $item->description;?>
+                    </td>
+                    <td>
+                        <?php
+                        if($item->type==1) {?>(shared system) <a href="/project/unlink/id/<?php echo $item->id; ?>"><i class="icon-unlink"></i></a>
+
+                            <?php
+                            }
                         ?>
+
                     </td>
 
 

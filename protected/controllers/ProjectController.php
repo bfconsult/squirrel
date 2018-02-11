@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit','create'),
+                'actions' => array('todo','set','view','edit','create','unlink'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -125,6 +125,16 @@ $this->render('view');
             'model' => $model,
 
         ));
+
+
+    }
+
+    public function actionUnlink($id)
+
+    {
+        $model=Projectsystem::model()->find('system_id = '.$id.' and project_id = '.Yii::App()->session['project']);
+        $model->delete();
+        $this->redirect('/project/view');
 
 
     }

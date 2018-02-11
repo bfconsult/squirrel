@@ -27,7 +27,10 @@
 
 			foreach ($systems as $system){ ?>
 				<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
-			<?php } ?>
+			<?php }
+			$sharedSystems= System::model()->findAll('deleted=0 and type=1');
+?>
+
 		</select>
 	</div>
 

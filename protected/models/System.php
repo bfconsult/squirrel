@@ -40,16 +40,21 @@ class System extends CActiveRecord {
              'Config',
              'system_id'),
 
+        /*
         'parent_project' => array(
             self::BELONGS_TO,
             'Project',
             'project_id'
         ),
+        */
         'system_owner' => array(
             self::HAS_ONE,
             'User',
             'create_user'
         ),
+
+        'projects' => array(self::MANY_MANY, 'Project', 'projectsystem(system_id, project_id)'),
+
     );
   }
 

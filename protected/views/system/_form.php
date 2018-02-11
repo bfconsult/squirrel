@@ -24,7 +24,7 @@
 		<?php echo $form->textArea($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
-	
+	<input type="hidden" name="type" value="0">
 
 
         

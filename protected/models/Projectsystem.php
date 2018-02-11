@@ -8,7 +8,7 @@
  * @property string $name
  * @property integer $company_id
  */
-class Project extends CActiveRecord
+class Projectsystem extends CActiveRecord
 {
 
 
@@ -23,7 +23,7 @@ class Project extends CActiveRecord
      */
     public function tableName()
     {
-        return 'project';
+        return 'projectsystem';
     }
 
     /**
@@ -36,36 +36,22 @@ class Project extends CActiveRecord
         // will receive user inputs.
         return array(
             array(
-                'name, company_id',
+                'project_id, system_id,create_user',
                 'required'
             ),
             array(
-                'company_id',
+                'project_id, system_id,create_user',
                 'numerical',
                 'integerOnly' => true
             ),
-            array('description', 'safe'),
+
             array(
-                'name, icon',
-                'length',
-                'max' => 255
+                'description',
+                'safe'
             ),
 
             array(
-                'extlink',
-                'length',
-                'max' => 50
-            ),
-            array(
-                'stage',
-                'length',
-                'max' => 4
-            ),
-
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array(
-                'id, name, description, icon, company_id,stage',
+                'id, project_id, system_id, create_user,description',
                 'safe',
                 'on' => 'search'
             )
@@ -82,20 +68,22 @@ class Project extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             // 'labelRegions' => array(self::HAS_MANY, 'LabelRegion', 'label_id'),
-            'company' => array(
+
+
+
+
+            'system' => array(
                 self::BELONGS_TO,
-                'Company',
-                'company_id'
+                'System',
+                'system_id'
             ),
 
-            'follower' => array(
-                self::HAS_MANY,
-                'Follower',
+            'project' => array(
+                self::BELONGS_TO,
+                'Project',
                 'project_id'
 
             ),
-
-                        'systems' => array(self::MANY_MANY, 'System', 'Projectsystem(project_id, system_id)'),
 
 
         );
@@ -109,13 +97,11 @@ class Project extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description/Notes',
-            'icon'=>'Icon',
-            'company_id' => 'Company',
-            'budget' => 'Budget',
-            'stage' => 'Stage',
-            'extlink' => 'External Link'
+           'project_id' => 'Project',
+            'system_id' => 'System',
+            'description'=> 'Description',
+            'create_user' => 'Create User',
+            'create_date' => 'Create Date'
         )
         ;
     }
@@ -123,15 +109,8 @@ class Project extends CActiveRecord
     public function behaviors()
     {
         return array(
-            'user_meta' => array(
-                'class' => 'ext.yiiext.behaviors.model.eav.EEavBehavior',
-                'tableName' => 'project_meta',
-                'entityField' => 'project_id',
-                'attributeField' => 'meta_name',
-                'valueField' => 'meta_value',
-                'modelTableFk' => 'project_id',
-                'safeAttributes' => array()
-            )
+
+
         );
     }
 
