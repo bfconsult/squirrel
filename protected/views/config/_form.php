@@ -25,11 +25,17 @@
 			<?php
 			$systems= $project->systems;
 
-			foreach ($systems as $system){ ?>
+			foreach ($systems as $system){
+				if ($system->deleted == 0){
+
+				?>
+
 				<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
-			<?php }
-			$sharedSystems= System::model()->findAll('deleted=0 and type=1');
-?>
+			<?php
+				}
+			}
+
+		?>
 
 		</select>
 	</div>

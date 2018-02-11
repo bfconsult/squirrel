@@ -32,11 +32,11 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit','create','unlink'),
+                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete'),
+                'actions' => array('admin', ),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -101,6 +101,16 @@ $this->render('view');
     }
 
 
+
+    public function actionHistory($del=0)
+    {
+
+        $this->render('history',array('del'=>$del));
+
+
+    }
+
+
     public function actionCreate()
     {
         $model = new Project;
@@ -133,12 +143,40 @@ $this->render('view');
 
     {
         $model=Projectsystem::model()->find('system_id = '.$id.' and project_id = '.Yii::App()->session['project']);
-        $model->delete();
+        $model->deleted=1;
+        $model->save();
         $this->redirect('/project/view');
 
 
     }
 
+    public function actionDelete()
+
+    {
+        $model=Project::model()->findByPk(Yii::App()->session['project']);
+        $model->deleted=1;
+        if($model->save()) {
+
+
+        $this->redirect('/');
+    }
+echo 'oops, something went wrong';
+    }
+    public function actionSystemDelete($id)
+
+    {
+        $model=Projectsystem::model()->find('system_id = '.$id.' and project_id = '.Yii::App()->session['project']);
+        $model->deleted=1;
+        if($model->save()) {
+
+            $system = System::model()->findbyPk($id);
+            $system->deleted=1;
+            $system->save();
+        }
+        $this->redirect('/project/view');
+
+
+    }
 
     public function actionEdit()
     {

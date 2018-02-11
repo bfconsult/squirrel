@@ -5,7 +5,8 @@
 $project=Project::model()->findbyPK(Yii::App()->session['project']);
 
 echo '<h1>'.$project->name;?>
- <a href = "/project/edit"><i class="icon-edit"></i></a></h1>
+ <a href = "/project/edit"><i class="icon-edit"></i></a>
+    <a href = "/project/delete"  onclick="return confirm('Are you sure you want to delete this project?');"><i class="icon-remove-sign"></i></a></h1>
 <?php
 
 $data = Config::model()->getRecentConfigs();
@@ -19,6 +20,14 @@ $data = Config::model()->getRecentConfigs();
         'htmlOptions' => array('class' => 'bootstrap-widget-table'),
         'headerButtons' => array(
 
+
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'View History',
+
+                'url' => UrlHelper::getPrefixLink('/project/history/'),
+            ),
             array(
                 'class' => 'bootstrap.widgets.TbButton',
                 'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
@@ -26,8 +35,6 @@ $data = Config::model()->getRecentConfigs();
 
                 'url' => UrlHelper::getPrefixLink('/config/create/'),
             ),
-
-
         )
 
     ));
@@ -52,7 +59,7 @@ if (!empty($data)) {
 
                 <tr class="odd">
                     <td>
-                        <a href="/system/view/id/<?php $item->system_id; ?>"><?php echo $item->name; ?></a>
+                        <a href="/config/view/id/<?php echo $item->id; ?>"><?php echo $item->name; ?></a>
                         - <?php echo $item->description; ?>
                     </td>
                     <td>
@@ -114,28 +121,41 @@ $data = $project->systems;
         <?php if (count($data)): ?>
 
 
-            <?php foreach ($data as $item): ?>
+            <?php foreach ($data as $item):
+
+                if($item->deleted == 0) {
+
+                    ?>
 
 
-
-                <tr class="odd">
-                    <td>
-                        <a href="<?php echo UrlHelper::getPrefixLink('/system/view/id/') ?><?php echo $item->id; ?>"><?php echo $item->name; ?></a>
-                        - <?php echo $item->description;?>
-                    </td>
-                    <td>
-                        <?php
-                        if($item->type==1) {?>(shared system) <a href="/project/unlink/id/<?php echo $item->id; ?>"><i class="icon-unlink"></i></a>
-
+                    <tr class="odd">
+                        <td>
+                            <a href="<?php echo UrlHelper::getPrefixLink('/system/view/id/') ?><?php echo $item->id; ?>"><?php echo $item->name; ?></a>
+                            - <?php echo $item->description; ?>
+                        </td>
+                        <td>
                             <?php
+                            if ($item->type == 1) {
+                                ?>(shared system) <a href="/project/unlink/id/<?php echo $item->id; ?>"><i
+                                        class="icon-unlink"></i></a>
+
+                                <?php
+                            } else {
+
+                                ?><a href="/project/systemdelete/id/<?php echo $item->id; ?>"><i
+                                        class="icon-remove-sign"></i></a>
+
+                                <?php
                             }
-                        ?>
+                            ?>
 
-                    </td>
+                        </td>
 
 
-                </tr>
-            <?php endforeach ?>
+                    </tr>
+                    <?php
+                }
+                endforeach ?>
 
 
         <?php endif; ?>

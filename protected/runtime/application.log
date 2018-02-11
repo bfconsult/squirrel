@@ -50846,3 +50846,387 @@ Stack trace:
 REQUEST_URI=/system/view/id/
 HTTP_REFERER=http://squirrel/project/view/id/1
 ---
+2018/02/11 10:17:01 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\www\squirrel\yii\framework\yiilite.php:3665
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3653): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#2 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#4 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('view')
+#9 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('config/view')
+#10 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#11 D:\www\squirrel\index.php(25): CApplication->run()
+#12 {main}
+REQUEST_URI=/config/view/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:18:08 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\www\squirrel\yii\framework\yiilite.php:3665
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3653): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#2 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#4 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#5 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#6 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('view')
+#9 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('config/view')
+#10 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#11 D:\www\squirrel\index.php(25): CApplication->run()
+#12 {main}
+REQUEST_URI=/config/view/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:18:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in D:\www\squirrel\protected\controllers\SystemController.php:135
+Stack trace:
+#0 D:\www\squirrel\protected\controllers\SystemController.php(56): SystemController->loadModel('')
+#1 [internal function]: SystemController->actionView('')
+#2 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(SystemController), Array)
+#3 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(SystemController), Object(ReflectionMethod), Array)
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('view')
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('system/view')
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CApplication->run()
+#16 {main}
+REQUEST_URI=/system/view/id/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:20:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "history".' in D:\www\squirrel\yii\framework\yiilite.php:3750
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3632): CController->missingAction('history')
+#1 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('history')
+#2 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/history')
+#3 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\www\squirrel\index.php(25): CApplication->run()
+#5 {main}
+REQUEST_URI=/project/history/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:22:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `config` `t` WHERE project_id = .
+in D:\www\squirrel\protected\views\project\history.php (4)
+in D:\www\squirrel\protected\controllers\ProjectController.php (108)
+in D:\www\squirrel\index.php (25)
+2018/02/11 10:22:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `config` `t` WHERE project_id = ' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\protected\views\project\history.php(4): CActiveRecord->findAll('project_id = ')
+#4 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#5 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#6 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('history', NULL, true)
+#8 D:\www\squirrel\protected\controllers\ProjectController.php(108): CController->render('history')
+#9 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionHistory()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#12 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#14 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#16 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#17 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('history')
+#19 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/history')
+#20 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#21 D:\www\squirrel\index.php(25): CApplication->run()
+#22 {main}
+REQUEST_URI=/project/history/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:22:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `config` `t` WHERE project_id = 1.
+in D:\www\squirrel\protected\views\project\history.php (4)
+in D:\www\squirrel\protected\controllers\ProjectController.php (108)
+in D:\www\squirrel\index.php (25)
+2018/02/11 10:22:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project_id' in 'where clause'. The SQL statement executed was: SELECT * FROM `config` `t` WHERE project_id = 1' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\protected\views\project\history.php(4): CActiveRecord->findAll('project_id = 1')
+#4 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#5 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#6 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('history', NULL, true)
+#8 D:\www\squirrel\protected\controllers\ProjectController.php(108): CController->render('history')
+#9 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionHistory()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#12 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#14 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#16 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#17 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('history')
+#19 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/history')
+#20 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#21 D:\www\squirrel\index.php(25): CApplication->run()
+#22 {main}
+REQUEST_URI=/project/history/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:29:25 [error] [php] Array to string conversion (D:\www\squirrel\yii\framework\yiilite.php:9372)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\db\schema\CDbCommandBuilder.php(100): CMysqlCommandBuilder->bindValues()
+#1 D:\www\squirrel\yii\framework\yiilite.php(7966): CMysqlCommandBuilder->createFindCommand()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): Config->query()
+#3 D:\www\squirrel\protected\views\project\history.php(10): Config->findAll()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3493): require()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3472): ProjectController->renderInternal()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3904): ProjectController->renderFile()
+#7 D:\www\squirrel\yii\framework\yiilite.php(3872): ProjectController->renderPartial()
+#8 D:\www\squirrel\protected\controllers\ProjectController.php(108): ProjectController->render()
+#9 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionHistory()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#11 D:\www\squirrel\yii\framework\yiilite.php(6895): ProjectController->runAction()
+#12 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#14 D:\www\squirrel\yii\framework\yiilite.php(6937): ProjectController->filterAccessControl()
+#15 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#16 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#17 D:\www\squirrel\yii\framework\yiilite.php(3627): ProjectController->runActionWithFilters()
+#18 D:\www\squirrel\yii\framework\yiilite.php(1761): ProjectController->run()
+#19 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#20 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#21 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/project/history/
+in D:\www\squirrel\protected\views\project\history.php (10)
+in D:\www\squirrel\protected\controllers\ProjectController.php (108)
+in D:\www\squirrel\index.php (25)
+2018/02/11 10:43:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'deleted' in 'where clause'. The SQL statement executed was: SELECT * FROM `config` `t` WHERE system_id in (11,22) and deleted = 0.
+in D:\www\squirrel\protected\views\project\history.php (12)
+in D:\www\squirrel\protected\controllers\ProjectController.php (108)
+in D:\www\squirrel\index.php (25)
+2018/02/11 10:43:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'deleted' in 'where clause'. The SQL statement executed was: SELECT * FROM `config` `t` WHERE system_id in (11,22) and deleted = 0' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\protected\views\project\history.php(12): CActiveRecord->findAll('system_id in (1...')
+#4 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#5 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#6 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('history', NULL, true)
+#8 D:\www\squirrel\protected\controllers\ProjectController.php(108): CController->render('history')
+#9 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionHistory()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#12 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#14 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#16 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#17 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('history')
+#19 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/history')
+#20 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#21 D:\www\squirrel\index.php(25): CApplication->run()
+#22 {main}
+REQUEST_URI=/project/history/
+HTTP_REFERER=http://squirrel/project/view/id/1
+---
+2018/02/11 10:56:07 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'project = 1 LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `projectsystem` `t` WHERE system_id =11 project = 1 LIMIT 1.
+in D:\www\squirrel\protected\controllers\ConfigController.php (64)
+in D:\www\squirrel\index.php (25)
+2018/02/11 10:56:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'project = 1 LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `projectsystem` `t` WHERE system_id =11 project = 1 LIMIT 1' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9437): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryRow()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8031): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\www\squirrel\protected\controllers\ConfigController.php(64): CActiveRecord->find('system_id =11 p...')
+#4 [internal function]: ConfigController->actionDelete('1')
+#5 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(ConfigController), Array)
+#6 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(ConfigController), Object(ReflectionMethod), Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#10 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#11 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#14 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('delete')
+#16 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('config/delete')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#18 D:\www\squirrel\index.php(25): CApplication->run()
+#19 {main}
+REQUEST_URI=/config/delete/id/1
+HTTP_REFERER=http://squirrel/project/history/del/1
+---
+2018/02/11 10:56:48 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'project_id = 1 LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `projectsystem` `t` WHERE system_id =11 project_id = 1 LIMIT 1.
+in D:\www\squirrel\protected\controllers\ConfigController.php (64)
+in D:\www\squirrel\index.php (25)
+2018/02/11 10:56:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'project_id = 1 LIMIT 1' at line 1. The SQL statement executed was: SELECT * FROM `projectsystem` `t` WHERE system_id =11 project_id = 1 LIMIT 1' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9437): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryRow()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8031): CActiveRecord->query(Object(CDbCriteria))
+#3 D:\www\squirrel\protected\controllers\ConfigController.php(64): CActiveRecord->find('system_id =11 p...')
+#4 [internal function]: ConfigController->actionDelete('1')
+#5 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(ConfigController), Array)
+#6 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(ConfigController), Object(ReflectionMethod), Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#10 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#11 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#14 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('delete')
+#16 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('config/delete')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#18 D:\www\squirrel\index.php(25): CApplication->run()
+#19 {main}
+REQUEST_URI=/config/delete/id/1
+HTTP_REFERER=http://squirrel/project/history/del/1
+---
+2018/02/11 11:08:03 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\www\squirrel\yii\framework\yiilite.php:7003
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(6983): CAccessControlFilter->accessDenied(Object(AuthWebUser), 'You are not aut...')
+#1 D:\www\squirrel\yii\framework\yiilite.php(6902): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#3 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('systemdelete')
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/systemd...')
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CApplication->run()
+#11 {main}
+REQUEST_URI=/project/systemdelete/id/11
+HTTP_REFERER=http://squirrel/project/view/
+---
+2018/02/11 11:17:33 [error] [exception.CException] exception 'CException' with message 'Property "TbButton.visible " is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:645
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(6077): CComponent->__set('visible ', false)
+#1 D:\www\squirrel\yii\framework\yiilite.php(3501): CWidgetFactory->createWidget(Object(ProjectController), 'bootstrap.widge...', Array)
+#2 D:\www\squirrel\yii\framework\yiilite.php(3525): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 D:\www\squirrel\protected\extensions\bootstrap\widgets\TbBox.php(173): CBaseController->widget('bootstrap.widge...', Array)
+#4 D:\www\squirrel\protected\extensions\bootstrap\widgets\TbBox.php(137): TbBox->renderButtons()
+#5 D:\www\squirrel\protected\extensions\bootstrap\widgets\TbBox.php(105): TbBox->renderHeader()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3502): TbBox->init()
+#7 D:\www\squirrel\yii\framework\yiilite.php(3532): CBaseController->createWidget('bootstrap.widge...', Array)
+#8 D:\www\squirrel\protected\views\project\history.php(43): CBaseController->beginWidget('bootstrap.widge...', Array)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#10 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', Array, true)
+#11 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', Array, true)
+#12 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('history', Array, true)
+#13 D:\www\squirrel\protected\controllers\ProjectController.php(108): CController->render('history', Array)
+#14 [internal function]: ProjectController->actionHistory('1')
+#15 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(ProjectController), Array)
+#16 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(ProjectController), Object(ReflectionMethod), Array)
+#17 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#18 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#19 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#20 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#21 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#22 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#23 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#24 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('history')
+#26 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/history')
+#27 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#28 D:\www\squirrel\index.php(25): CApplication->run()
+#29 {main}
+REQUEST_URI=/project/history/del/1
+HTTP_REFERER=http://squirrel/project/history/
+---
+2018/02/11 11:28:51 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\www\squirrel\yii\framework\yiilite.php:7003
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(6983): CAccessControlFilter->accessDenied(Object(AuthWebUser), 'You are not aut...')
+#1 D:\www\squirrel\yii\framework\yiilite.php(6902): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#3 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('delete')
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/delete')
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CApplication->run()
+#11 {main}
+REQUEST_URI=/project/delete
+HTTP_REFERER=http://squirrel/project/view/
+---
+2018/02/11 11:30:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and deleted =0  ORDER BY create_date DESC LIMIT 10' at line 1. The SQL statement executed was: SELECT * FROM `config` `t` WHERE system_id in () and deleted =0  ORDER BY create_date DESC LIMIT 10.
+in D:\www\squirrel\protected\models\Config.php (110)
+in D:\www\squirrel\protected\views\project\view.php (12)
+in D:\www\squirrel\protected\controllers\ProjectController.php (98)
+2018/02/11 11:30:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and deleted =0  ORDER BY create_date DESC LIMIT 10' at line 1. The SQL statement executed was: SELECT * FROM `config` `t` WHERE system_id in () and deleted =0  ORDER BY create_date DESC LIMIT 10' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\protected\models\Config.php(110): CActiveRecord->findAll(Array)
+#4 D:\www\squirrel\protected\views\project\view.php(12): Config->getRecentConfigs()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#6 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#8 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('view', NULL, true)
+#9 D:\www\squirrel\protected\controllers\ProjectController.php(98): CController->render('view')
+#10 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionView()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#12 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#13 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#14 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#16 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#17 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#18 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('view')
+#20 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/view')
+#21 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#22 D:\www\squirrel\index.php(25): CApplication->run()
+#23 {main}
+REQUEST_URI=/project/view/
+HTTP_REFERER=http://squirrel/
+---
+2018/02/11 11:31:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and deleted =0  ORDER BY create_date DESC LIMIT 10' at line 1. The SQL statement executed was: SELECT * FROM `config` `t` WHERE system_id in (-2,) and deleted =0  ORDER BY create_date DESC LIMIT 10.
+in D:\www\squirrel\protected\models\Config.php (110)
+in D:\www\squirrel\protected\views\project\view.php (12)
+in D:\www\squirrel\protected\controllers\ProjectController.php (98)
+2018/02/11 11:31:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and deleted =0  ORDER BY create_date DESC LIMIT 10' at line 1. The SQL statement executed was: SELECT * FROM `config` `t` WHERE system_id in (-2,) and deleted =0  ORDER BY create_date DESC LIMIT 10' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\protected\models\Config.php(110): CActiveRecord->findAll(Array)
+#4 D:\www\squirrel\protected\views\project\view.php(12): Config->getRecentConfigs()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#6 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#8 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('view', NULL, true)
+#9 D:\www\squirrel\protected\controllers\ProjectController.php(98): CController->render('view')
+#10 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionView()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#12 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#13 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#14 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#16 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#17 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#18 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('view')
+#20 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/view')
+#21 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#22 D:\www\squirrel\index.php(25): CApplication->run()
+#23 {main}
+REQUEST_URI=/project/view/
+HTTP_REFERER=http://squirrel/
+---

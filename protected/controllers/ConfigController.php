@@ -32,12 +32,8 @@ class ConfigController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','edit','create'),
+                'actions' => array('view','edit','create','delete'),
                 'users' => array('@'),
-            ),
-            array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete'),
-                'users' => array('admin'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
@@ -59,6 +55,20 @@ class ConfigController extends Controller
 
     }
 
+
+
+    public function actionDelete($id)
+    {
+
+        $config=Config::model()->findByPk($id);
+        $link=Projectsystem::model()->find('system_id ='.$config->system_id.' and project_id = '.Yii::App()->session['project']);
+        if (!is_null($link))
+            $config->deleted = 1;
+        $config->save();
+        $this->redirect('/project/history');
+
+
+    }
 
 
     public function actionCreate()

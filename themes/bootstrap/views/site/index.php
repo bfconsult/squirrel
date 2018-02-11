@@ -61,11 +61,12 @@ if (!empty($data)) {
         </tr>
         </thead>
         <tbody>
-        <?php if (count($data)): ?>
+        <?php if (count($data)):
 
+             foreach ($data as $itemIdx => $item):
 
-            <?php foreach ($data as $itemIdx => $item): ?>
-
+            if ($item->deleted ==0) {
+                ?>
 
 
                 <tr class="odd">
@@ -76,7 +77,9 @@ if (!empty($data)) {
 
 
                 </tr>
-            <?php endforeach ?>
+                <?php
+            }
+            endforeach ?>
 
 
         <?php endif; ?>
