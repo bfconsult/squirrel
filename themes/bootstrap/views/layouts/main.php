@@ -11,6 +11,7 @@
 
     <meta name="language" content="en"/>
 
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 
     <?php Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/bootstrap.min.css'); ?>
