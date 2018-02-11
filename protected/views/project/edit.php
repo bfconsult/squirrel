@@ -1,4 +1,13 @@
-<h1>Edit Project</h1>
+<?php
+
+$project=Project::model()->findbyPK(Yii::App()->session['project']);
+
+echo '<h1>'.$project->name;
+    ?>
+    <a href = "/project/view"><i class="icon-arrow-left"></i></a></h1>
+
+
+<h2>Edit Project</h2>
 
 
 
@@ -7,7 +16,7 @@
 echo $this->renderPartial('_form', array('model'=>$model)); ?>
 
 
-Collaborators
+<h2>Collaborators</h2>
 
 
 

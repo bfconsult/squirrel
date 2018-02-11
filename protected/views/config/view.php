@@ -1,8 +1,14 @@
-<?php $project=Project::model()->findbyPK(Yii::App()->session['project']);
+<?php
 
-echo '<h1>'.$project->name.'</h1>';
+$project=Project::model()->findbyPK(Yii::App()->session['project']);
 
-echo '<h2>'.$configs->parent_system->name.'</h2>';
+echo '<h1>'.$project->name;
+?>
+    <a href = "/project/view"><i class="icon-arrow-left"></i></a></h1>
+
+<?php
+
+    echo '<h2>'.$configs->parent_system->name.'</h2>';
 
 
 
