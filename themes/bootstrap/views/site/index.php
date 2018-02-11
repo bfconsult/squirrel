@@ -7,7 +7,7 @@
 
 
     $user = User::model()->findbyPK(Yii::App()->user->id);
-echo $user->mycompany->name;
+
 
 
 

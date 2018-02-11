@@ -92,7 +92,7 @@
                 ),
 
             ),
-            '<span class="pull-right">SQUIRREL</span>',
+            '<span class="pull-right"><img src="/images/small_logo.png"></span>',
 
         ),
     )
