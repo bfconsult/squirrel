@@ -24,9 +24,13 @@
 		<?php echo $form->textArea($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
-	<input type="hidden" name="type" value="0">
+	<div class="row">
+		<input type="checkbox" name="System[type]" value="1">
+
+	</div>
 
 
+<br /><br />
         
        
 

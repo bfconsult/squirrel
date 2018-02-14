@@ -26,12 +26,9 @@ class FollowerController extends Controller
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions'=>array(
-                    'resendinvite',
-                    'reactGetCollaborators',
-                    'reactInviteCollaborator',
+                    'reinvite',
                     'SendInvite',
-                    'reactAccept',
-                    'reactDelete',
+                    'remove',
                     'followerAction'
                 ),
                 'users'=>array('@'),
@@ -121,98 +118,54 @@ class FollowerController extends Controller
 
     }
 
-    public function actionReactDelete()
+    public function actionRemove($id)
     {
 
         try {
-            if(!isset($_POST['follower']['project_id'])) $project=Yii::App()->session['project'];
-            if(isset($_POST['follower']['project_id'])) $project=$_POST['follower']['project_id'];
+            $follower=Follower::model()->find('id = '.$id.' and project_id = '.Yii::App()->session['project']);
 
-            if ($project === null)
-                throw new Exception('no project');
-
-            if(!isset($_POST['follower']['follower_id']))
-                throw new Exception('no id');
-
-            $follower_id=$_POST['follower']['follower_id'];
-
-            $status = 1;
-            $message = 'success';
-            $content = null;
-
-
-
-
-$follower = Follower::model()->findbyPK($follower_id);
-if ($follower===null)
+if (is_null($follower))
     throw new CHttpException('There is no such follower.');
-            if ($follower->project_id == $project){
 
                 $follower->delete();
-            } ELSE {
-                throw new Exception('not your project');
-            }
 
-            $content['confirmed'] = Follower::model()->getFollowers($project);
-            $content['pending'] = Follower::model()->getFollowerPendingInvites($projec);
 
         } catch (Exception $ex) {
-            $status = 0;
-            $message = 'exception: ' . $ex->getMessage();
-            $content = null;
-        }
-        $this->_ajaxResponse($status, $message, $content);
 
+            echo 'exception: ' . $ex->getMessage();
+            die;
+        }
+
+$this->redirect('/project/edit');
 
 
 
     }
 
 
-    public function actionReactSendReInvite()
+    public function actionReInvite($id)
     {
 
 
-
-
         try {
-            if(!isset($_POST['follower']['project_id'])) $project=Yii::App()->session['project'];
-            if(isset($_POST['follower']['project_id'])) $project=$_POST['follower']['project_id'];
+            $follower=Follower::model()->find('id = '.$id.' and project_id = '.Yii::App()->session['project']);
 
-            if ($project === null)
-                throw new Exception('no project');
-
-            if(!isset($_POST['follower']['follower_id']))
-                throw new Exception('no id');
-
-            $follower_id=$_POST['follower']['follower_id'];
-
-            $status = 1;
-            $message = 'success';
-            $content = null;
-
-
-
-
-            $follower = Follower::model()->findbyPK($follower_id);
-            if ($follower===null)
+            if (is_null($follower))
                 throw new CHttpException('There is no such follower.');
-            if ($follower->project_id == $project){
-              
-                Follower::model()->sendInvite($follower->id);
-            } ELSE {
-                throw new Exception('not your project');
-            }
 
-            $content['confirmed'] = Follower::model()->getFollowers($project);
-            $content['pending'] = Follower::model()->getFollowerPendingInvites($projec);
+
+
+
+
+            Follower::model()->sendInvite($follower->id);
+
 
         } catch (Exception $ex) {
-            $status = 0;
-            $message = 'exception: ' . $ex->getMessage();
-            $content = null;
+
+           echo 'exception: ' . $ex->getMessage();
+           die;
         }
-        $this->_ajaxResponse($status, $message, $content);
+        $this->redirect('/project/edit');
 
 
 

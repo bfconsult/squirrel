@@ -51230,3 +51230,402 @@ Stack trace:
 REQUEST_URI=/project/view/
 HTTP_REFERER=http://squirrel/
 ---
+2018/02/14 03:36:05 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:40:06 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:40:37 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:41:44 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:42:03 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:43:47 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:44:04 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:46:52 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:47:28 [warning] [application] Failed to set unsafe attribute "type" of "System".
+in D:\www\squirrel\protected\controllers\SystemController.php (71)
+in D:\www\squirrel\index.php (25)
+2018/02/14 03:59:17 [error] [php] Undefined variable: link (D:\www\squirrel\protected\views\project\view.php:136)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): ProjectController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): ProjectController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\ProjectController.php(98): ProjectController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionView()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): ProjectController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): ProjectController->filterAccessControl()
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): ProjectController->runActionWithFilters()
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): ProjectController->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/project/view
+in D:\www\squirrel\protected\views\project\view.php (136)
+in D:\www\squirrel\protected\controllers\ProjectController.php (98)
+in D:\www\squirrel\index.php (25)
+2018/02/14 04:01:33 [error] [php] Trying to get property of non-object (D:\www\squirrel\protected\views\project\view.php:136)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): ProjectController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): ProjectController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\ProjectController.php(98): ProjectController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): ProjectController->actionView()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): ProjectController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): ProjectController->filterAccessControl()
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): ProjectController->runActionWithFilters()
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): ProjectController->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/project/view
+in D:\www\squirrel\protected\views\project\view.php (136)
+in D:\www\squirrel\protected\controllers\ProjectController.php (98)
+in D:\www\squirrel\index.php (25)
+2018/02/14 04:09:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\www\squirrel\yii\framework\yiilite.php:7003
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(6983): CAccessControlFilter->accessDenied(Object(AuthWebUser), 'You are not aut...')
+#1 D:\www\squirrel\yii\framework\yiilite.php(6902): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#3 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('remove')
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('follower/remove')
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CApplication->run()
+#11 {main}
+REQUEST_URI=/follower/remove/id/14
+HTTP_REFERER=http://squirrel/project/edit
+---
+2018/02/14 04:11:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "reinvite".' in D:\www\squirrel\yii\framework\yiilite.php:3750
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3632): CController->missingAction('reinvite')
+#1 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('reinvite')
+#2 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('follower/reinvi...')
+#3 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\www\squirrel\index.php(25): CApplication->run()
+#5 {main}
+REQUEST_URI=/follower/reinvite/id/13
+HTTP_REFERER=http://squirrel/project/edit
+---
+2018/02/14 04:13:16 [error] [php] Undefined variable: project (D:\www\squirrel\protected\controllers\FollowerController.php:162)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(4138): CInlineAction->runWithParamsInternal()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#2 D:\www\squirrel\yii\framework\yiilite.php(6895): FollowerController->runAction()
+#3 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#4 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#5 D:\www\squirrel\yii\framework\yiilite.php(6937): FollowerController->filterAccessControl()
+#6 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#7 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(3627): FollowerController->runActionWithFilters()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1761): FollowerController->run()
+#10 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#11 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#12 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/follower/reinvite/id/13
+in D:\www\squirrel\protected\controllers\FollowerController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 04:16:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "model".' in D:\www\squirrel\yii\framework\yiilite.php:3750
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3632): CController->missingAction('model')
+#1 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('model')
+#2 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/model')
+#3 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#4 D:\www\squirrel\index.php(25): CApplication->run()
+#5 {main}
+REQUEST_URI=/project/model/ext/90791d9c493e249d1e93a687e26298e3
+---
+2018/02/14 04:16:53 [error] [php] Undefined variable: user (D:\www\squirrel\protected\views\user\joinfollower.php:16)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): UserController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): UserController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\UserController.php(198): UserController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): UserController->actionJoinfollower()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): UserController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): UserController->filterAccessControl()
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): UserController->runActionWithFilters()
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): UserController->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/user/joinfollower/id/13
+in D:\www\squirrel\protected\views\user\joinfollower.php (16)
+in D:\www\squirrel\protected\controllers\UserController.php (198)
+in D:\www\squirrel\index.php (25)
+2018/02/14 04:20:00 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (160)
+in D:\www\squirrel\index.php (25)
+2018/02/14 04:20:00 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (160)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:06:11 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (161)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:06:11 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (161)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:07:57 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:07:57 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:08:10 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:08:10 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:09:23 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:09:23 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:09:23 [error] [exception.CException] exception 'CException' with message 'Property "RegisterForm.username" is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:645
+Stack trace:
+#0 D:\www\squirrel\protected\controllers\UserController.php(164): CComponent->__set('username', 'aoeu@billson.co...')
+#1 [internal function]: UserController->actionJoinfollower('15')
+#2 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('joinfollower')
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('user/joinfollow...')
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CApplication->run()
+#16 {main}
+REQUEST_URI=/user/joinfollower/id/15
+HTTP_REFERER=http://squirrel/user/joinfollower/id/15
+---
+2018/02/14 05:10:06 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:10:06 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:10:06 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:10:06 [error] [exception.CException] exception 'CException' with message 'Property "User.active" is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:645
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(7410): CComponent->__set('active', 0)
+#1 D:\www\squirrel\protected\controllers\UserController.php(171): CActiveRecord->__set('active', 0)
+#2 [internal function]: UserController->actionJoinfollower('15')
+#3 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#4 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#5 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#6 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#7 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#10 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#11 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#12 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('joinfollower')
+#14 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('user/joinfollow...')
+#15 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#16 D:\www\squirrel\index.php(25): CApplication->run()
+#17 {main}
+REQUEST_URI=/user/joinfollower/id/15
+HTTP_REFERER=http://squirrel/user/joinfollower/id/15
+---
+2018/02/14 05:10:40 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:10:40 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:10:40 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:10:40 [error] [exception.CException] exception 'CException' with message 'Property "User.address_id" is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:617
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(7401): CComponent->__get('address_id')
+#1 D:\www\squirrel\yii\framework\yiilite.php(10352): CActiveRecord->__get('address_id')
+#2 D:\www\squirrel\yii\framework\yiilite.php(10162): CNumberValidator->validateAttribute(Object(User), 'address_id')
+#3 D:\www\squirrel\yii\framework\yiilite.php(7123): CValidator->validate(Object(User), NULL)
+#4 D:\www\squirrel\yii\framework\yiilite.php(7689): CModel->validate(NULL)
+#5 D:\www\squirrel\protected\controllers\UserController.php(172): CActiveRecord->save()
+#6 [internal function]: UserController->actionJoinfollower('15')
+#7 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#10 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#11 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#12 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#13 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#14 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#16 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('joinfollower')
+#18 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('user/joinfollow...')
+#19 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#20 D:\www\squirrel\index.php(25): CApplication->run()
+#21 {main}
+REQUEST_URI=/user/joinfollower/id/15
+HTTP_REFERER=http://squirrel/user/joinfollower/id/15
+---
+2018/02/14 05:12:00 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:00 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:00 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:22 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:22 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:22 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:35 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:35 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:12:35 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:16:42 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:16:42 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:16:42 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:18:15 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:18:15 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:18:15 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:18:17 [error] [php] Undefined variable: model (D:\www\squirrel\protected\views\user\joinsuccess.php:10)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): UserController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): UserController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\UserController.php(68): UserController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): UserController->actionJoinSuccess()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(6895): UserController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#7 D:\www\squirrel\yii\framework\yiilite.php(4030): CAccessControlFilter->filter()
+#8 D:\www\squirrel\yii\framework\yiilite.php(6937): UserController->filterAccessControl()
+#9 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3627): UserController->runActionWithFilters()
+#12 D:\www\squirrel\yii\framework\yiilite.php(1761): UserController->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#14 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#15 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/user/joinsuccess?id=4
+in D:\www\squirrel\protected\views\user\joinsuccess.php (10)
+in D:\www\squirrel\protected\controllers\UserController.php (68)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:20:07 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:20:07 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:32:44 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:32:44 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:32:56 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:32:56 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:32:56 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:37:31 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:37:31 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:37:31 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:40:46 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:40:46 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:40:54 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:40:54 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:40:54 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:44:31 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:44:31 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:44:31 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:44:45 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:44:45 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 05:44:45 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)

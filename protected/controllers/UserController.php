@@ -149,47 +149,48 @@ class UserController extends Controller
     }
 
 
-    public function actionJoinfollower()
+    public function actionJoinfollower($id)
     {
         // version of join that is used for followers
-        $this->layout='column1';
+        $this->layout='main';
+        $follower=Follower::model()->findByPk($id);
+        //print_r($follower); die;
 
         $model = new RegisterForm;
 
         if(isset($_POST['RegisterForm'])){
             $model->attributes = $_POST['RegisterForm'];
+            $model->email=$follower->email;
 
             if($model->validate()){
                 $user = new User;
-                $user->attributes = $_POST['RegisterForm'];
-                $user->active = 0;
-                $user->username = $user->email;
 
+                $user->attributes = $_POST['RegisterForm'];
+
+                $user->username=$follower->email;
+                $user->email=$follower->email;
                 if($user->save()){
 
-                    $link = urlencode($user->salt);
+
                     $mail = new YiiMailer();
-
-                    $mail->setFrom(Yii::app()->params['adminEmail']);
-                    $mail->setTo($user->email);
-                    $mail->setSubject('You have registered an account on Naild');
-                    $mail->setBody('Dear '.$user->firstname.',
-                    <br />
-                    Hi, it looks like you\'ve created an account on Naild, the
-                    online construction management system.<br />
-                    To confirm your email address and activate your account follow the link below and complete the join form.
-                    <br />
-                    Click here to accept <a href="http://'.Yii::app()->params['server'].'/user/active/verifycode/'.$link.'">'.Yii::app()->params['server'].'/user/active/verifycode/'.$link.'</a>
-                    <br />   <br />.
-                    Thanks,
-                    from the Naild Team.
-                    ');
-
-                    $mail->Send();
+                    $mail->setFrom('info@billson.com , Squirrel Configuration Manager');
+                    $mail->AddAddress($user->email,$user->firstname.' '.$user->lastname);
+                    $mail->setLayout('mail');
+                    $mail->setData(array('user'=>$user));
+                    $mail->setSubject('Welcome from the Squirrel');
+                    $mail->setView('welcome');
+                    if (!$mail->send()){
+                        echo 'did not send';
+                        echo $mail->ErrorInfo;
+                        die;
+                    }
                     Yii::app()->user->logout();
-                    $this->redirect(array('joinsuccess','id'=>$user->id));
+
+                    $this->redirect(array('/site/login','id'=>$user->id));
                     /**/
                 }
+                echo 'User did not save<pre>';
+                print_r($user);
             }
         }
 

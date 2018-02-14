@@ -1,24 +1,5 @@
 <?php
 
-/**
- * This is the model class for table "user".
- *
- * The followings are the available columns in table 'user':
- * @property integer $id
- * @property string $firstname
- * @property string $lastname
- * @property string $email
- * @property string $password
- * @property integer $address_id
- * @property string $salt
- * @property string $username
- *
- * The followings are the available model relations:
- * @property Lifespan[] $lifespans
- * @property Notes[] $notes
- * @property Points[] $points
- * @property Addresses $address
- */
 class User extends CActiveRecord
 {
 
@@ -55,12 +36,12 @@ class User extends CActiveRecord
              array('password', 'length', 'min' => 4),
 			array('firstname, lastname, email, username', 'required', 'on'=>'update'),
 			array('firstname, lastname, email, password, salt, username', 'required','except' => 'register, resendConfirmation, newPassword'),
-			array('address_id', 'numerical', 'integerOnly'=>true),
+
 			array('firstname, lastname, email, password', 'length', 'max'=>255),
 			array('salt, username', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, firstname, lastname, email, password, address_id, salt, username', 'safe', 'on'=>'search'),
+			array('id, firstname, lastname, email, password,  salt, username', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -91,7 +72,7 @@ class User extends CActiveRecord
 			'lastname' => 'Last Name',
 			'email' => 'Email',
 			'password' => 'Password',
-			'address_id' => 'Address',
+
 			'salt' => 'Salt',
 			'username' => 'Username',
                         'cpassword'=>'Confirm Password'
@@ -113,8 +94,7 @@ class User extends CActiveRecord
 		$criteria->compare('firstname',$this->firstname,true);
 		$criteria->compare('lastname',$this->lastname,true);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('address_id',$this->address_id);
+
 		$criteria->compare('salt',$this->salt,true);
 		$criteria->compare('username',$this->username,true);
 

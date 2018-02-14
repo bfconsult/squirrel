@@ -110,7 +110,7 @@ class SystemController extends Controller
 
         if (isset($_POST['System'])) {
             $model->attributes = $_POST['System'];
-        
+
             $model->create_user = Yii::App()->user->id;
             $model->number = System::model()->getNextNumber();
             if ($model->save())

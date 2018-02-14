@@ -123,13 +123,18 @@ $data = $project->systems;
 
             <?php foreach ($data as $item):
 
-                if($item->deleted == 0) {
+
+                $link=Projectsystem::model()->find('system_id = '.$item->id.' and project_id = '.Yii::App()->session['project']);
+                if($item->deleted == 0 && $link->deleted==0) {
+
 
                     ?>
 
 
                     <tr class="odd">
                         <td>
+
+
                             <a href="<?php echo UrlHelper::getPrefixLink('/system/view/id/') ?><?php echo $item->id; ?>"><?php echo $item->name; ?></a>
                             - <?php echo $item->description; ?>
                         </td>

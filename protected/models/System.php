@@ -22,12 +22,13 @@ class System extends CActiveRecord {
     // NOTE: you should only define rules for those attributes that
     // will receive user inputs.
     return array(
-        array('name', 'required'),
+        array('name,type', 'required'),
          array('name', 'length', 'max' => 255),
+        array('type', 'numerical', 'integerOnly'=>true),
         array('number, name, description', 'safe'),
         // The following rule is used by search().
         // @todo Please remove those attributes that should not be searched.
-        array('id, name, create_date, create_user, number', 'safe', 'on' => 'search'),
+        array('id, type, name, create_date, create_user, number', 'safe', 'on' => 'search'),
     );
   }
 
@@ -40,13 +41,13 @@ class System extends CActiveRecord {
              'Config',
              'system_id'),
 
-        /*
-        'parent_project' => array(
-            self::BELONGS_TO,
-            'Project',
-            'project_id'
+        'link' => array(
+            self::HAS_MANY,
+            'Projectsystem',
+            'system_id'
+
         ),
-        */
+
         'system_owner' => array(
             self::HAS_ONE,
             'User',
@@ -70,6 +71,7 @@ class System extends CActiveRecord {
         'number' => 'Number records',
         'name' => 'Name',
         'create_user' => 'Creator',
+        'type'=>    'Shared',
 
         'create_date' => 'Date',
 
