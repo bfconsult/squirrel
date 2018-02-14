@@ -169,7 +169,18 @@ class UserController extends Controller
 
                 $user->username=$follower->email;
                 $user->email=$follower->email;
-                if($user->save()){
+                if($user->firstSave()){
+
+
+
+                    $company = new Company;
+                    $company->name="My Company";
+                    $company->description="a new company";
+                    $company->owner_id=$user->getPrimaryKey();
+                    $company->save();
+
+                    $user->company_id=$company->getPrimaryKey();
+                    $user->save();
 
 
                     $mail = new YiiMailer();

@@ -13,15 +13,7 @@
 <b><?php echo CHtml::encode($model->getAttributeLabel('description')); ?>:</b>
 	<?php echo CHtml::encode($model->description); ?>
 	<br />
-        
-	<b><?php echo CHtml::encode($model->getAttributeLabel('foreignid')); ?>:</b>
-	<?php echo CHtml::encode($model->foreignid); ?>
-	<br />
-	
-	<b><?php echo CHtml::encode($model->getAttributeLabel('trade_id')); ?>:</b>
-	<?php if($model->trade_id!=0) echo CHtml::encode($model->trade->name); ?>
-        <?php if($model->trade_id==0) echo 'Not Set'; ?>
-	<br />
+
 
 	<?php //echo CHtml::encode($model->getAttributeLabel('owner_id')); ?>
 	<?php //echo CHtml::encode($model->owner->firstname).' '.CHtml::encode($model->owner->lastname); ?>

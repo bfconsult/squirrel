@@ -95,7 +95,7 @@ class Project extends CActiveRecord
 
             ),
 
-                        'systems' => array(self::MANY_MANY, 'System', 'projectsystem(project_id, system_id)'),
+            'systems' => array(self::MANY_MANY, 'System', 'projectsystem(project_id, system_id)','condition'=>'systems_systems.deleted = 0'),
 
 
         );

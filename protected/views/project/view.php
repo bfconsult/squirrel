@@ -4,9 +4,19 @@
 
 $project=Project::model()->findbyPK(Yii::App()->session['project']);
 
-echo '<h1>'.$project->name;?>
- <a href = "/project/edit"><i class="icon-edit"></i></a>
-    <a href = "/project/delete"  onclick="return confirm('Are you sure you want to delete this project?');"><i class="icon-remove-sign"></i></a></h1>
+echo '<h1>'.$project->name;
+
+if (Yii::App()->session['projectOwner']) {
+    ?>
+
+    <a href="/project/edit"><i class="icon-edit"></i></a>
+    <a href="/project/delete" onclick="return confirm('Are you sure you want to delete this project?');"><i class="icon-remove-sign"></i></a>
+    <?php
+}
+    ?>
+
+
+    </h1>
 <?php
 
 $data = Config::model()->getRecentConfigs();
@@ -82,7 +92,8 @@ if (!empty($data)) {
 
 $this->endWidget();
 $data = $project->systems;
-
+//echo '<pre>';
+//print_r($data);
 
 
 
@@ -124,7 +135,7 @@ $data = $project->systems;
             <?php foreach ($data as $item):
 
 
-                $link=Projectsystem::model()->find('system_id = '.$item->id.' and project_id = '.Yii::App()->session['project']);
+                $link=Projectsystem::model()->find('system_id = '.$item->id.' and project_id = '.Yii::App()->session['project'].' order by id desc');
                 if($item->deleted == 0 && $link->deleted==0) {
 
 

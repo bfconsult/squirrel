@@ -1,18 +1,5 @@
 <?php
 
-/**
- * This is the model class for table "company".
- *
- * The followings are the available columns in table 'company':
- * @property integer $id
- * @property string $foreignid
- * @property string $name
- * @property string $description
- * @property integer $owner_id
- * @property integer $type
- * @property integer $organisationtype
- * @property integer $trade_id
- */
 class Company extends CActiveRecord
 {
 
@@ -35,14 +22,14 @@ class Company extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('name, description, owner_id, type', 'required'),
-            array('owner_id, type, organisationtype, trade_id', 'numerical', 'integerOnly' => true),
-            array('foreignid, name', 'length', 'max' => 255),
+            array('name, description, owner_id', 'required'),
+            array('owner_id', 'numerical', 'integerOnly' => true),
+            array('name', 'length', 'max' => 255),
             array('logo_id', 'file', 'types' => 'jpg,jpeg,gif,icon,png', 'maxSize' => 10 * 1024 * 1024, 'allowEmpty' => true),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, foreignid, name, description, owner_id, type, organisationtype', 'safe', 'on' => 'search'),
+            array('id, name, description, owner_id', 'safe', 'on' => 'search'),
         );
     }
 
@@ -54,7 +41,7 @@ class Company extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'owner' => array(self::BELONGS_TO, 'User', 'owner_id'),
+            'owner' => array(self::HAS_ONE, 'User', 'owner_id'),
 
             'project' => array(self::HAS_MANY, 'Project', 'company_id'),
               );
@@ -72,9 +59,7 @@ class Company extends CActiveRecord
             'description' => 'Description',
             'logo_id' => 'Logo',
             'owner_id' => 'Owner',
-            'type' => 'Type',
-            'organisationtype' => 'Company Type',
-            'trade_id' => 'Trade',
+
         );
     }
 
@@ -90,13 +75,9 @@ class Company extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
-        $criteria->compare('foreignid', $this->foreignid, true);
         $criteria->compare('name', $this->name, true);
         $criteria->compare('description', $this->description, true);
         $criteria->compare('owner_id', $this->owner_id);
-        $criteria->compare('type', $this->type);
-        $criteria->compare('organisationtype', $this->organisationtype);
-        $criteria->compare('trade_id', $this->trade_id);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

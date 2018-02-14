@@ -51638,3 +51638,572 @@ in D:\www\squirrel\index.php (25)
 2018/02/14 07:17:51 [warning] [application] Failed to set unsafe attribute "password2" of "User".
 in D:\www\squirrel\protected\controllers\UserController.php (168)
 in D:\www\squirrel\index.php (25)
+2018/02/14 07:19:44 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:14)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:28:17 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:28:17 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:28:17 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:28:17 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "firstSave".' in D:\www\squirrel\yii\framework\yiilite.php:711
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(7450): CComponent->__call('firstSave', Array)
+#1 D:\www\squirrel\protected\controllers\UserController.php(191): CActiveRecord->__call('firstSave', Array)
+#2 D:\www\squirrel\protected\controllers\UserController.php(191): User->firstSave()
+#3 [internal function]: UserController->actionJoinfollower('21')
+#4 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#5 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#6 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#8 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#9 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#10 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#11 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#12 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#13 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('joinfollower')
+#15 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('user/joinfollow...')
+#16 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#17 D:\www\squirrel\index.php(25): CApplication->run()
+#18 {main}
+REQUEST_URI=/user/joinfollower/id/21
+HTTP_REFERER=http://squirrel/user/joinfollower/id/21
+---
+2018/02/14 07:29:56 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:29:56 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:30:50 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:30:50 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:30:50 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:34:49 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:14)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:37:57 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:37:57 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:37:57 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:41:14 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:41:14 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:41:14 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:41:14 [error] [exception.CException] exception 'CException' with message 'Property "Company.type" is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:617
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(7401): CComponent->__get('type')
+#1 D:\www\squirrel\yii\framework\yiilite.php(10288): CActiveRecord->__get('type')
+#2 D:\www\squirrel\yii\framework\yiilite.php(10162): CRequiredValidator->validateAttribute(Object(Company), 'type')
+#3 D:\www\squirrel\yii\framework\yiilite.php(7123): CValidator->validate(Object(Company), NULL)
+#4 D:\www\squirrel\yii\framework\yiilite.php(7689): CModel->validate(NULL)
+#5 D:\www\squirrel\protected\controllers\UserController.php(180): CActiveRecord->save()
+#6 [internal function]: UserController->actionJoinfollower('23')
+#7 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#10 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#11 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#12 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#13 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#14 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#15 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#16 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('joinfollower')
+#18 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('user/joinfollow...')
+#19 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#20 D:\www\squirrel\index.php(25): CApplication->run()
+#21 {main}
+REQUEST_URI=/user/joinfollower/id/23
+HTTP_REFERER=http://squirrel/user/joinfollower/id/23
+---
+2018/02/14 07:42:11 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:42:11 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:42:44 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:42:44 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:42:44 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:45:01 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:45:01 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:45:01 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:48:22 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:48:22 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:48:22 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:49:28 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:14)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:29:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mycompany.company_id' in 'where clause'. The SQL statement executed was: SELECT `mycompany`.`id` AS `t1_c0`, `mycompany`.`foreignid` AS `t1_c1`, `mycompany`.`name` AS `t1_c2`, `mycompany`.`description` AS `t1_c3`, `mycompany`.`logo_id` AS `t1_c4`, `mycompany`.`owner_id` AS `t1_c5`, `mycompany`.`modified_date` AS `t1_c6` FROM `company` `mycompany`  WHERE (`mycompany`.`company_id`=:ypl0).
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:29:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mycompany.company_id' in 'where clause'. The SQL statement executed was: SELECT `mycompany`.`id` AS `t1_c0`, `mycompany`.`foreignid` AS `t1_c1`, `mycompany`.`name` AS `t1_c2`, `mycompany`.`description` AS `t1_c3`, `mycompany`.`logo_id` AS `t1_c4`, `mycompany`.`owner_id` AS `t1_c5`, `mycompany`.`modified_date` AS `t1_c6` FROM `company` `mycompany`  WHERE (`mycompany`.`company_id`=:ypl0)' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(808): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(509): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(User))
+#4 D:\www\squirrel\yii\framework\yiilite.php(7476): CActiveFinder->lazyFind(Object(User))
+#5 D:\www\squirrel\yii\framework\yiilite.php(7399): CActiveRecord->getRelated('mycompany')
+#6 D:\www\squirrel\themes\bootstrap\views\site\index.php(14): CActiveRecord->__get('mycompany')
+#7 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#8 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#10 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#11 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#12 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#13 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#14 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#15 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#18 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#19 D:\www\squirrel\index.php(25): CApplication->run()
+#20 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 11:34:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mycompany.iid' in 'where clause'. The SQL statement executed was: SELECT `mycompany`.`id` AS `t1_c0`, `mycompany`.`foreignid` AS `t1_c1`, `mycompany`.`name` AS `t1_c2`, `mycompany`.`description` AS `t1_c3`, `mycompany`.`logo_id` AS `t1_c4`, `mycompany`.`owner_id` AS `t1_c5`, `mycompany`.`modified_date` AS `t1_c6` FROM `company` `mycompany`  WHERE (`mycompany`.`iid`=:ypl0).
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:34:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mycompany.iid' in 'where clause'. The SQL statement executed was: SELECT `mycompany`.`id` AS `t1_c0`, `mycompany`.`foreignid` AS `t1_c1`, `mycompany`.`name` AS `t1_c2`, `mycompany`.`description` AS `t1_c3`, `mycompany`.`logo_id` AS `t1_c4`, `mycompany`.`owner_id` AS `t1_c5`, `mycompany`.`modified_date` AS `t1_c6` FROM `company` `mycompany`  WHERE (`mycompany`.`iid`=:ypl0)' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(808): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(509): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(User))
+#4 D:\www\squirrel\yii\framework\yiilite.php(7476): CActiveFinder->lazyFind(Object(User))
+#5 D:\www\squirrel\yii\framework\yiilite.php(7399): CActiveRecord->getRelated('mycompany')
+#6 D:\www\squirrel\themes\bootstrap\views\site\index.php(14): CActiveRecord->__get('mycompany')
+#7 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#8 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#10 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#11 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#12 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#13 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#14 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#15 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#18 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#19 D:\www\squirrel\index.php(25): CApplication->run()
+#20 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 11:34:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mycompany.iid' in 'where clause'. The SQL statement executed was: SELECT `mycompany`.`id` AS `t1_c0`, `mycompany`.`name` AS `t1_c1`, `mycompany`.`description` AS `t1_c2`, `mycompany`.`logo_id` AS `t1_c3`, `mycompany`.`owner_id` AS `t1_c4`, `mycompany`.`modified_date` AS `t1_c5` FROM `company` `mycompany`  WHERE (`mycompany`.`iid`=:ypl0).
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:34:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mycompany.iid' in 'where clause'. The SQL statement executed was: SELECT `mycompany`.`id` AS `t1_c0`, `mycompany`.`name` AS `t1_c1`, `mycompany`.`description` AS `t1_c2`, `mycompany`.`logo_id` AS `t1_c3`, `mycompany`.`owner_id` AS `t1_c4`, `mycompany`.`modified_date` AS `t1_c5` FROM `company` `mycompany`  WHERE (`mycompany`.`iid`=:ypl0)' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(808): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(509): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(User))
+#4 D:\www\squirrel\yii\framework\yiilite.php(7476): CActiveFinder->lazyFind(Object(User))
+#5 D:\www\squirrel\yii\framework\yiilite.php(7399): CActiveRecord->getRelated('mycompany')
+#6 D:\www\squirrel\themes\bootstrap\views\site\index.php(14): CActiveRecord->__get('mycompany')
+#7 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#8 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#10 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#11 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#12 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#13 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#14 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#15 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#18 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#19 D:\www\squirrel\index.php(25): CApplication->run()
+#20 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 11:34:56 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:14)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (14)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:39:15 [error] [php] Undefined variable: use (D:\www\squirrel\themes\bootstrap\views\site\index.php:11)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (11)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:39:30 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:12)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (12)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:49:14 [error] [exception.CDbException] exception 'CDbException' with message 'Active record "User" has an invalid configuration for relation "follows". It must specify the relation type, the related active record class and the foreign key.' in D:\www\squirrel\yii\framework\yiilite.php:8479
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(8471): CActiveRecordMetaData->addRelation('follows', Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7544): CActiveRecordMetaData->__construct(Object(User))
+#2 D:\www\squirrel\yii\framework\yiilite.php(7618): CActiveRecord->getMetaData()
+#3 D:\www\squirrel\yii\framework\yiilite.php(8041): CActiveRecord->getTableSchema()
+#4 D:\www\squirrel\themes\bootstrap\views\site\index.php(9): CActiveRecord->findByPk('16')
+#5 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#6 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#8 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#9 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#10 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#11 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#12 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#13 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#15 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#16 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#17 D:\www\squirrel\index.php(25): CApplication->run()
+#18 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 11:54:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@billson.com and confirmed = 1' at line 1. The SQL statement executed was: SELECT * FROM `follower` `t` WHERE email = colab@billson.com and confirmed = 1.
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (98)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 11:54:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@billson.com and confirmed = 1' at line 1. The SQL statement executed was: SELECT * FROM `follower` `t` WHERE email = colab@billson.com and confirmed = 1' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\themes\bootstrap\views\site\index.php(98): CActiveRecord->findAll('email = colab@b...')
+#4 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#5 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#6 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#8 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#9 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#10 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#12 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#14 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#15 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#16 D:\www\squirrel\index.php(25): CApplication->run()
+#17 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 11:55:01 [error] [exception.CException] exception 'CException' with message 'Property "Follower.deleted" is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:617
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(7401): CComponent->__get('deleted')
+#1 D:\www\squirrel\themes\bootstrap\views\site\index.php(128): CActiveRecord->__get('deleted')
+#2 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#3 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#4 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#5 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#6 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#7 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#8 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#10 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#12 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#13 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#14 D:\www\squirrel\index.php(25): CApplication->run()
+#15 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 12:01:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project.project_id' in 'where clause'. The SQL statement executed was: SELECT `project`.`id` AS `t1_c0`, `project`.`name` AS `t1_c1`, `project`.`description` AS `t1_c2`, `project`.`icon` AS `t1_c3`, `project`.`company_id` AS `t1_c4`, `project`.`deleted` AS `t1_c5`, `project`.`stage` AS `t1_c6`, `project`.`extlink` AS `t1_c7` FROM `project` `project`  WHERE (`project`.`project_id`=:ypl0).
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (123)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:01:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'project.project_id' in 'where clause'. The SQL statement executed was: SELECT `project`.`id` AS `t1_c0`, `project`.`name` AS `t1_c1`, `project`.`description` AS `t1_c2`, `project`.`icon` AS `t1_c3`, `project`.`company_id` AS `t1_c4`, `project`.`deleted` AS `t1_c5`, `project`.`stage` AS `t1_c6`, `project`.`extlink` AS `t1_c7` FROM `project` `project`  WHERE (`project`.`project_id`=:ypl0)' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(808): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(509): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(Follower))
+#4 D:\www\squirrel\yii\framework\yiilite.php(7476): CActiveFinder->lazyFind(Object(Follower))
+#5 D:\www\squirrel\yii\framework\yiilite.php(7399): CActiveRecord->getRelated('project')
+#6 D:\www\squirrel\themes\bootstrap\views\site\index.php(123): CActiveRecord->__get('project')
+#7 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#8 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', NULL, true)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', NULL, true)
+#10 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('index', NULL, true)
+#11 D:\www\squirrel\protected\controllers\SiteController.php(86): CController->render('index')
+#12 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#13 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#14 D:\www\squirrel\yii\framework\yiilite.php(3637): CController->runAction(Object(CInlineAction))
+#15 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('index')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('site/index')
+#18 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#19 D:\www\squirrel\index.php(25): CApplication->run()
+#20 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://squirrel/site/login?id=16
+---
+2018/02/14 12:02:16 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:125)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (125)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:02:45 [error] [php] Trying to get property of non-object (D:\www\squirrel\themes\bootstrap\views\site\index.php:125)
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(3904): SiteController->renderFile()
+#1 D:\www\squirrel\yii\framework\yiilite.php(3872): SiteController->renderPartial()
+#2 D:\www\squirrel\protected\controllers\SiteController.php(86): SiteController->render()
+#3 D:\www\squirrel\yii\framework\yiilite.php(4139): SiteController->actionIndex()
+#4 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams()
+#5 D:\www\squirrel\yii\framework\yiilite.php(3637): SiteController->runAction()
+#6 D:\www\squirrel\yii\framework\yiilite.php(3627): SiteController->runActionWithFilters()
+#7 D:\www\squirrel\yii\framework\yiilite.php(1761): SiteController->run()
+#8 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController()
+#9 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#10 D:\www\squirrel\index.php(25): CWebApplication->run()
+REQUEST_URI=/site/index
+in D:\www\squirrel\themes\bootstrap\views\site\index.php (125)
+in D:\www\squirrel\protected\controllers\SiteController.php (86)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:10:04 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:10:04 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:10:04 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:11:31 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'confirm' in 'where clause'. The SQL statement executed was: SELECT * FROM `follower` `t` WHERE email = "james@billson.com" and confirm = 1.
+in D:\www\squirrel\protected\controllers\ProjectController.php (68)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:11:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'confirm' in 'where clause'. The SQL statement executed was: SELECT * FROM `follower` `t` WHERE email = "james@billson.com" and confirm = 1' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\yiilite.php(7967): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\yiilite.php(8036): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\www\squirrel\protected\controllers\ProjectController.php(68): CActiveRecord->findAll('email = "james@...')
+#4 [internal function]: ProjectController->actionSet('3')
+#5 D:\www\squirrel\yii\framework\yiilite.php(4121): ReflectionMethod->invokeArgs(Object(ProjectController), Array)
+#6 D:\www\squirrel\yii\framework\yiilite.php(4138): CAction->runWithParamsInternal(Object(ProjectController), Object(ReflectionMethod), Array)
+#7 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#8 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#9 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#10 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#11 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#12 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#13 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#14 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('set')
+#16 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('project/set')
+#17 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#18 D:\www\squirrel\index.php(25): CApplication->run()
+#19 {main}
+REQUEST_URI=/project/set/id/3
+HTTP_REFERER=http://squirrel/site/index
+---
+2018/02/14 12:16:29 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:16:29 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:16:29 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
+2018/02/14 12:26:25 [error] [exception.CException] exception 'CException' with message 'Property "AuthWebUser.company_id" is not defined.' in D:\www\squirrel\yii\framework\yiilite.php:617
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(4166): CComponent->__get('company_id')
+#1 D:\www\squirrel\protected\views\system\_link.php(16): CWebUser->__get('company_id')
+#2 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#3 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', Array, true)
+#4 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', Array, true)
+#5 D:\www\squirrel\protected\views\system\create.php(17): CController->renderPartial('_link', Array)
+#6 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#7 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', Array, true)
+#8 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', Array, true)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('create', Array, true)
+#10 D:\www\squirrel\protected\controllers\SystemController.php(101): CController->render('create', Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(4139): SystemController->actionCreate()
+#12 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#13 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#14 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#15 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#16 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#17 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#18 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#19 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('create')
+#21 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('system/create')
+#22 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#23 D:\www\squirrel\index.php(25): CApplication->run()
+#24 {main}
+REQUEST_URI=/system/create/
+HTTP_REFERER=http://squirrel/project/view/
+---
+2018/02/14 12:38:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous. The SQL statement executed was: SELECT `systems`.`id` AS `t1_c0`, `systems`.`name` AS `t1_c1`, `systems`.`description` AS `t1_c2`, `systems`.`company_id` AS `t1_c3`, `systems`.`create_user` AS `t1_c4`, `systems`.`create_date` AS `t1_c5`, `systems`.`number` AS `t1_c6`, `systems`.`deleted` AS `t1_c7`, `systems`.`type` AS `t1_c8` FROM `system` `systems`  INNER JOIN `projectsystem` `systems_systems` ON (`systems_systems`.`project_id`=:ypl0) AND (`systems`.`id`=`systems_systems`.`system_id`) WHERE (deleted = 0).
+in D:\www\squirrel\protected\views\system\_link.php (18)
+in D:\www\squirrel\protected\views\system\create.php (17)
+in D:\www\squirrel\protected\controllers\SystemController.php (103)
+2018/02/14 12:38:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'deleted' in where clause is ambiguous. The SQL statement executed was: SELECT `systems`.`id` AS `t1_c0`, `systems`.`name` AS `t1_c1`, `systems`.`description` AS `t1_c2`, `systems`.`company_id` AS `t1_c3`, `systems`.`create_user` AS `t1_c4`, `systems`.`create_date` AS `t1_c5`, `systems`.`number` AS `t1_c6`, `systems`.`deleted` AS `t1_c7`, `systems`.`type` AS `t1_c8` FROM `system` `systems`  INNER JOIN `projectsystem` `systems_systems` ON (`systems_systems`.`project_id`=:ypl0) AND (`systems`.`id`=`systems_systems`.`system_id`) WHERE (deleted = 0)' in D:\www\squirrel\yii\framework\yiilite.php:9510
+Stack trace:
+#0 D:\www\squirrel\yii\framework\yiilite.php(9433): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(808): CDbCommand->queryAll()
+#2 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(509): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\www\squirrel\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(Project))
+#4 D:\www\squirrel\yii\framework\yiilite.php(7476): CActiveFinder->lazyFind(Object(Project))
+#5 D:\www\squirrel\yii\framework\yiilite.php(7399): CActiveRecord->getRelated('systems')
+#6 D:\www\squirrel\protected\views\system\_link.php(18): CActiveRecord->__get('systems')
+#7 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#8 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', Array, true)
+#9 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', Array, true)
+#10 D:\www\squirrel\protected\views\system\create.php(17): CController->renderPartial('_link', Array)
+#11 D:\www\squirrel\yii\framework\yiilite.php(3493): require('D:\\www\\squirrel...')
+#12 D:\www\squirrel\yii\framework\yiilite.php(3472): CBaseController->renderInternal('D:\\www\\squirrel...', Array, true)
+#13 D:\www\squirrel\yii\framework\yiilite.php(3904): CBaseController->renderFile('D:\\www\\squirrel...', Array, true)
+#14 D:\www\squirrel\yii\framework\yiilite.php(3872): CController->renderPartial('create', Array, true)
+#15 D:\www\squirrel\protected\controllers\SystemController.php(103): CController->render('create', Array)
+#16 D:\www\squirrel\yii\framework\yiilite.php(4139): SystemController->actionCreate()
+#17 D:\www\squirrel\yii\framework\yiilite.php(3652): CInlineAction->runWithParams(Array)
+#18 D:\www\squirrel\yii\framework\yiilite.php(6895): CController->runAction(Object(CInlineAction))
+#19 D:\www\squirrel\yii\framework\yiilite.php(6904): CFilterChain->run()
+#20 D:\www\squirrel\yii\framework\yiilite.php(4030): CFilter->filter(Object(CFilterChain))
+#21 D:\www\squirrel\yii\framework\yiilite.php(6937): CController->filterAccessControl(Object(CFilterChain))
+#22 D:\www\squirrel\yii\framework\yiilite.php(6892): CInlineFilter->filter(Object(CFilterChain))
+#23 D:\www\squirrel\yii\framework\yiilite.php(3642): CFilterChain->run()
+#24 D:\www\squirrel\yii\framework\yiilite.php(3627): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 D:\www\squirrel\yii\framework\yiilite.php(1761): CController->run('create')
+#26 D:\www\squirrel\yii\framework\yiilite.php(1681): CWebApplication->runController('system/create')
+#27 D:\www\squirrel\yii\framework\yiilite.php(1202): CWebApplication->processRequest()
+#28 D:\www\squirrel\index.php(25): CApplication->run()
+#29 {main}
+REQUEST_URI=/system/create/
+HTTP_REFERER=http://squirrel/project/view
+---

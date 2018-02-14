@@ -68,12 +68,14 @@ class SystemController extends Controller
 
 
         if (isset($_POST['System'])) {
+            $project=Project::model()->findByPk(Yii::App()->session['project']);
             $model->attributes = $_POST['System'];
             $model->create_user = Yii::App()->user->id;
+            $model->company_id = $project->company_id;
             $model->number = System::model()->getNextNumber();
             if ($model->save()) {
                 $link = new Projectsystem;
-                $link->project_id = Yii::app()->session['project'];
+                $link->project_id = $project->id;
                 $link->create_user = Yii::App()->user->id;
                 $link->description = '';
                 $link->system_id = $model->getPrimaryKey();

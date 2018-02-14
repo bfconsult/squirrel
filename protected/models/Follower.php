@@ -40,7 +40,7 @@ class Follower extends CActiveRecord
     public function relations()
     {
         return array(
-            'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
+            'project' => array(self::BELONGS_TO, 'Project', 'id'),
 
             // NOTE: you may need to adjust the relation name and the related
             // class name for the relations automatically generated below.

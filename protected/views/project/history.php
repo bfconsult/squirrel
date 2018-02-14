@@ -78,10 +78,12 @@ if (!empty($data)) {
                     </td>
 
                     <td>
+                <?php if ($item->deleted == 0){ ?>
+                        <a href="/config/delete/id/<?php echo $item->id; ?>"><i class="icon-remove-sign"></i></a>
+                <?php } else { ?>
 
-                        <a href="/config/delete/id/<?php echo $item->id; ?>">X</a>
-
-
+                    <a href="/config/delete/id/<?php echo $item->id; ?>"><i class="icon-refresh"></i></a>
+                    <?php } ?>
                     </td>
 
                 </tr>

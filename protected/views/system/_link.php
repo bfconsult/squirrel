@@ -8,12 +8,13 @@
 
     ));
 $project=Project::model()->findByPk(Yii::App()->session['project']);
+    $user=User::model()->findByPk(Yii::App()->user->id);
     ?>
 
     <div class="row ">
         <select name="Link[system_id]" id="system_id">
             <?php
-            $systems= System::model()->findAll('deleted=0 and type=1');
+            $systems= System::model()->findAll('deleted=0 and type=1 and company_id='.$project->company_id);
             $alreadyLinked = $project->systems;
             $linkedSystems=array();
 

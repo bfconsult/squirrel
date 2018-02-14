@@ -54,11 +54,11 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return
             array(
-			'company' => array(self::BELONGS_TO, 'Company', 'company_id'),
-            'mycompany' => array(self::HAS_ONE,'Company', 'id')
+			'mycompany' => array(self::BELONGS_TO, 'Company', 'company_id'),
 
-			/*'contact' => array(self::HAS_MANY,'Contact','user_id'),*/
-		);
+
+
+                );
 	}
 
 	/**
@@ -129,7 +129,18 @@ class User extends CActiveRecord
         $this->salt = $this->generateSalt();
         return parent::beforeValidate();
     }
-            
+
+
+    public function firstSave()
+    {
+
+        $this->password = md5($this->password);
+        if ($this->save()){
+            return true;
+        }
+        return false;
+    }
+/*
     public function beforeSave()
     {
       $user_id = Yii::app()->user->id;
@@ -143,7 +154,7 @@ class User extends CActiveRecord
       }
       return parent::beforeSave();
     }
-
+*/
     /**
      * Checking current use is developer
      * @return boolean
