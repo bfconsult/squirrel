@@ -173,7 +173,7 @@ class UserController extends Controller
 
 
                     $mail = new YiiMailer();
-                    $mail->setFrom('info@billson.com , Squirrel Configuration Manager');
+                    $mail->setFrom('info@billson.com' , 'Squirrel Configuration Manager');
                     $mail->AddAddress($user->email,$user->firstname.' '.$user->lastname);
                     $mail->setLayout('mail');
                     $mail->setData(array('user'=>$user));

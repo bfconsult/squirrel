@@ -1,4 +1,4 @@
-<?php echo $user->firstname; ?>
+<?php echo $user->firstname; ?>,<br/>
 
 Hi, it looks like you've created an account on Squirrel, the
 online configuration management system.<br />

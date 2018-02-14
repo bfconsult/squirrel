@@ -51629,3 +51629,12 @@ in D:\www\squirrel\index.php (25)
 2018/02/14 05:44:45 [warning] [application] Failed to set unsafe attribute "password2" of "User".
 in D:\www\squirrel\protected\controllers\UserController.php (168)
 in D:\www\squirrel\index.php (25)
+2018/02/14 07:17:51 [warning] [application] Failed to set unsafe attribute "firstname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:17:51 [warning] [application] Failed to set unsafe attribute "lastname" of "RegisterForm".
+in D:\www\squirrel\protected\controllers\UserController.php (162)
+in D:\www\squirrel\index.php (25)
+2018/02/14 07:17:51 [warning] [application] Failed to set unsafe attribute "password2" of "User".
+in D:\www\squirrel\protected\controllers\UserController.php (168)
+in D:\www\squirrel\index.php (25)
