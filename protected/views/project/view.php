@@ -130,48 +130,55 @@ $data = $project->systems;
         </thead>
         <tbody>
         <?php if (count($data)): ?>
+            
+            
+            
 
 
-            <?php foreach ($data as $item):
-
-
-                $link=Projectsystem::model()->find('system_id = '.$item->id.' and project_id = '.Yii::App()->session['project'].' order by id desc');
-                if($item->deleted == 0 && $link->deleted==0) {
-
-
-                    ?>
-
-
-                    <tr class="odd">
-                        <td>
-
-
-                            <a href="<?php echo UrlHelper::getPrefixLink('/system/view/id/') ?><?php echo $item->id; ?>"><?php echo $item->name; ?></a>
-                            - <?php echo $item->description; ?>
-                        </td>
-                        <td>
-                            <?php
-                            if ($item->type == 1) {
-                                ?>(shared system) <a href="/project/unlink/id/<?php echo $item->id; ?>"><i
-                                        class="icon-unlink"></i></a>
-
-                                <?php
-                            } else {
-
-                                ?><a href="/project/systemdelete/id/<?php echo $item->id; ?>"><i
-                                        class="icon-remove-sign"></i></a>
-
-                                <?php
-                            }
-                            ?>
-
-                        </td>
-
-
-                    </tr>
-                    <?php
+            <?php 
+            
+            //sort the systems into groups
+            foreach ($data as $item) {
+            //index the systems by their id    
+                $systems[$item->id]=$item;
+            // create an index of arrays of groups with item id's in their groups.
+                if ($item->parent_id == -1) {
+                        $groups[$item->id]=(!isset($groups[$item->id]))?array():$groups[$item->id];
+                      // array_push($groups[$item->id],$item->id);
+                } else {
+                    $groups[$item->parent_id]=(!isset($groups[$item->parent_id]))?array():$groups[$item->parent_id];
+                    array_push($groups[$item->parent_id],$item->id);
                 }
-                endforeach ?>
+            
+            
+            }
+
+
+               foreach ($groups as $key=>$group) {
+                   $item=$systems[$key];
+
+                   $link = Projectsystem::model()->find('system_id = ' . $item['id'] . ' and project_id = ' . Yii::App()->session['project'] . ' order by id desc');
+                   if ($item->deleted == 0 && $link->deleted == 0)
+
+                   echo $this->renderPartial('_system', array('item'=>$item));
+
+
+
+                   foreach ($group as $member) {
+                       $item=$systems[$member];
+
+                       $link = Projectsystem::model()->find('system_id = ' . $item['id'] . ' and project_id = ' . Yii::App()->session['project'] . ' order by id desc');
+                       if ($item->deleted == 0 && $link->deleted == 0)
+                           echo $this->renderPartial('_subsystem', array('item'=>$item));
+
+
+
+
+
+
+                   }
+               }
+               ?>
 
 
         <?php endif; ?>

@@ -20,4 +20,4 @@ echo $this->renderPartial('_link', array('model'=>$model)); ?>
 <h3>Add a custom system for this Project.</h3>
 <?php 
 
-echo $this->renderPartial('_form', array('model'=>$model)); ?>
+echo $this->renderPartial('_form', array('model'=>$model,'project'=>$project)); ?>

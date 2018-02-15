@@ -24,11 +24,11 @@ class System extends CActiveRecord {
     return array(
         array('name,type', 'required'),
          array('name', 'length', 'max' => 255),
-        array('type', 'numerical', 'integerOnly'=>true),
+        array('type, parent_id', 'numerical', 'integerOnly'=>true),
         array('number, name, description', 'safe'),
         // The following rule is used by search().
         // @todo Please remove those attributes that should not be searched.
-        array('id, type, name, create_date, create_user, number', 'safe', 'on' => 'search'),
+        array('id, type, name, parent_id, create_date, create_user, number', 'safe', 'on' => 'search'),
     );
   }
 
@@ -67,7 +67,7 @@ class System extends CActiveRecord {
   public function attributeLabels() {
     return array(
         'id' => 'ID',
-       
+       'parent_id'=>'Parent',
         'number' => 'Number records',
         'name' => 'Name',
         'create_user' => 'Creator',

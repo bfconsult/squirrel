@@ -24,8 +24,26 @@
 		<?php echo $form->textArea($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
+
+	<div class="row ">
+		<select name="System[parent_id]" id="system_id">
+			<?php
+			$systems= System::model()->findAll('deleted=0 and parent_id=-1 and company_id='.$project->company_id);
+?>
+			<option value="-1">No Parent System</option>
+			<?php
+			foreach ($systems as $system){
+
+			?>
+					<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
+
+			<?php } ?>
+		</select>
+	</div>
+
+
 	<div class="row">
-		<input type="checkbox" name="System[type]" value="1">
+	Shared System?	<input type="checkbox" name="System[type]" value="1">
 
 	</div>
 
