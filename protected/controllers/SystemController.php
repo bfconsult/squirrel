@@ -109,6 +109,8 @@ class SystemController extends Controller
     {
         $model = $this->loadModel($id);
 
+        $project=Project::model()->findbyPK(Yii::App()->session['project']);
+
 
         if (isset($_POST['System'])) {
             $model->attributes = $_POST['System'];
@@ -123,7 +125,7 @@ class SystemController extends Controller
         }
 
         $this->render('edit', array(
-            'model' => $model,
+            'model' => $model,'project'=>$project
 
         ));
 

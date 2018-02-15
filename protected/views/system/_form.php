@@ -33,9 +33,9 @@
 			<option value="-1">No Parent System</option>
 			<?php
 			foreach ($systems as $system){
-
+$default = ($model->parent_id==$system->id)?'default selected':'';
 			?>
-					<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
+					<option value="<?php echo $system->id?>" <?php echo $default?>><?php echo $system->name?></option>
 
 			<?php } ?>
 		</select>
