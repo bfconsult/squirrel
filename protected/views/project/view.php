@@ -6,7 +6,7 @@ $project=Project::model()->findbyPK(Yii::App()->session['project']);
 
 echo '<h1>'.$project->name;
 
-if (Yii::App()->session['projectOwner']) {
+if (Yii::App()->session['projectOwner']==1) {
     ?>
 
     <a href="/project/edit"><i class="icon-edit"></i></a>
@@ -90,7 +90,89 @@ if (!empty($data)) {
     <?php
 }
 
+
+
+
 $this->endWidget();
+
+
+// ####################  PROCESSES ###############
+
+$data = $project->processes;
+//echo '<pre>';
+//print_r($data);
+
+
+
+
+    $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
+        'title' => 'Processes',
+        'headerIcon' => 'icon-briefcase',
+        // when displaying a table, if we include bootstra-widget-table class
+        // the table will be 0-padding to the box
+        'htmlOptions' => array('class' => 'bootstrap-widget-table'),
+        'headerButtons' => array(
+
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'Add Process  +',
+
+                'url' => UrlHelper::getPrefixLink('/process/create/'),
+            ),
+
+
+        )
+    ));
+
+    if (!empty($data)) {
+    ?>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (count($data)):
+
+             foreach ($data as $itemIdx => $item):
+
+            if ($item->active ==1) {
+                ?>
+
+
+                <tr class="odd">
+                    <td>
+                        <a href="<?php echo UrlHelper::getPrefixLink('/process/view/id/'.$item->ext) ?>"><?php echo $item['name']; ?></a>
+                        - <?php echo $item['description']; ?>
+                    </td>
+
+
+                </tr>
+                <?php
+            }
+            endforeach ?>
+
+
+        <?php endif; ?>
+
+
+        </tbody>
+    </table>
+
+
+    <?php
+    }
+        $this->endWidget();
+
+
+
+
+// ####################  SYSTEMS ##################
+
 $data = $project->systems;
 //echo '<pre>';
 //print_r($data);

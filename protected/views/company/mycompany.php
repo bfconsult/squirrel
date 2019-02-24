@@ -63,8 +63,8 @@ if (count($data)):?>
                 <td>
 
                     <?php    if($user->id==$item['id'] && $user->admin!=1) {?>
-                        <a href="<?php echo UrlHelper::getPrefixLink('/user/view/id/')?><?php echo $item['id'];?>"><i class="icon-eye-open" rel="tooltip" title="View"></i></a>
 
+this is me
                     <?php }?>
                     <?php    if($user->admin==1) {?>
                         <?php    if($item['link']!=0) {?>

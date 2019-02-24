@@ -8,7 +8,7 @@
  * @property string $name
  * @property integer $company_id
  */
-class Project extends CActiveRecord
+class Process extends CActiveRecord
 {
 
 
@@ -23,7 +23,7 @@ class Project extends CActiveRecord
      */
     public function tableName()
     {
-        return 'project';
+        return 'process';
     }
 
     /**
@@ -36,36 +36,20 @@ class Project extends CActiveRecord
         // will receive user inputs.
         return array(
             array(
-                'name, company_id',
+                'name, project_id',
                 'required'
             ),
             array(
-                'company_id',
+                'project_id',
                 'numerical',
                 'integerOnly' => true
             ),
             array('description', 'safe'),
-            array(
-                'name, icon',
-                'length',
-                'max' => 255
-            ),
-
-            array(
-                'extlink',
-                'length',
-                'max' => 50
-            ),
-            array(
-                'stage',
-                'length',
-                'max' => 4
-            ),
-
+         
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array(
-                'id, name, description, icon, company_id,stage',
+                'id, name, description, project_id,active',
                 'safe',
                 'on' => 'search'
             )
@@ -82,24 +66,24 @@ class Project extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             // 'labelRegions' => array(self::HAS_MANY, 'LabelRegion', 'label_id'),
-            'company' => array(
+            'project' => array(
                 self::BELONGS_TO,
-                'Company',
-                'company_id'
-            ),
-
-            'follower' => array(
-                self::HAS_MANY,
-                'Follower',
+                'Project',
                 'project_id'
-
             ),
 
-            'systems' => array(self::MANY_MANY, 'System', 'projectsystem(project_id, system_id)','condition'=>'systems_systems.deleted = 0'),
+            'steps' => array(
+                self::HAS_MANY,
+                'Processstep',
+                'process_id'
 
+            ),
+            'runs' => array(
+                self::HAS_MANY,
+                'Processrun',
+                'process_id'
 
-            'processes' => array(self::HAS_MANY, 'Process', 'project_id'),
-
+            ),
 
         );
     }
@@ -114,37 +98,14 @@ class Project extends CActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description/Notes',
-            'icon'=>'Icon',
-            'company_id' => 'Company',
-            'budget' => 'Budget',
-            'stage' => 'Stage',
-            'extlink' => 'External Link'
-        )
+         
+            'project_id' => 'Project',
+            'active'=>'Active'
+                 )
         ;
     }
 
-    public function behaviors()
-    {
-        return array(
-            'user_meta' => array(
-                'class' => 'ext.yiiext.behaviors.model.eav.EEavBehavior',
-                'tableName' => 'project_meta',
-                'entityField' => 'project_id',
-                'attributeField' => 'meta_name',
-                'valueField' => 'meta_value',
-                'modelTableFk' => 'project_id',
-                'safeAttributes' => array()
-            )
-        );
-    }
-
-
-
-
-
-
-
-    public function search()
+   public function search()
     {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
@@ -152,7 +113,7 @@ class Project extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('name', $this->name, true);
-        $criteria->compare('company_id', $this->company_id);
+        $criteria->compare('project_id', $this->company_id);
         $criteria->compare('description', $this->description, true);
 
         return new CActiveDataProvider($this, array(

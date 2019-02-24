@@ -1,6 +1,6 @@
 <?php
 
-class ProjectController extends Controller
+class ProcessstepController extends Controller
 {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete'),
+                'actions' => array('view','edit','create','delete'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,99 +45,48 @@ class ProjectController extends Controller
         );
     }
 
-//used to sort arrays in the print diagram view
 
 
 
-    public function actionSet($id)
+
+
+    public function actionView($id=null)
     {
-
-        Yii::app()->session['project'] = $id;
-
-        $myproject = array();
-        $myfollows = array();
-        $user = User::model()->findbyPK(Yii::App()->user->id);
-
-        $projectlist = $user->mycompany->project;
-
-        foreach ($projectlist as $proj) {
-            array_push($myproject, $proj['id']);
-        }
-
-        $myfollows=array();
-        $followlist = Follower::model()->findAll('email = "'.$user->email.'" and confirmed = 1');
-        foreach ($followlist as $follow) {
-array_push($myfollows,$follow->id);
-
-        }
-
-
-// If I am a follower then set the release to the last release.
-        if (in_array($id,$myfollows)) {
-
-            Yii::app()->session['project'] = $id;
-            Yii::app()->session['projectOwner']=0;
-        }
-// if I own the project set the viewing release to current release
-        if (in_array($id, $myproject)) {
-
-            Yii::app()->session['project'] = $id;
-            Yii::app()->session['projectOwner']=1;
-        }
-
-
-        if (Yii::app()->session['project'] ==$id) {
-            $this->redirect(('/project/view/'));
-        } ELSE {
-            $this->redirect(('/site/index'));
-        }
-    }
-
-
-
-    public function actionView()
-    {
-
-$this->render('view');
+$process=Process::model()->find('ext = :ext',[':ext'=>$ext]);
+if(is_null($process)){echo 'no such process';die;}
+$this->render('view',['process'=>$process]);
 
 
     }
 
 
 
-    public function actionHistory($del=0)
+
+    public function actionCreate($id=null)
     {
+        $process=Process::model()->find('ext = :ext',[':ext'=>$id]);
+if(is_null($process)){echo 'no such process';die;}
 
-        $this->render('history',array('del'=>$del));
+        $model = new Processstep;
+        if (isset($_POST['Processstep'])) {
+           $model->attributes = $_POST['Processstep'];
+           $model->process_id=$process->id;
+    //number link
+    $model->number=1;
+    
+           $model->ext = md5(uniqid(rand(), true));
 
+//print_r($model->attributes);die;
 
-    }
-
-
-    public function actionCreate()
-    {
-        $model = new Project;
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
-        if (isset($_POST['Project'])) {
-            $model->attributes = $_POST['Project'];
-            $model->company_id = User::model()->myCompany();
-            $model->extlink = md5(uniqid(rand(), true));
-            $model->stage = 1;
-            if ($model->save())
-            $project = $model->getPrimaryKey();
-            Yii::app()->session['project'] = $project;
-            $this->redirect('/');
+           if ($model->save())
+           $process=Process::model()->findbypk($model->process_id);
+            $this->redirect('/process/view/id/'.$process->ext);
 
 
         }
 
         $this->render('create', array(
-            'model' => $model,
-
-        ));
+            'model' => $model));
 
 
     }
