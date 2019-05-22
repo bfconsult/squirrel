@@ -119,6 +119,33 @@ class Processstep extends CActiveRecord
 
 
 
+    public function getNumber($id=null) { 
+        $process=Process::model()->find('ext = :ext',[':ext'=>$id]);
+        if(is_null($process)){echo 'no such process';die;}
+        
+            $sql = "SELECT `c`.`number` AS number
+           FROM `processstep` `c`
+           WHERE `c`.`process_id`=".$process->id."
+           ORDER BY `number` DESC
+            LIMIT 0,1";
+
+
+        $connection = Yii::app()->db;
+        $command = $connection->createCommand($sql);
+        $releases = $command->queryAll();
+        if (!isset($releases[0]['number'])) {
+            $releases[0]['number'] = '1';
+        } ELSE {
+            $releases[0]['number'] = $releases[0]['number'] + 1;
+        }
+
+        
+        return $releases[0]['number'];
+    }
+
+
+
+
 
 
 

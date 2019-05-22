@@ -1,6 +1,6 @@
 <?php
 
-class ProcessController extends Controller
+class ProcessrunController extends Controller
 {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,7 +32,7 @@ class ProcessController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','edit','create','delete','run'),
+                'actions' => array('view','edit','create','delete'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -52,96 +52,19 @@ class ProcessController extends Controller
 
     public function actionView($id=null)
     {
-       // echo 'ext is '.$id;
-$process=Process::model()->find('ext = :ext',[':ext'=>$id]);
+        $processrun=Processrun::model()->find('ext = :ext',[':ext'=>$id]);
 
-if(is_null($process)){echo 'no such process';die;}
-$this->render('view',['process'=>$process]);
+        if(is_null($processrun)){echo 'no such process run';die;}
 
+        $process=Process::model()->findbyPk($processrun->process_id);
 
-    }
-
-    public function actionRun($id=null)
-    {
-       // echo 'ext is '.$id;
-$process=Process::model()->find('ext = :ext',[':ext'=>$id]);
-
-if(is_null($process)){echo 'no such process';die;}
-
-
-if (isset($_POST['ProcessRun'])) {
-// make a run
-
-$processrun=new Processrun;
-$processrun->project_id=$process->project_id;
-$processrun->number=Processrun::model()->getNumber($id);
-$processrun->process_id=$process->id;
-$processrun->status=$_POST['Status'];
-$processrun->ext= md5(uniqid(rand(), true));
-$processrun->save();
-$processRunId =$processrun->getPrimaryKey();
-
-
-// Processthe form input
-foreach ($_POST['done'] as $key=>$result){
-
-$processresult=new Processresult;
-$processresult->processrun_id=$processRunId;
-$processresult->processstep_id=$key;
-
-$processresult->result=$result;
-$processresult->user_id=Yii::App()->user->id;
-$processresult->comments=$_POST['note'][$key];
-$processresult->save();
-
-    
-}
-
-
-$this->redirect('/process/view/id/'.$process->ext); 
-
-}
-
-
-$this->render('run',['process'=>$process]);
+        $this->render('view',['processrun'=>$processrun,'process'=>$process]);
 
 
     }
 
 
 
-    public function actionCreate()
-    {
-        $model = new Process;
-        if (isset($_POST['Process'])) {
-           $model->attributes = $_POST['Process'];
-           $model->active=1;
-           $model->ext = md5(uniqid(rand(), true));
-           if ($model->save())
-            $project = $model->getPrimaryKey();
-            $this->redirect('/');
-
-
-        }
-
-        $this->render('create', array(
-            'model' => $model ));
-
-
-    }
-    
-
-
-    public function actionUnlink($id)
-
-    {
-        $model=Projectsystem::model()->find('system_id = '.$id.' and project_id = '.Yii::App()->session['project']);
-        $model->deleted=1;
-        $model->save();
-        $this->redirect('/project/view');
-
-
-    }
 
     public function actionDelete()
 
@@ -154,21 +77,6 @@ $this->render('run',['process'=>$process]);
         $this->redirect('/');
     }
 echo 'oops, something went wrong';
-    }
-    public function actionSystemDelete($id)
-
-    {
-        $model=Projectsystem::model()->find('system_id = '.$id.' and project_id = '.Yii::App()->session['project']);
-        $model->deleted=1;
-        if($model->save()) {
-
-            $system = System::model()->findbyPk($id);
-            $system->deleted=1;
-            $system->save();
-        }
-        $this->redirect('/project/view');
-
-
     }
 
     public function actionEdit()

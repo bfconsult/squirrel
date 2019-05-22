@@ -3,6 +3,7 @@
 //echo Yii::App()->session['project']; die;
 
 $project=Project::model()->findbyPK(Yii::App()->session['project']);
+$times = Time::model()->getAllProjectTime($project->id);
 
 echo '<h1>'.$project->name;
 
@@ -71,6 +72,10 @@ if (!empty($data)) {
                     <td>
                         <a href="/config/view/id/<?php echo $item->id; ?>"><?php echo $item->name; ?></a>
                         - <?php echo $item->description; ?>
+                    </td>
+                    <td>
+                    <a href="/time/log/config/<?php echo $item->id; ?>"><i class="icon-calendar"></i></a>
+                    <?php if (isset($times['configTotal'][$item->id])) echo '<a href="time/view/config/'.$item->id.'">'.$times['configTotal'][$item->id].'&nbsp;hrs</a>'; ?> 
                     </td>
                     <td>
                         <?php echo $item->creator->firstname . ' ' . $item->creator->lastname . ' ' . $item->create_date; ?>

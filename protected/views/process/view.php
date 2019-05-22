@@ -12,12 +12,7 @@ echo '<h1>'.$project->name;
 
 $data = $process->steps;
 
-if(count($process->runs)){
-  echo '<a href="#">Runs</a>';
-     }  ELSE {
-echo "Not Run";
 
-    }
 
 //print_r($data);die;
 
@@ -68,5 +63,62 @@ echo "Not Run";
 
     <?php }
 $this->endWidget();
+
+
+
+
+$data = $process->runs;
+
+ 
+
+//print_r($data);die;
+
+    $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
+        'title' => 'Process Runs',
+        'headerIcon' => 'icon-briefcase',
+        // when displaying a table, if we include bootstra-widget-table class
+        // the table will be 0-padding to the box
+        'htmlOptions' => array('class' => 'bootstrap-widget-table'),
+        'headerButtons' => array(
+
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'Run',
+
+                'url' => UrlHelper::getPrefixLink('/process/run/id/'.$process->ext),
+            ),
+        )
+    ));
+    if (!empty($data)) {    ?>
+
+
+    <table class="table">
+
+    <tbody>
+
+<?php foreach ($data as $item){ ?>
+        <tr class="odd">
+            <td>
+            <?php echo $item->number; ?>
+            </td>
+            
+            <td>
+            <?php echo Processrun::$result[$item->status]; ?>
+            </td>
+            <td>
+            <a href="/processrun/view/id/<?php echo $item->ext; ?>">View</a>
+            </td>
+           
+        </tr>
+
+<?php } ?>
+
+    </tbody>
+    </table>
+
+    <?php }
+$this->endWidget();
+
 
 ?>

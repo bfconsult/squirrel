@@ -72,7 +72,7 @@ if(is_null($process)){echo 'no such process';die;}
            $model->attributes = $_POST['Processstep'];
            $model->process_id=$process->id;
     //number link
-    $model->number=1;
+    $model->number=Processstep::model()->getNumber($id);
     
            $model->ext = md5(uniqid(rand(), true));
 

@@ -21,6 +21,14 @@ class Processrun extends CActiveRecord
      *
      * @return string the associated database table name
      */
+
+public static $result = [
+0=>'fail',
+1=>'success',
+2=>'incomplete'
+
+];
+
     public function tableName()
     {
         return 'processrun';
@@ -36,20 +44,19 @@ class Processrun extends CActiveRecord
         // will receive user inputs.
         return array(
             array(
-                'name, project_id',
+                'number, project_id,process_id',
                 'required'
             ),
             array(
-                'project_id',
+                'project_id,process_id, number',
                 'numerical',
                 'integerOnly' => true
             ),
-            array('description', 'safe'),
-         
+            
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array(
-                'id, name, description, project_id,active',
+                'id, number, process_id, project_id,status,ext',
                 'safe',
                 'on' => 'search'
             )
@@ -72,10 +79,10 @@ class Processrun extends CActiveRecord
                 'project_id'
             ),
 
-            'steps' => array(
+            'results' => array(
                 self::HAS_MANY,
-                'Processstep',
-                'process_id'
+                'Processresult',
+                'processrun_id'
 
             ),
 
@@ -90,11 +97,12 @@ class Processrun extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'name' => 'Name',
+            'number' => 'Number',
             'description' => 'Description/Notes',
-         
+         'process_id'=>'Process',
+'ext'=>'External',
             'project_id' => 'Project',
-            'active'=>'Active'
+            'status'=>'Status'
                  )
         ;
     }
@@ -116,6 +124,33 @@ class Processrun extends CActiveRecord
     }
 
 
+
+
+    public function getNumber($id=null) { 
+        $process=Process::model()->find('ext = :ext',[':ext'=>$id]);
+        if(is_null($process)){echo 'no such process';die;}
+        
+            $sql = "SELECT `c`.`number` AS number
+           FROM `processrun` `c`
+           WHERE `c`.`process_id`=".$process->id."
+           ORDER BY `number` DESC
+            LIMIT 0,1";
+
+        
+
+
+        $connection = Yii::app()->db;
+        $command = $connection->createCommand($sql);
+        $releases = $command->queryAll();
+        if (!isset($releases[0]['number'])) {
+            $releases[0]['number'] = '1';
+        } ELSE {
+            $releases[0]['number'] = $releases[0]['number'] + 1;
+        }
+
+        
+        return $releases[0]['number'];
+    }
 
 
 

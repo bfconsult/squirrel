@@ -10,7 +10,12 @@
  */
 class Processresult extends CActiveRecord
 {
+    public static $result = [
+        0=>'fail',
+        1=>'success',
 
+        
+        ];
 
     public static function model($className = __CLASS__)
     {
@@ -36,20 +41,20 @@ class Processresult extends CActiveRecord
         // will receive user inputs.
         return array(
             array(
-                'name, project_id',
+                'processrun_id, processstep_id,user_id,result',
                 'required'
             ),
             array(
-                'project_id',
+                'processrun_id,processstep_id,user_id,result',
                 'numerical',
                 'integerOnly' => true
             ),
-            array('description', 'safe'),
+            array('comments', 'safe'),
          
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array(
-                'id, name, description, project_id,active',
+                'id, comments, processrun_id, processstep_id, user_id,result',
                 'safe',
                 'on' => 'search'
             )
@@ -66,18 +71,13 @@ class Processresult extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             // 'labelRegions' => array(self::HAS_MANY, 'LabelRegion', 'label_id'),
-            'project' => array(
+            'step' => array(
                 self::BELONGS_TO,
-                'Project',
-                'project_id'
-            ),
-
-            'steps' => array(
-                self::HAS_MANY,
                 'Processstep',
-                'process_id'
-
+                'processstep_id'
             ),
+
+       
 
         );
     }
