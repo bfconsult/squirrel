@@ -92,12 +92,12 @@ public function getAllProjectTime($projectId){
         }
     
         $times=Time::model()->findAll('system_id IN ('.$systemsIdsList.')');
-
+$result = [];
         $result['config']=[];
         $result['configTotal']=[];
         $result['system']=[];
         $result['systemTotal']=[];
-
+        $result['projectTotal']=0;
         foreach($times as $time){
             // index times by project and config
             $startTime = strtotime($time->start);
@@ -105,13 +105,20 @@ public function getAllProjectTime($projectId){
             $duration = ($endTime - $startTime)/(60*60);
 
             if(!empty($time->config_id)) {
-                $result['config'][$time->config_id][$time->id]=$duration;
+                $result['config'][$time->config_id][$time->id]['duration']=$duration;
+                $result['config'][$time->config_id][$time->id]['start']=$time->start;
+                $result['config'][$time->config_id][$time->id]['end']=$time->end;
+                $result['config'][$time->config_id][$time->id]['note']=$time->note;
+
                 $result['configTotal'][$time->config_id] = (isset($configTotalTimes[$time->config_id]))?$configTotalTimes[$time->config_id]+$duration:$duration;     
             }
 
-            $result['system'][$time->system_id][$time->id]=$duration;
+            $result['system'][$time->system_id][$time->id]['duration']=$duration;
+            $result['system'][$time->system_id][$time->id]['start']=$time->start;
+            $result['system'][$time->system_id][$time->id]['end']=$time->end;
+            $result['system'][$time->system_id][$time->id]['note']=$time->note;
             $result['systemTotal'][$time->system_id] = (isset($configTotalTimes[$time->system_id]))?$configTotalTimes[$time->system_id]+$duration:$duration;     
-            
+            $result['projectTotal'] = $result['projectTotal']+$duration; 
         }
 
         return $result;

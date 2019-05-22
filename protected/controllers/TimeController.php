@@ -32,7 +32,7 @@ class TimeController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','edit','log','delete'),
+                'actions' => array('view','viewdetail','edit','log','delete'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -46,14 +46,6 @@ class TimeController extends Controller
 
 
 
-    public function actionView($id)
-    {
-
-    $configs=$this->loadModel($id);
-    $this->render('view',array('configs'=>$configs));
-
-
-    }
 
 
 
@@ -69,7 +61,6 @@ class TimeController extends Controller
 
 
     }
-
 
     public function actionLog($config=null,$system=null)
     {
@@ -133,6 +124,61 @@ $startFormatDate = date("Y-m-d H:i:s",$startDate);
         ));
 
 
+    }
+
+
+    public function actionViewDetail($config=null,$system=null) {
+try {
+
+    
+       
+       if (!is_null($config)) {
+        $config = Config::model()->findbyPk($config);
+        $configId = $config->id;
+        $systemId = $config->system_id;
+        $reportType = 'config';
+        
+        } ELSEIF (!is_null($system)) {
+        $config = null;
+        $configId = null;
+        $system = System::model()->findbypk($system);   
+        $reportType = 'system';
+        } ELSE {
+            $reportType = 'project';
+            $configId = null;
+            $systemId= null;
+        }
+        $project = Project::model()->findbyPk(Yii::App()->session['project']);
+       // print_r($project);die;
+
+$allTimes = Time::model()->getAllProjectTime($project->id);
+/*
+$stringEndDate = $endYear.'-'.$endMonth.'-'.$endDay.' '.$hourEnd.':'.$minuteEnd.':00';
+$endDate = strtotime($stringEndDate);
+$endFormatDate = date("Y-m-d H:i:s",$endDate);
+$duration = (3600*$durationHour)+(60*$durationMinute);
+$startDate = $endDate-$duration;
+$startFormatDate = date("Y-m-d H:i:s",$startDate);
+*/
+
+
+// go through the times and get the relevant ones.
+
+
+
+
+
+    } catch (Exception $ex) {
+    
+       echo 'exception: ' . $ex->getMessage();
+       die;
+    
+    }
+        $this->render('view', array(
+           'project'=>$project,'config'=>$configId,'system'=>$systemId, 'times'=>$allTimes, 'type'=>$reportType
+        ));
+
+    
     }
 
 

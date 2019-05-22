@@ -12,6 +12,7 @@ if (Yii::App()->session['projectOwner']==1) {
 
     <a href="/project/edit"><i class="icon-edit"></i></a>
     <a href="/project/delete" onclick="return confirm('Are you sure you want to delete this project?');"><i class="icon-remove-sign"></i></a>
+    <a href="/time/viewdetail"><i class="icon-calendar"></i></a>
     <?php
 }
     ?>
@@ -75,7 +76,7 @@ if (!empty($data)) {
                     </td>
                     <td>
                     <a href="/time/log/config/<?php echo $item->id; ?>"><i class="icon-calendar"></i></a>
-                    <?php if (isset($times['configTotal'][$item->id])) echo '<a href="time/view/config/'.$item->id.'">'.$times['configTotal'][$item->id].'&nbsp;hrs</a>'; ?> 
+                    <?php if (isset($times['configTotal'][$item->id])) echo '<a href="/time/viewdetail/config/'.$item->id.'">'.$times['configTotal'][$item->id].'&nbsp;hrs</a>'; ?> 
                     </td>
                     <td>
                         <?php echo $item->creator->firstname . ' ' . $item->creator->lastname . ' ' . $item->create_date; ?>
