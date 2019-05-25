@@ -91,7 +91,20 @@ public function getAllProjectTime($projectId){
             $systemsIdsList = '-1';
         }
     
-        $times=Time::model()->findAll('system_id IN ('.$systemsIdsList.')');
+
+        $sql="SELECT * FROM `time` `t` 
+        WHERE `t`.`system_id` IN ($systemsIdsList)
+        ORDER BY `t`.`start` DESC";
+  $connection=Yii::app()->db;
+  $command = $connection->createCommand($sql);
+  $results = $command->queryAll();
+
+
+        $times=$results;//Time::model()->findAll('system_id IN ('.$systemsIdsList.')');
+
+
+
+
 $result = [];
         $result['config']=[];
         $result['configTotal']=[];
@@ -100,25 +113,31 @@ $result = [];
         $result['projectTotal']=0;
         foreach($times as $time){
             // index times by project and config
-            $startTime = strtotime($time->start);
-            $endTime = strtotime($time->end);
+            $startTime = strtotime($time['start']);
+            $endTime = strtotime($time['end']);
             $duration = ($endTime - $startTime)/(60*60);
 
-            if(!empty($time->config_id)) {
-                $result['config'][$time->config_id][$time->id]['duration']=$duration;
-                $result['config'][$time->config_id][$time->id]['start']=$time->start;
-                $result['config'][$time->config_id][$time->id]['end']=$time->end;
-                $result['config'][$time->config_id][$time->id]['note']=$time->note;
+            if(!empty($time['config_id'])) {
+                $result['config'][$time['config_id']][$time['id']]['duration']=$duration;
+                $result['config'][$time['config_id']][$time['id']]['start']=$time['start'];
+                $result['config'][$time['config_id']][$time['id']]['end']=$time['end'];
+                $result['config'][$time['config_id']][$time['id']]['note']=$time['note'];
 
-                $result['configTotal'][$time->config_id] = (isset($configTotalTimes[$time->config_id]))?$configTotalTimes[$time->config_id]+$duration:$duration;     
+                $result['configTotal'][$time['config_id']] = (isset($configTotalTimes[$time['config_id']]))?$configTotalTimes[$time['config_id']]+$duration:$duration;     
+            }
+            if(!empty($time['system_id'])) {
+            $result['system'][$time['system_id']][$time['id']]['duration']=$duration;
+            $result['system'][$time['system_id']][$time['id']]['start']=$time['start'];
+            $result['system'][$time['system_id']][$time['id']]['end']=$time['end'];
+            $result['system'][$time['system_id']][$time['id']]['note']=$time['note'];
+            $result['systemTotal'][$time['system_id']] = (isset($configTotalTimes[$time['system_id']]))?$configTotalTimes[$time['system_id']]+$duration:$duration;     
             }
 
-            $result['system'][$time->system_id][$time->id]['duration']=$duration;
-            $result['system'][$time->system_id][$time->id]['start']=$time->start;
-            $result['system'][$time->system_id][$time->id]['end']=$time->end;
-            $result['system'][$time->system_id][$time->id]['note']=$time->note;
-            $result['systemTotal'][$time->system_id] = (isset($configTotalTimes[$time->system_id]))?$configTotalTimes[$time->system_id]+$duration:$duration;     
-            $result['projectTotal'] = $result['projectTotal']+$duration; 
+            $result['project'][$time['id']]['duration']=$duration;
+            $result['project'][$time['id']]['start']=$time['start'];
+            $result['project'][$time['id']]['end']=$time['end'];
+            $result['project'][$time['id']]['note']=$time['note'];
+            $result['projectTotal']=$result['projectTotal']+$duration;
         }
 
         return $result;

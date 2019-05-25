@@ -59,6 +59,41 @@ class System extends CActiveRecord {
     );
   }
 
+
+  public function getSystemsNameArray(){
+    $user = User::model()->findbypk(Yii::App()->user->id);
+    $projects = Project::model()->findAll('company_id = '.$user->company_id);
+
+    $projectsIds=[];
+    $projectsIdsList='';
+      if (!empty($projects)) {
+              foreach ($projects as $result){
+              array_push($projectsIds, $result['id']);
+              }
+  
+          $projectsIdsList = join(",", $projectsIds);
+  
+          } else {
+              $projectsIdsList = '-1';
+          }
+
+    $sql="SELECT `s`.`id`,`s`.`name` FROM `system` `s` 
+    join `projectsystem` `p` 
+    on `p`.`system_id`=`s`.`id`
+    WHERE `p`.`project_id` IN ($projectsIdsList)";
+
+    $connection=Yii::app()->db;
+    $command = $connection->createCommand($sql);
+    $systems = $command->queryAll();
+  
+    $systemsById = [-1=>'None'];
+    foreach($systems as $system){
+    $systemsById[$system['id']]=$system['name'];
+    }
+    return $systemsById;
+       
+    
+}
  
 
   /**

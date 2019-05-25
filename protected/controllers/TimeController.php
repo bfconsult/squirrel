@@ -32,7 +32,7 @@ class TimeController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','viewdetail','edit','log','delete'),
+                'actions' => array('view','viewdetail','edit','log','delete','sheet'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -62,19 +62,35 @@ class TimeController extends Controller
 
     }
 
-    public function actionLog($config=null,$system=null)
+    public function actionLog($config=null,$system=null,$project=null)
     {
+        $user = User::model()->findbypk(Yii::App()->user->id);
         $model = new Time;
-        if (!is_null($config) && is_null($system )){
-            $config = Config::model()->findbyPk($config);
-        $system = $config->system_id;
-        } ELSE {
-$config = null;
-
-        }
+        if (!is_null($config) && is_null($system ) && is_null($project)){
+        $config = Config::model()->findbyPk($config);
+        $configId=$config->id;
+        $systemId = $config->system_id;
         $project = Project::model()->findbyPk(Yii::App()->session['project']);
-       // print_r($project);die;
+        $projectId = $project->id;   
+    } ELSEIF (!is_null($system) && is_null($project)) {
+        $configId = null;
+        $systemId = $system;
+        $project = Project::model()->findbyPk(Yii::App()->session['project']);
+        $projectId = $projectId;
+        } ELSEIF (!is_null($project)) {
+        $projectId = $project;
+        $configId=null;
+        $systemId=null;   
+            
+        } ELSE {
+         $configId=null;
+         $systemId=null;   
+         $projectId=null;
+        }
 
+
+
+    
         if (isset($_POST['Time'])) {
             $endYear = $_POST['Time']['end_year'];
             $endMonth = $_POST['Time']['end_month'];
@@ -83,6 +99,9 @@ $config = null;
             $minuteEnd = $_POST['Time']['end_minute'];
             $durationHour = $endHour = $_POST['Time']['duration_hour'];
             $durationMinute = $_POST['Time']['duration_minute'];
+            $selectedProjectId = $_POST['Time']['project_id'];
+            $selectedSystemId = $_POST['Time']['system_id'];
+            $selectedConfigId = $_POST['Time']['config_id'];
      
 
 
@@ -100,12 +119,22 @@ $startFormatDate = date("Y-m-d H:i:s",$startDate);
 
 //echo 'start '.$startFormatDate.' - end date '.$endFormatDate;die;
 
-            $model->system_id = $system;
-            $model->config_id = $config->id;
+// work out if we got a -1 back from the form, and so use whatever value we had from the hidden fields
+$entryProject = ($selectedProjectId == -1)?$project->id:$selectedProjectId;
+$entrySystem = ($selectedSystemId == -1)?$systemId:$selectedSystemId;
+$entryConfig = ($selectedConfigId == -1)?$configId:$selectedConfigId;
+
+
+            $model->system_id = $entrySystem;
+            $model->project_id = $entryProject;
+            $model->config_id = $entryConfig;
             $model->note = $_POST['Time']['note'];
-            $model->user_id = Yii::App()->user->id;
+            $model->user_id = $user->id;
             $model->end = $endFormatDate;
             $model->start = $startFormatDate;
+            $model->company_id = $user->company_id;
+
+           
             if ($model->save())
 
 
@@ -120,7 +149,15 @@ $startFormatDate = date("Y-m-d H:i:s",$startDate);
         $endYear=date('Y',time());
 
         $this->render('log', array(
-            'model' => $model,'project'=>$project,'config'=>$config,'endMonth'=>$endMonth, 'endDay'=>$endDay, 'endHour'=>$endHour,'endYear'=>$endYear,
+            'model' => $model,
+            'endMonth'=>$endMonth, 
+            'endDay'=>$endDay, 
+            'endHour'=>$endHour,
+            'endYear'=>$endYear,
+            'user'=>$user,
+            'project_id'=>$projectId,
+            'system_id'=>$systemId,
+            'config_id'=>$configId,
         ));
 
 
@@ -182,6 +219,59 @@ $startFormatDate = date("Y-m-d H:i:s",$startDate);
     }
 
 
+    public function actionSheet() {
+        try {
+            $user = User::model()->findbypk(Yii::App()->user->id);
+            $company = Company::model()->findbyPk($user->company_id);
+               
+            $endTimestamp = time();//today;
+            $startTimestamp = time()-2592000;//today -30days
+
+           if(isset($_POST['Date'])){
+
+                $sM = $_POST['Date']['start_month'];
+                $sD = $_POST['Date']['start_day'];
+                $eM = $_POST['Date']['end_month'];
+                $eD = $_POST['Date']['end_day'];
+               // echo 'start month: '.$sM.' start day: '.$sD.' endDay: '.$eD.' endMonth: '.$eM;die;
+                $year = date("Y",time());
+                $stringEndDate = $year.'-'.$eM.'-'.$eD.' 23:59:59';
+                $stringStartDate = $year.'-'.$sM.'-'.$sD.' 00:00:00';
+                $endTimestamp  = strtotime($stringEndDate);
+                $startTimestamp = strtotime($stringStartDate);
+            }
+
+
+           
+             $endDatetime = date("Y-m-d 23:59:59",$endTimestamp);
+    
+             $startDatetime =  date("Y-m-d 00:00:00",$startTimestamp);
+            
+            // echo ' end '.$endDatetime.' start '.$startDatetime;die;
+
+            $criteria = new CDbCriteria;
+            $criteria->condition = 'start >= "' . $startDatetime . '" AND end <= "'.$endDatetime.'" AND company_id = "'.$user->company_id.'"';
+
+
+
+            $times = Time::model()->findAll($criteria);
+        
+     
+        
+        
+            } catch (Exception $ex) {
+            
+               echo 'exception: ' . $ex->getMessage();
+               die;
+            
+            }
+                $this->render('sheet', array(
+                   'startTimestamp'=>$startTimestamp, 'endTimestamp'=>$endTimestamp, 'times'=>$times,'user'=>$user, 'company'=>$company
+                ));
+        
+            
+            }
+        
     public function loadModel($id)
     {
         $model=Config::model()->findByPk($id);

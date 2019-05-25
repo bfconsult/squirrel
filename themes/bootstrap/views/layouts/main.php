@@ -17,6 +17,7 @@
     <?php Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/bootstrap.min.css'); ?>
     <?php Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/font-awesome.min.css'); ?>
     <?php Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/styles.css'); ?>
+  
 	<link rel="stylesheet" id="tp-nunitoall-css" href="https://fonts.googleapis.com/css?family=Nunito%3A400%2C600%2C700&amp;ver=4.1" type="text/css" media="all">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
@@ -75,6 +76,10 @@
                             array(
                                 'label' => 'My Account',
                                 'url' => UrlHelper::getPrefixLink('user/update')
+                            ),
+                            array(
+                                'label' => 'Timesheets',
+                                'url' => UrlHelper::getPrefixLink('time/sheet')
                             ),
 							 array(
                                 'label' => 'My Organisation',

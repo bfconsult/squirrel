@@ -30,7 +30,7 @@ $data = $times;
                 'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                 'label' => 'Add Time  +',
 
-                'url' => UrlHelper::getPrefixLink('/time/log'),
+                'url' => UrlHelper::getPrefixLink('/time/log/project/'.$project->id),
             ),
 
         )
@@ -46,13 +46,7 @@ if ($type == 'config') {
     $data = $times['system'][$system];
 } ELSE {
     
-    $data = [];
-    foreach( $times['system'] as $detailData){
-        foreach ($detailData as $detail){
-            array_push($data, $detail);
-        }
-    }
- 
+    $data = $times['project']; 
 }
 
 
@@ -64,12 +58,25 @@ if ($type == 'config') {
     <table class="table">
 
         <tbody>
-      <?php foreach ($data as $item): ?>
+      <?php foreach ($data as $item):
+        
+        
+$startTimestamp = strtotime($item['start']);
+$endTimestamp = strtotime($item['end']);
+
+$startFormatTime = date("H:i",$startTimestamp);
+$startFormatDate = date("F j, Y",$startTimestamp);
+
+$endFormatTime = date("H:i",$endTimestamp);
+        
+        ?>
 
                 <tr class="odd">
-  
+                <td>
+                        <?php echo $startFormatDate; ?>
+                    </td>
                     <td>
-                        <?php echo $item['start']; ?> : <?php echo $item['end']; ?>
+                        <?php echo $startFormatTime.' - '.$endFormatTime; ?>
                     </td>
                   <td>
                         <?php echo $item['duration']; ?>

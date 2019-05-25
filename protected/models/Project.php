@@ -142,6 +142,62 @@ class Project extends CActiveRecord
 
 
 
+    public function permissions($userId,$projectId)
+    {
+
+
+
+            return true;
+    }
+
+
+public function getSystems($projectId){
+
+            
+        $sql="SELECT `s`.`id` FROM `system` `s` 
+               join `projectsystem` `p` 
+               on `p`.`system_id`=`s`.`id`
+               WHERE `p`.`project_id`=".$projectId;
+         $connection=Yii::app()->db;
+         $command = $connection->createCommand($sql);
+         $results = $command->queryAll();
+
+         $systemsIds=[];
+         $systemsIdsList='';
+           if (!empty($results)) {
+                   foreach ($results as $result){
+                   array_push($systemsIds, $result['id']);
+                   }
+       
+               $systemsIdsList = join(",", $systemsIds);
+       
+               } else {
+                   $systemsIdsList = '-1';
+               }
+               $systems = System::model()->findAll(' id IN ('.$systemsIdsList.')');
+
+return $systems;
+
+
+
+}
+
+public function getProjectsNameArray(){
+$user = User::model()->findbypk(Yii::App()->user->id);
+
+$projects = Project::model()->findAll('company_id = '.$user->company_id);
+$projectsById = [-1=>'None'];
+foreach($projects as $project){
+$projectsById[$project->id]=$project->name;
+}
+return $projectsById;
+
+
+
+
+}
+
+
 
 
     public function search()

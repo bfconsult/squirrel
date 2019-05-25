@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete'),
+                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete','getSystemOptions'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -205,6 +205,40 @@ echo 'oops, something went wrong';
 
 
     }
+
+
+
+    public function actiongetSystemOptions($projectId)
+    {
+        try {
+
+        $project = $this->loadModel($projectId);
+
+        if(!(Project::model()->permissions(Yii::App()->user->id,$project->id)))
+        throw new Exception('no permissions');
+
+        $systems  = Project::model()->getSystems($project->id);
+
+
+
+        $result  = '<option value="-1">None</option>';
+        
+        foreach ($systems as $system) {
+            $result .= '<option value="'.$system->id.'">'.$system->name.'</option>';
+        }
+
+        echo $result;
+
+
+        
+        } catch (Exception $ex) {
+            echo 'exception: ' . $ex->getMessage();
+            die;
+        } 
+
+    }
+
+
 
 
     public function loadModel($id)
