@@ -75,11 +75,9 @@ To:
     <div class="span2 pull-right">
     <form method="POST" action="/time/download">
 
-            <input type="hidden" name="Date[start_month]" value="<?php echo $startMonth; ?>">
-            <input type="hidden" name="Date[start_day]" value="<?php echo $startDay; ?>">
-            <input type="hidden" name="Date[end_month]" value="<?php echo $endMonth; ?>">
-            <input type="hidden" name="Date[end_day]" value="<?php echo $endDay; ?>">
-
+            <input type="hidden" name="startDate" value="<?php echo $startTimestamp; ?>">
+            <input type="hidden" name="endDate" value="<?php echo $endTimestamp; ?>">
+        
             <input type="submit" value = "download" class="btn-success">
 
             </form>
