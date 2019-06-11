@@ -27,6 +27,8 @@
 
 	<div class="row ">
 		<select name="System[parent_id]" id="system_id">
+		<option value="-1">No parent system</option>
+		<option disabled>──────────</option>
 		<?php
 			$systems= $project->systems;
 
