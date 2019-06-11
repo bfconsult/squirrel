@@ -116,7 +116,21 @@ class Projectsystem extends CActiveRecord
 
 
 
+    public function getProjectSystems($projectId){
 
+        $projectSystems = Projectsystem::model()->findAll('project_id = '.$projectId);
+        $candidateSystems=[];
+        foreach($projectSystems as $projectSystem){
+            array_push($candidateSystems, $projectSystem->id);
+        }
+        
+        $candidateSystems = join($candidateSystems,',');
+
+        $systems= System::model()->findAll('deleted=0 and parent_id=-1 and id IN (-1,'.$candidateSystems.')');
+        
+
+return $systems;
+    }
 
 
 

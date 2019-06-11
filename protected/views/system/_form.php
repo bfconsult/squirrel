@@ -27,17 +27,21 @@
 
 	<div class="row ">
 		<select name="System[parent_id]" id="system_id">
-			<?php
-			$systems= System::model()->findAll('deleted=0 and parent_id=-1 and company_id='.$project->company_id);
-?>
-			<option value="-1">No Parent System</option>
-			<?php
-			foreach ($systems as $system){
-$default = ($model->parent_id==$system->id)?'default selected':'';
-			?>
-					<option value="<?php echo $system->id?>" <?php echo $default?>><?php echo $system->name?></option>
+		<?php
+			$systems= $project->systems;
 
-			<?php } ?>
+			foreach ($systems as $system){
+				if ($system->deleted == 0){
+
+				?>
+
+				<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
+			<?php
+				}
+			}
+
+		?>
+
 		</select>
 	</div>
 

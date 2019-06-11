@@ -11,12 +11,13 @@ echo '<h1>'.$project->name;
     echo '<h2>Process: '.$process->name.'</h2>';
 
 $steps = $process->steps;
+
 $results = $processrun->results;
 
 
    
 
-//print_r($data);die;
+//echo '<pre>';print_r($processrun);die;
 
     $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
         'title' => 'Run Results',

@@ -1,7 +1,7 @@
 <?php
 
 $project=Project::model()->findbyPK(Yii::App()->session['project']);
-
+$system = System::model()->findbyPK($process->system_id);
 echo '<h1>'.$project->name;
 ?>
     <a href = "/project/view"><i class="icon-arrow-left"></i></a></h1>
@@ -9,6 +9,8 @@ echo '<h1>'.$project->name;
 <?php
 
     echo '<h2>Process: '.$process->name.'</h2>';
+    echo '<h3>System: '.$system->name.'</h3>';
+
 
 $data = $process->steps;
 

@@ -14,6 +14,30 @@
 
 	<?php echo $form->errorSummary($model); ?>
  	</div>      
+	<div class="row">
+	<select name="Process[system_id]" id="system_id">
+		
+<?php
+$systems= $project->systems;
+
+foreach ($systems as $system){
+	if ($system->deleted == 0){
+
+	?>
+
+	<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
+<?php
+	}
+}
+
+?>
+
+</select>
+
+	</div>
+
+
+
 	<div class="row ">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>

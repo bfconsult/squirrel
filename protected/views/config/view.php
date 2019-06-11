@@ -63,7 +63,16 @@ $data = $configs;
 
                 </tr>
 
+                <tr class="odd">
+                  <td>
+                        - <?php if (!is_null($data->processrun_id)) {
+                            $processRun=Processrun::model()->findbyPK($data->processrun_id);
+                            echo 'Process run result was '.Processrun::$result[$processRun->status].' <a href="/processrun/view/id/'.$processRun->ext.'">View Process Run</a>';
+                        } ?>
+                    </td>
 
+
+                </tr>
 
         </tbody>
     </table>

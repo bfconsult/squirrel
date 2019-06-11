@@ -49,7 +49,7 @@ class Processresult extends CActiveRecord
                 'numerical',
                 'integerOnly' => true
             ),
-            array('comments', 'safe'),
+            array('comments, date', 'safe'),
          
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
@@ -91,10 +91,11 @@ class Processresult extends CActiveRecord
         return array(
             'id' => 'ID',
             'name' => 'Name',
-            'description' => 'Description/Notes',
-         
-            'project_id' => 'Project',
-            'active'=>'Active'
+            'comments' => 'Description/Notes',
+            'date' => 'Date',
+            'user_id' => 'User',
+            'processrun_id' => 'Run',
+            'result'=>'Result'
                  )
         ;
     }

@@ -69,38 +69,50 @@ $process=Process::model()->find('ext = :ext',[':ext'=>$id]);
 if(is_null($process)){echo 'no such process';die;}
 
 
-if (isset($_POST['ProcessRun'])) {
-// make a run
+    if (isset($_POST['ProcessRun'])) {
+        // make a run
 
-$processrun=new Processrun;
-$processrun->project_id=$process->project_id;
-$processrun->number=Processrun::model()->getNumber($id);
-$processrun->process_id=$process->id;
-$processrun->status=$_POST['Status'];
-$processrun->ext= md5(uniqid(rand(), true));
-$processrun->save();
-$processRunId =$processrun->getPrimaryKey();
-
-
-// Processthe form input
-foreach ($_POST['done'] as $key=>$result){
-
-$processresult=new Processresult;
-$processresult->processrun_id=$processRunId;
-$processresult->processstep_id=$key;
-
-$processresult->result=$result;
-$processresult->user_id=Yii::App()->user->id;
-$processresult->comments=$_POST['note'][$key];
-$processresult->save();
-
-    
-}
+        $processrun=new Processrun;
+        $processrun->project_id=$process->project_id;
+        $processrun->number=Processrun::model()->getNumber($id);
+        $processrun->process_id=$process->id;
+        $processrun->status=$_POST['Status'];
+        $processrun->ext= md5(uniqid(rand(), true));
+        $processrun->save();
+        $processRunId =$processrun->getPrimaryKey();
 
 
-$this->redirect('/process/view/id/'.$process->ext); 
+            // Processthe form input
+            foreach ($_POST['note'] as $key=>$comment){
+            $processresult=new Processresult;
+            $processresult->processrun_id=$processRunId;
+            $processresult->processstep_id=$key;
+            $processresult->result=(isset($_POST['done'][$key]))?1:0;
+            $processresult->user_id=Yii::App()->user->id;
+            $processresult->comments=$comment;
 
-}
+
+            $processresult->save(false);
+
+        
+            }
+
+        //create a configuration for the parent system.
+
+        $config = new Config;
+        $config->number = Config::model()->getNextNumber($process->system_id);
+        $config->name = $process->name.' Run number '.$processrun->number;
+        $config->description = 'Executed '.$process->name;
+        $config->system_id = $process->system_id;
+        $config->processrun_id = $processrun->id;
+        $config->create_user = Yii::App()->user->id;
+        $config->save();
+
+
+
+    $this->redirect('/process/view/id/'.$process->ext); 
+
+    }
 
 
 $this->render('run',['process'=>$process]);
