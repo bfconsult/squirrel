@@ -32,7 +32,7 @@ class TimeController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view','viewdetail','edit','log','delete','sheet'),
+                'actions' => array('view','viewdetail','edit','log','delete','sheet','download'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -271,7 +271,46 @@ $startFormatDate = date("Y-m-d H:i:s",$startDate);
         
             
             }
+
+            
+
+            public function actionDownload($startDate,$endDate) {
+                try {
+                    $user = User::model()->findbypk(Yii::App()->user->id);
+                    $company = Company::model()->findbyPk($user->company_id);                       
+                    $endTimestamp = $_POST['endDate'];//today;
+                    $startTimestamp = $_POST['startDate'];//today -30days
+                   
+                    $endDatetime = date("Y-m-d 23:59:59",$endTimestamp);
+            
+                    $startDatetime =  date("Y-m-d 00:00:00",$startTimestamp);
+                    
+                    // echo ' end '.$endDatetime.' start '.$startDatetime;die;
         
+                    $criteria = new CDbCriteria;
+                    $criteria->condition = 'start >= "' . $startDatetime . '" AND end <= "'.$endDatetime.'" AND company_id = "'.$user->company_id.'"';
+        
+        
+        
+                    $times = Time::model()->findAll($criteria);
+                
+             
+                
+                
+                    } catch (Exception $ex) {
+                    
+                       echo 'exception: ' . $ex->getMessage();
+                       die;
+                    
+                    }
+                        $this->render('download', array(
+                           'startTimestamp'=>$startTimestamp, 'endTimestamp'=>$endTimestamp, 'times'=>$times,'user'=>$user, 'company'=>$company
+                        ));
+                
+                    
+                    }
+        
+
     public function loadModel($id)
     {
         $model=Config::model()->findByPk($id);

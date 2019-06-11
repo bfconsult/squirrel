@@ -77,6 +77,7 @@ return array(
     // application components
     'components'=>array(
            // 'cache' => array('class' => 'system.caching.CDummyCache'),
+           
             'bootstrap' => array(
                        'class' => 'ext.bootstrap.components.Bootstrap',
                        'responsiveCss' => true,

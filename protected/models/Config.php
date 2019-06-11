@@ -84,32 +84,22 @@ class Config extends CActiveRecord {
     }
 
     public function getRecentConfigs() {
-        /*
-
-        $project=Project::model()->findbyPK(Yii::App()->session['project']);
-       $systemList='(-2,';
-        foreach ($project->systems as $system) {
-            $systemList .= $system['id'].",";
-        }
-$systemList=rtrim($systemList, ",").')';
-
-        */
-
-
+      
         $project = Project::model()->findByPk(Yii::App()->session['project']);
-//$data =
-        $systems= $project->systems;
+
+
+      //  $systems = $project->systems;
+$systems = Project::model()->getSystems($project->id);
+
+
         $systemlist='';
         foreach ($systems as $system) {
             $systemlist.=$system->id.',';
         }
-        //$systemlist=rtrim($systemlist,',');
+       
         $systemlist='('.$systemlist.'-2)';
 
-
             $configs = Config::model()->findAll(array('order' => 'create_date DESC', 'limit'=>10, 'condition' => 'system_id in '.$systemlist.' and deleted =0 '));
-
-
 
         return $configs;
 

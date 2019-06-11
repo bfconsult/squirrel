@@ -104,7 +104,7 @@ $this->endWidget();
 
 // ####################  PROCESSES ###############
 
-$data = $project->processes;
+$data = Project::model()->getSystems($project->id);
 //echo '<pre>';
 //print_r($data);
 
@@ -132,7 +132,7 @@ $data = $project->processes;
     ));
 
     if (!empty($data)) {
-    ?>
+?>
     <table class="table">
         <thead>
         <tr>
@@ -146,7 +146,7 @@ $data = $project->processes;
 
              foreach ($data as $itemIdx => $item):
 
-            if ($item->active ==1) {
+            if ($item->deleted == 0) {
                 ?>
 
 
