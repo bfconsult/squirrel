@@ -75,6 +75,10 @@ if (!empty($data)) {
                         - <?php echo $item->description; ?>
                     </td>
                     <td>
+                    <a href="/config/delete/id/<?php echo  $item['id']; ?>"><i
+                    class="icon-remove-sign"></i></a>
+                    </td>
+                    <td>
                     <a href="/time/log/config/<?php echo $item->id; ?>"><i class="icon-calendar"></i></a>
                     <?php if (isset($times['configTotal'][$item->id])) echo '<a href="/time/viewdetail/config/'.$item->id.'">'.$times['configTotal'][$item->id].'&nbsp;hrs</a>'; ?> 
                     </td>
@@ -104,7 +108,7 @@ $this->endWidget();
 
 // ####################  PROCESSES ###############
 
-$data = Project::model()->getSystems($project->id);
+$processes = Process::model()->findAll('project_id ='.$project->id.' and active = 1');
 //echo '<pre>';
 //print_r($data);
 
@@ -142,11 +146,11 @@ $data = Project::model()->getSystems($project->id);
         </tr>
         </thead>
         <tbody>
-        <?php if (count($data)):
+        <?php if (count($processes)):
 
-             foreach ($data as $itemIdx => $item):
+             foreach ($processes as $itemIdx => $item):
 
-            if ($item->deleted == 0) {
+          
                 ?>
 
 
@@ -155,11 +159,14 @@ $data = Project::model()->getSystems($project->id);
                         <a href="<?php echo UrlHelper::getPrefixLink('/process/view/id/'.$item->ext) ?>"><?php echo $item['name']; ?></a>
                         - <?php echo $item['description']; ?>
                     </td>
-
+                    <td>
+                    <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
+                    class="icon-remove-sign"></i></a>
+                    </td>
 
                 </tr>
                 <?php
-            }
+           
             endforeach ?>
 
 

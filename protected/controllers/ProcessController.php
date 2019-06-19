@@ -131,7 +131,7 @@ $this->render('run',['process'=>$process]);
            $model->ext = md5(uniqid(rand(), true));
            if ($model->save())
             $project = $model->getPrimaryKey();
-            $this->redirect('/');
+            $this->redirect('/project/view');
 
 
         }
@@ -155,15 +155,15 @@ $this->render('run',['process'=>$process]);
 
     }
 
-    public function actionDelete()
+    public function actionDelete($ext)
 
     {
-        $model=Project::model()->findByPk(Yii::App()->session['project']);
-        $model->deleted=1;
+        $model=Process::model()->find('ext = "'.$ext.'"');
+        $model->active=0;
         if($model->save()) {
 
 
-        $this->redirect('/');
+        $this->redirect('/project/view');
     }
 echo 'oops, something went wrong';
     }
