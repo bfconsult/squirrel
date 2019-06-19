@@ -5,7 +5,7 @@
 $project=Project::model()->findbyPK(Yii::App()->session['project']);
 $times = Time::model()->getAllProjectTime($project->id);
 
-echo '<h1>'.$project->name.'('.$project->id.')';
+echo '<h1>'.$project->name;
 
 if (Yii::App()->session['projectOwner']==1) {
     ?>
@@ -109,8 +109,7 @@ $this->endWidget();
 // ####################  PROCESSES ###############
 
 $processes = Process::model()->findAll('project_id ='.$project->id.' and active = 1');
-echo '<pre>';
-print_r($data);
+
 
 
 
@@ -135,7 +134,7 @@ print_r($data);
         )
     ));
 
-    if (!empty($data)) {
+    if (!empty($processes)) {
 ?>
     <table class="table">
         <thead>
