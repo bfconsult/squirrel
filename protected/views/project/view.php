@@ -109,9 +109,9 @@ $this->endWidget();
 // ####################  PROCESSES ###############
 
 $processes = Process::model()->findAll('project_id ='.$project->id.' and active = 1');
-//echo '<pre>';
-//print_r($data);
-
+echo '<pre>';
+print_r($data);
+die;
 
 
 
