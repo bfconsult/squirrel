@@ -99,6 +99,33 @@ $project = Project::model()->findbyPk(Yii::App()->session['project']);
     }
 
 
+
+    public function actionEdit($id)
+    {
+        $model = Config::model()->findbyPk($id);
+        $project = Project::model()->findbyPk(Yii::App()->session['project']);
+
+          if (isset($_POST['Config'])) {
+            $model->attributes = $_POST['Config'];
+            
+                       
+            if ($model->save());
+       
+            $this->redirect('/project/view');
+
+
+        }
+
+        $this->render('edit', array(
+            'model' => $model, 'project' => $project
+
+        ));
+
+
+    }
+
+
+
     public function loadModel($id)
     {
         $model=Config::model()->findByPk($id);

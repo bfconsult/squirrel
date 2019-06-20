@@ -183,25 +183,28 @@ echo 'oops, something went wrong';
 
     }
 
-    public function actionEdit()
+    public function actionEdit($ext)
     {
-        $model = $this->loadModel(Yii::App()->session['project']);
+        $model = Process::model()->find('ext = :ext',[':ext'=>$ext]);
+        $project = Project::model()->findbyPk(Yii::App()->session['project']);
 
-          if (isset($_POST['Project'])) {
-            $model->attributes = $_POST['Project'];
-            $model->company_id = User::model()->myCompany();
-            $model->extlink = md5(uniqid(rand(), true));
-            $model->stage = 1;
-            if ($model->save())
-                $project = $model->getPrimaryKey();
-            Yii::app()->session['project'] = $project;
-            $this->redirect('/project/view');
+          if (isset($_POST['Process'])) {
+            $model->attributes = $_POST['Process'];
+            
+            $model->ext = $ext;
+            $model->active = 1;
+            $model->number = 0;
+//print_r($model);die;
+                       
+            if ($model->save());
+       
+            $this->redirect('/process/view/id/'.$ext);
 
 
         }
 
         $this->render('edit', array(
-            'model' => $model,
+            'model' => $model, 'project' => $project
 
         ));
 

@@ -36,6 +36,17 @@ foreach ($systems as $system){
 
 	</div>
 
+	<div class="row ">
+		<select name="Process[frequency]">
+		<?php 
+		$freqs=Process::$frequencies;
+		
+		foreach($freqs as $time=>$freq) {?>
+		<option value="<?php echo $time;?>" <?php echo (isset($model->frequency) && $model->frequency==$time)?'selected':''; ?>   ><?php echo $freq ?></option>
+		<?php }  ?>
+
+		</select>
+	</div>
 
 
 	<div class="row ">

@@ -12,6 +12,9 @@ class Process extends CActiveRecord
 {
 
 
+    public static $frequencies = [-1=>'None',86400=>'Daily', 604800=>"Weekly", 2592000=>"Monthly", 7776000=>"Quarterly", 31536000=>"Yearly"];
+	
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -40,7 +43,7 @@ class Process extends CActiveRecord
                 'required'
             ),
             array(
-                'project_id',
+                'project_id, system_id, frequency',
                 'numerical',
                 'integerOnly' => true
             ),
@@ -98,7 +101,7 @@ class Process extends CActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description/Notes',
-         
+         'system_id' => 'System',
             'project_id' => 'Project',
             'active'=>'Active'
                  )

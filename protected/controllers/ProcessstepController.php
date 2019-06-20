@@ -130,19 +130,18 @@ echo 'oops, something went wrong';
 
     }
 
-    public function actionEdit()
+    public function actionEdit($id)
     {
-        $model = $this->loadModel(Yii::App()->session['project']);
+        $project = Project::model()->findbyPk(Yii::App()->session['project']);
+        $model = Processstep::model()->findbyPk($id);
 
-          if (isset($_POST['Project'])) {
-            $model->attributes = $_POST['Project'];
-            $model->company_id = User::model()->myCompany();
-            $model->extlink = md5(uniqid(rand(), true));
-            $model->stage = 1;
+          if (isset($_POST['Processstep'])) {
+            $model->attributes = $_POST['Processstep'];
+
             if ($model->save())
-                $project = $model->getPrimaryKey();
-            Yii::app()->session['project'] = $project;
-            $this->redirect('/project/view');
+            $process = Process::model()->findbyPk($model->process_id);
+
+            $this->redirect('/process/view/id/'.$process->ext);
 
 
         }

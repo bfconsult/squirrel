@@ -4,13 +4,17 @@ $project=Project::model()->findbyPK(Yii::App()->session['project']);
 $system = System::model()->findbyPK($process->system_id);
 echo '<h1>'.$project->name;
 ?>
-    <a href = "/project/view"><i class="icon-arrow-left"></i></a></h1>
+    <a href = "/project/view"><i class="icon-arrow-left"></i></a>
+    
+    
+    </h1>
 
 <?php
 
-    echo '<h2>Process: '.$process->name.'</h2>';
+    echo '<h2>Process: '.$process->name.' <a href="/process/edit/ext/'.$process->ext.'"><i class="icon-edit"></i></a></h2>';
     echo '<h3>System: '.$system->name.'</h3>';
-
+echo 'Repeats: ';
+echo (isset(Process::$frequencies[$process->frequency]))?Process::$frequencies[$process->frequency]:'Custom';
 
 $data = $process->steps;
 
@@ -55,7 +59,11 @@ $data = $process->steps;
             <td>
             <?php echo $item->result; ?>
             </td>
-           
+            <td>  
+            <a href="/processstep/edit/id/<?php echo $item->id; ?>"><i class="icon-edit"></i></a>
+          
+            <a href="/processstep/delete/id/<?php echo $item->id; ?>"><i class="icon-remove-sign"></i></a>
+            </td>
         </tr>
 
 <?php } ?>

@@ -8,18 +8,18 @@ echo '<h1>'.$project->name;
 
 <?php
 
+$data = $configs;
     echo '<h2>'.$configs->parent_system->name.'</h2>';
 
+    echo 'Created: '.$data->creator->firstname; ?> : <?php echo $data->create_date;
 
 
-
-$data = $configs;
 //echo '<pre>';
 //print_r($data);
 
     $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
-        'title' => 'Recent Projects',
-        'headerIcon' => 'icon-briefcase',
+        'title' => 'Configuration Record',
+        'headerIcon' => 'icon-cogs',
         // when displaying a table, if we include bootstra-widget-table class
         // the table will be 0-padding to the box
         'htmlOptions' => array('class' => 'bootstrap-widget-table'),
@@ -27,10 +27,10 @@ $data = $configs;
 
             array(
                 'class' => 'bootstrap.widgets.TbButton',
-                'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-                'label' => 'Add Config  +',
+                'type' => 'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'Edit Config',
 
-                'url' => UrlHelper::getPrefixLink('/config/create'),
+                'url' => UrlHelper::getPrefixLink('/config/edit/id/'.$data->id),
             ),
 
         )
@@ -45,26 +45,11 @@ $data = $configs;
 
                 <tr class="odd">
                     <td>
-                        <?php echo
-                        $data->name; ?>
-                    </td>
-                    <td>
-                        <?php echo $data->creator->firstname; ?> : <?php echo $data->create_date; ?>
-                    </td>
-
-
-                </tr>
-
-                <tr class="odd">
-                  <td>
+                        <?php echo $data->name; ?>
+                       
+                  <br />
                         - <?php echo $data->description; ?>
-                    </td>
-
-
-                </tr>
-
-                <tr class="odd">
-                  <td>
+                        <br />
                         - <?php if (!is_null($data->processrun_id)) {
                             $processRun=Processrun::model()->findbyPK($data->processrun_id);
                             echo 'Process run result was '.Processrun::$result[$processRun->status].' <a href="/processrun/view/id/'.$processRun->ext.'">View Process Run</a>';
