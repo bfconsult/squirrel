@@ -46,7 +46,7 @@ if ($type == 'config') {
     $data = $times['system'][$system];
 } ELSE {
     
-    $data = $times['project']; 
+    $data = (isset($times['project']))?$times['project']:NULL; 
 }
 
 

@@ -156,7 +156,24 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                 <tr class="odd">
                     <td>
                         <a href="<?php echo UrlHelper::getPrefixLink('/process/view/id/'.$item->ext) ?>"><?php echo $item['name']; ?></a>
-                        - <?php echo $item['description']; ?>
+                        - <?php echo $item['description']; 
+                        
+                        $lastrun = strtotime (Process::lastRun($item->id));
+                        $interval = time()-$lastrun;
+                        /*
+                        echo '<br>last run is '.$lastrun.'<br>';
+                        echo 'interval is '.$interval.'<br>';
+                        echo 'planned is '.$item->frequency.'<br>';
+                        */
+                         echo '<br/>';
+                        echo ($item->frequency>0 && $lastrun>0 && $interval > $item->frequency)?'overdue':'ok';
+                       
+                        
+                        ?>
+
+                    
+
+
                     </td>
                     <td>
                     <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i

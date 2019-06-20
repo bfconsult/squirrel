@@ -125,6 +125,29 @@ class Process extends CActiveRecord
     }
 
 
+    public static function lastRun($id)
+    {
+    
+        $sql="
+        select * from `processrun` `r`
+        join `processresult` `p`
+        on `p`.`processrun_id`=`r`.`id`
+        where process_id = $id
+        group by `r`.`process_id`
+        order by `p`.`date` DESC
+
+        ";
+
+        $connection=Yii::app()->db;
+        $command = $connection->createCommand($sql);
+        $result = $command->queryAll();
+        if (!empty($result)) {
+            return $result[0]['date'];
+        } ELSE {
+            return 0;
+        }
+    
+    }
 
 
 
