@@ -160,14 +160,7 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                         
                         $lastrun = strtotime (Process::lastRun($item->id));
                         $interval = time()-$lastrun;
-                        /*
-                        echo '<br>last run is '.$lastrun.'<br>';
-                        echo 'interval is '.$interval.'<br>';
-                        echo 'planned is '.$item->frequency.'<br>';
-                        */
-                         echo '<br/>';
-                        echo ($item->frequency>0 && $lastrun>0 && $interval > $item->frequency)?'overdue':'ok';
-                       
+                                           
                         
                         ?>
 
@@ -178,6 +171,23 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                     <td>
                     <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
                     class="icon-remove-sign"></i></a>
+<?php
+                    if($item->frequency>0){
+                        
+                       if ($lastrun>0 && $interval > $item->frequency){
+                          $days = floor(($item->frequency-(time()-$lastrun))/(24*60*60))*-1;
+                        
+                      echo  '<i class="icon-time text-error"></i> ';
+                      echo $days.' days overdue'; 
+                        } 
+                       ELSE
+                        {
+                         echo   '<i class="icon-time text-success"></i> ';
+                         echo ($item->frequency-$lastrun)/(24*60*60).' days'; 
+                        }
+                    }
+
+?>
                     </td>
 
                 </tr>

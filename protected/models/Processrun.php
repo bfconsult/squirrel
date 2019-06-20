@@ -153,6 +153,30 @@ public static $result = [
     }
 
 
+    public static function completeDate($id)
+    {
+    
+        $sql="
+        select date from `processresult` `res`
+        join `processrun` `run`
+        on `res`.`processrun_id`=`run`.`id`
+        join `process` `p`
+        on `p`.`id`=`run`.`process_id`
+        where `p`.`id` = $id
+        group by `p`.`id`, `res`.`id`
+       order by `res`.`date` DESC
 
+        ";
+
+        $connection=Yii::app()->db;
+        $command = $connection->createCommand($sql);
+        $result = $command->queryAll();
+        if (!empty($result)) {
+            return $result[0]['date'];
+        } ELSE {
+            return 0;
+        }
+    
+    }
 
 }

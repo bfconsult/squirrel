@@ -132,7 +132,7 @@ class Process extends CActiveRecord
         select * from `processrun` `r`
         join `processresult` `p`
         on `p`.`processrun_id`=`r`.`id`
-        where process_id = $id
+        where `r`.`process_id` = $id
         group by `r`.`process_id`
         order by `p`.`date` DESC
 

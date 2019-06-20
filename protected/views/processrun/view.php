@@ -14,7 +14,7 @@ $steps = $process->steps;
 
 $results = $processrun->results;
 
-
+echo 'Last completed: '.Processrun::completeDate($process->id);
    
 
 //echo '<pre>';print_r($processrun);die;
