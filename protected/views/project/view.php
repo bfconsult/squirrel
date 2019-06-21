@@ -172,9 +172,9 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                     <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
                     class="icon-remove-sign"></i></a>
 <?php
-echo 'last run '.$lastrun;
-echo '<br/> frequency '.$item->frequency;
-echo '<br/> '.$interval.'<br/>';
+echo 'last run '.$lastrun/(24*60*60).' days ';
+echo '<br/> frequency '.$item->frequency/(24*60*60).' days ';
+echo '<br/> time since last run '.$interval/(24*60*60).' days <br/>';
 
                     if($item->frequency>0){
                         
