@@ -179,13 +179,22 @@ echo 'last run value is '.$lastrun;
 */
                     if($item->frequency>0){
                         
+                  
+
                        if ($interval > $item->frequency){
                           $days = floor(($item->frequency-(time()-$lastrun))/(24*60*60))*-1;
                         
                       echo  '<i class="icon-time text-error"></i> ';
+
+                            if (empty($lastrun)){
+                            echo 'Not run.';
+                                                } else {
                       echo $days.' days overdue'; 
-                        } 
-                       ELSE
+                                                }
+                    
+                    
+                    } 
+                       ELSE 
                         {
                          echo   '<i class="icon-time text-success"></i> ';
                          echo floor(($item->frequency-$interval)/(24*60*60)).' days'; 
