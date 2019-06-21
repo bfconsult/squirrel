@@ -175,6 +175,7 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
 echo '<br/>last run '.date( "m/d/Y", strtotime($lastrun));
 echo '<br/> frequency '.$item->frequency/(24*60*60).' days ';
 echo '<br/> time since last run '.$interval/(24*60*60).' days <br/>';
+echo 'last run value is '.$lastrun;
 
                     if($item->frequency>0){
                         
