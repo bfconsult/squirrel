@@ -179,7 +179,7 @@ echo 'last run value is '.$lastrun;
 */
                     if($item->frequency>0){
                         
-                       if (!empty($lastrun) && $interval > $item->frequency){
+                       if ($interval > $item->frequency){
                           $days = floor(($item->frequency-(time()-$lastrun))/(24*60*60))*-1;
                         
                       echo  '<i class="icon-time text-error"></i> ';
