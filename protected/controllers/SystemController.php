@@ -72,6 +72,7 @@ class SystemController extends Controller
             $model->attributes = $_POST['System'];
             $model->create_user = Yii::App()->user->id;
             $model->company_id = $project->company_id;
+            $model->ext = md5(uniqid(rand(), true));
             $model->number = System::model()->getNextNumber();
             if ($model->save()) {
                 $link = new Projectsystem;
