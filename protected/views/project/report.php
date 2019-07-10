@@ -10,9 +10,8 @@ echo '<h1>'.$project->name;
 if (Yii::App()->session['projectOwner']==1) {
     ?>
 
-    <a href="/project/edit"><i class="icon-edit"></i></a>
-    <a href="/project/delete" onclick="return confirm('Are you sure you want to delete this project?');"><i class="icon-remove-sign"></i></a>
-    <a href="/time/viewdetail"><i class="icon-calendar"></i></a>
+    <a href="/project/view"><i class="icon-arrow-left"></i></a>
+
     <?php
 }
     ?>
@@ -109,40 +108,39 @@ To:
 
     ?>
     <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-
-
-        </tr>
-        </thead>
+      
         <tbody>
         <?php if (count($data['scheduled'])): ?>
+        <tr><td style="width:20%"></td><td style="width:60%"></td><td style="width:20%"></td></tr>
 
-<tr><td><h4>Scheduled Tasks</h4></td></tr>
+<tr><td colspan="3"><h4>Scheduled Tasks</h4></td></tr>
             <?php foreach ($data['scheduled']  as $item): ?>
 
 
-                <tr class="odd">
-                    <td>
+                <tr >
+                    <td colspan="2">
                         
-                        name: <?php echo $item->name; ?>(<?php echo $item->id; ?>)<br/>
-                        description: <?php echo $item->description; ?>
-                        processrun: <?php echo $item->processrun->id; ?>
+                        <strong><?php echo $item->name; ?><br/></strong>
+                        <?php echo $item->description; ?>
+                    </td>
+                    <td>
+                    <p class="text-right">
+                        <?php echo $item->create_date; ?>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td  style="border-top:0px; "></td>
+                    <td  colspan="2" style="border-top:0px; ">
+                        Process Run Detail: <?php echo $item->processrun->id; ?><br/>
                         <?php if (count($item->processrun->results)) {
                             foreach($item->processrun->results as $result){
-                                echo $result->comments;
+                                echo $result->step->action.' '.$result->comments;
+                                echo ($result->result==1)?' (OK)<br/>':' (Failed)<br/>';
                             }
-
-
                         }; ?>
                     </td>
        
-                 
-                    <td>
-                        <?php echo $item->create_date; ?>
-                    </td>
-
                 </tr>
                 <?php
 
@@ -155,20 +153,27 @@ To:
 
 <?php if (count($data['nonscheduled'])): ?>
 
-<tr><td><h4>Non-Scheduled Tasks</h4></td></tr>
+<tr><td colspan="3"><h4>Non-Scheduled Tasks</h4></td></tr>
 <?php foreach ($data['nonscheduled']  as $item): ?>
 
 
-    <tr class="odd">
-        <td>
-            <?php echo $item->id; ?>
-            <?php echo $item->name; ?>
-            <?php echo $item->description; ?>
-        </td>
+    <tr >
+        <td  colspan="2">
+            
+            <strong><?php echo $item->name; ?></strong>
+           
+            </td>
 
      
-        <td>
+        <td >
+        <p class="text-right">
             <?php echo $item->create_date; ?>
+        </p>
+        </td>
+     </tr>
+     <tr>   
+        <td colspan="3" style="border-top:0px;">
+        <?php echo $item->description; ?>
         </td>
 
     </tr>

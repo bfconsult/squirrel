@@ -78,6 +78,7 @@ echo "Not Run";
             <option value="1">Successfully completed</option>
             <option value="0">Failed to complete</option>
         </select>
+        Report summary:<br/> <textarea name='summary'></textarea>
         <input type='submit' value='done' name='ProcessRun'>
         </td>
         </tr>

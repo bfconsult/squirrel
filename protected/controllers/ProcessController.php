@@ -76,6 +76,7 @@ if(is_null($process)){echo 'no such process';die;}
         $processrun->project_id=$process->project_id;
         $processrun->number=Processrun::model()->getNumber($id);
         $processrun->process_id=$process->id;
+        $processrun->summary=$_POST['summary'];
         $processrun->status=$_POST['Status'];
         $processrun->ext= md5(uniqid(rand(), true));
         $processrun->save();
@@ -101,8 +102,8 @@ if(is_null($process)){echo 'no such process';die;}
 
         $config = new Config;
         $config->number = Config::model()->getNextNumber($process->system_id);
-        $config->name = $process->name.' Run number '.$processrun->number;
-        $config->description = 'Executed '.$process->name;
+        $config->name = $process->name;
+        $config->description = $processrun->summary;
         $config->system_id = $process->system_id;
         $config->processrun_id = $processrun->id;
         $config->create_user = Yii::App()->user->id;
