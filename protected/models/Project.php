@@ -197,7 +197,20 @@ return $projectsById;
 
 }
 
+public function getSystemsList($id){
 
+    $systems = Project::model()->getSystems($id);
+
+
+    $systemlist='';
+    foreach ($systems as $system) {
+        $systemlist.=$system->id.',';
+    }
+   
+    $systemlist='('.$systemlist.'-2)';
+return $systemlist;
+
+}
 
 
     public function search()

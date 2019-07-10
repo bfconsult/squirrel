@@ -89,15 +89,8 @@ class Config extends CActiveRecord {
 
 
       //  $systems = $project->systems;
-$systems = Project::model()->getSystems($project->id);
+      $systemlist = Project::model()->getSystemsList($project->id);
 
-
-        $systemlist='';
-        foreach ($systems as $system) {
-            $systemlist.=$system->id.',';
-        }
-       
-        $systemlist='('.$systemlist.'-2)';
 
             $configs = Config::model()->findAll(array('order' => 'create_date DESC', 'limit'=>10, 'condition' => 'system_id in '.$systemlist.' and deleted =0 '));
 

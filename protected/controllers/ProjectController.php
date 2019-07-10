@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete','getSystemOptions'),
+                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete','getSystemOptions','report'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -103,6 +103,59 @@ $this->render('view');
 
     }
 
+
+    public function actionReport()
+    {
+
+        try {
+            $user = User::model()->findbypk(Yii::App()->user->id);
+            $company = Company::model()->findbyPk($user->company_id);
+               $project = Project::model()->findbyPk(Yii::app()->session['project']);
+            $endTimestamp = time();//today;
+            $startTimestamp = time()-2592000;//today -30days
+
+           if(isset($_POST['Date'])){
+
+                $sM = $_POST['Date']['start_month'];
+                $sD = $_POST['Date']['start_day'];
+                $eM = $_POST['Date']['end_month'];
+                $eD = $_POST['Date']['end_day'];
+               // echo 'start month: '.$sM.' start day: '.$sD.' endDay: '.$eD.' endMonth: '.$eM;die;
+                $year = date("Y",time());
+                $stringEndDate = $year.'-'.$eM.'-'.$eD.' 23:59:59';
+                $stringStartDate = $year.'-'.$sM.'-'.$sD.' 00:00:00';
+                $endTimestamp  = strtotime($stringEndDate);
+                $startTimestamp = strtotime($stringStartDate);
+            }
+
+
+           
+             $endDatetime = date("Y-m-d 23:59:59",$endTimestamp);
+    
+             $startDatetime =  date("Y-m-d 00:00:00",$startTimestamp);
+            
+            // echo ' end '.$endDatetime.' start '.$startDatetime;die;
+            $systemlist = Project::model()->getSystemsList($project->id);
+
+            $data = Config::model()->findAll(array('condition' => 'system_id in '.$systemlist.' and deleted =0 and create_date> "'.$startDatetime.'" and create_date < "'.$endDatetime.'"'));
+
+
+        
+     
+        
+        
+            } catch (Exception $ex) {
+            
+               echo 'exception: ' . $ex->getMessage();
+               die;
+            
+            }
+                $this->render('report', array(
+                   'startTimestamp'=>$startTimestamp, 'endTimestamp'=>$endTimestamp, 'data'=>$data,'user'=>$user, 'company'=>$company
+                ));
+        
+
+    }
 
 
     public function actionHistory($del=0)
