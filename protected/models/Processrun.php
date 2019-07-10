@@ -85,6 +85,11 @@ public static $result = [
                 'processrun_id'
 
             ),
+            'process' => array(
+                self::BELONGS_TO,
+                'Process',
+                'process_id'
+            ),
 
         );
     }

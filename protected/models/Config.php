@@ -42,11 +42,21 @@ class Config extends CActiveRecord {
             'System',
             'system_id'
         ),
+
+
         'creator' => array(
             self::BELONGS_TO,
             'User',
             'create_user'
         ),
+
+        'processrun' => array(
+          self::BELONGS_TO,
+          'Processrun',
+          'processrun_id'
+      ),
+
+
     );
   }
 

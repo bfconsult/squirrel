@@ -29,7 +29,7 @@ if (Yii::App()->session['projectOwner']==1) {
 $startMonth = date("m",$startTimestamp);
 $startDay =date("d",$startTimestamp);
 $endMonth = date("m",$endTimestamp);
-$endDay = date("m",$endTimestamp);
+$endDay = date("d",$endTimestamp);
 
 ?>
 <div class="row">
@@ -98,7 +98,7 @@ To:
 
 
     $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
-        'title' => 'Recent Configuration Changes',
+        'title' => 'Configuration and maintenance report '. date("Y-m-d", $startTimestamp).' to '. date("Y-m-d", $endTimestamp),
         'headerIcon' => 'icon-briefcase',
         // when displaying a table, if we include bootstra-widget-table class
         // the table will be 0-padding to the box
@@ -106,8 +106,6 @@ To:
         'headerButtons' => array()
 
     ));
-
-if (!empty($data)) {
 
     ?>
     <table class="table">
@@ -119,22 +117,30 @@ if (!empty($data)) {
         </tr>
         </thead>
         <tbody>
-        <?php if (count($data)): ?>
+        <?php if (count($data['scheduled'])): ?>
 
-
-            <?php foreach ($data as $item): ?>
+<tr><td><h4>Scheduled Tasks</h4></td></tr>
+            <?php foreach ($data['scheduled']  as $item): ?>
 
 
                 <tr class="odd">
                     <td>
-                        <?php echo $item->id; ?>
-                        <?php echo $item->name; ?>
-                        <?php echo $item->description; ?>
+                        
+                        name: <?php echo $item->name; ?>(<?php echo $item->id; ?>)<br/>
+                        description: <?php echo $item->description; ?>
+                        processrun: <?php echo $item->processrun->id; ?>
+                        <?php if (count($item->processrun->results)) {
+                            foreach($item->processrun->results as $result){
+                                echo $result->comments;
+                            }
+
+
+                        }; ?>
                     </td>
        
                  
                     <td>
-                        <?php echo $item->creator->firstname . ' ' . $item->creator->lastname . ' ' . $item->create_date; ?>
+                        <?php echo $item->create_date; ?>
                     </td>
 
                 </tr>
@@ -145,11 +151,40 @@ if (!empty($data)) {
 
         ?>
 
+
+
+<?php if (count($data['nonscheduled'])): ?>
+
+<tr><td><h4>Non-Scheduled Tasks</h4></td></tr>
+<?php foreach ($data['nonscheduled']  as $item): ?>
+
+
+    <tr class="odd">
+        <td>
+            <?php echo $item->id; ?>
+            <?php echo $item->name; ?>
+            <?php echo $item->description; ?>
+        </td>
+
+     
+        <td>
+            <?php echo $item->create_date; ?>
+        </td>
+
+    </tr>
+    <?php
+
+endforeach;
+endif;
+
+?>
+
+
         </tbody>
     </table>
 
     <?php
-}
+
 
 
 
