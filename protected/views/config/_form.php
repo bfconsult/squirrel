@@ -46,7 +46,67 @@
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
+	<?php if(!$model->isNewRecord){
+$existDate=strtotime($model->create_date);
+$year = date("Y",$existDate);
+$month = date("m",$existDate);
+$day =date("d",$existDate);
+$hour = date("H",$existDate);
+$min = date("i",$existDate);
 
+?>
+
+<div class="row">
+   
+
+		
+  
+
+   
+   
+                <select  class="input-mini" name="day">
+                <?php for($m=1; $m <31 ; $m++) { ?>
+                <option value="<?php echo $m; ?>"  <?php if ($m == $day) echo 'selected'; ?>  >
+                <?php echo $m;?>
+                </option>
+                <?php }  ?>
+                </select>
+
+				<select  class="input-mini" name="month">
+                <?php for($m=1; $m <13 ; $m++) { ?>
+                <option value="<?php echo $m; ?>"  <?php if ($m == $month) echo 'selected'; ?>  >
+                <?php echo date("M", mktime(0, 0, 0, $m, 10));?>
+                </option>
+                <?php }  ?>
+                </select>
+				
+				<select  class="input-small" name="year">
+				<?php for($m=$year-1; $m < $year+2 ; $m++) { ?>
+                <option value="<?php echo $m; ?>"  <?php if ($m == $year) echo 'selected'; ?>  >
+                <?php echo $m;?>
+                </option>
+                <?php }  ?>
+                </select>
+				Time:
+
+				<select  class="input-mini" name="hour">
+                <?php for($m=1; $m <25 ; $m++) { ?>
+                <option value="<?php echo $m; ?>"  <?php if ($m == $hour) echo 'selected'; ?>  >
+                <?php echo $m;?>
+                </option>
+                <?php }  ?>
+                </select>
+				<select  class="input-mini" name="min">
+                <?php for($m=1; $m < 61 ; $m++) { ?>
+                <option value="<?php echo $m; ?>"  <?php if ($m == $min) echo 'selected'; ?>  >
+                <?php echo $m;?>
+                </option>
+                <?php }  ?>
+                </select>
+
+</div>
+
+	<?php } ?>
         
        
 

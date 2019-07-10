@@ -135,7 +135,7 @@ To:
                         Process Run Detail: <?php echo $item->processrun->id; ?><br/>
                         <?php if (count($item->processrun->results)) {
                             foreach($item->processrun->results as $result){
-                                echo $result->step->action.' '.$result->comments;
+                                echo $result->step->number.'. '.$result->step->action.' '.$result->comments;
                                 echo ($result->result==1)?' (OK)<br/>':' (Failed)<br/>';
                             }
                         }; ?>

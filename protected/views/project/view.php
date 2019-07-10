@@ -42,6 +42,13 @@ $data = Config::model()->getRecentConfigs();
             ),
             array(
                 'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'View Report',
+
+                'url' => UrlHelper::getPrefixLink('/project/report/'),
+            ),
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
                 'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                 'label' => 'Add Configuration  +',
 

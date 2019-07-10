@@ -108,6 +108,12 @@ $project = Project::model()->findbyPk(Yii::App()->session['project']);
           if (isset($_POST['Config'])) {
             $model->attributes = $_POST['Config'];
             
+
+            if (isset($_POST['year'])) {
+
+                $model->create_date=$_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'].' '.$_POST['hour'].':'.$_POST['min'].':00';
+            }
+
                        
             if ($model->save());
        
