@@ -13,7 +13,7 @@ class Process extends CActiveRecord
 
 
     public static $frequencies = [-1=>'None',86400=>'Daily', 604800=>"Weekly", 2592000=>"Monthly", 7776000=>"Quarterly", 31536000=>"Yearly"];
-	
+	public static $typeName = [1=>'Process',2=>'Procedure', 3=>"Test"];
 
     public static function model($className = __CLASS__)
     {

@@ -13,8 +13,10 @@
             <p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
- 	</div>      
+ 	</div>    
+	 <?php if($type==1){?>  
 	<div class="row">
+	System
 	<select name="Process[system_id]" id="system_id">
 		
 <?php
@@ -36,6 +38,7 @@ foreach ($systems as $system){
 
 	</div>
 
+Frequency
 	<div class="row ">
 		<select name="Process[frequency]">
 		<?php 
@@ -47,7 +50,7 @@ foreach ($systems as $system){
 
 		</select>
 	</div>
-
+		<?php } ?>
 
 	<div class="row ">
 		<?php echo $form->labelEx($model,'name'); ?>

@@ -137,7 +137,12 @@ $this->render('view');
             // echo ' end '.$endDatetime.' start '.$startDatetime;die;
             $systemlist = Project::model()->getSystemsList($project->id);
 
-            $data['scheduled'] = Config::model()->findAll(array('condition' => 'processrun_id is not null and system_id in '.$systemlist.' and deleted =0 and create_date> "'.$startDatetime.'" and create_date < "'.$endDatetime.'"'));
+            $data['scheduled'] = Config::model()->findAll(array('condition' => 'processrun_id is not null and process_type = 1 and system_id in '.$systemlist.' and deleted =0 and create_date> "'.$startDatetime.'" and create_date < "'.$endDatetime.'"'));
+
+            $data['procedures'] = Config::model()->findAll(array('condition' => 'processrun_id is not null and process_type = 2 and system_id in '.$systemlist.' and deleted =0 and create_date> "'.$startDatetime.'" and create_date < "'.$endDatetime.'"'));
+
+            $data['tests'] = Config::model()->findAll(array('condition' => 'processrun_id is not null and process_type = 3 and system_id in '.$systemlist.' and deleted =0 and create_date> "'.$startDatetime.'" and create_date < "'.$endDatetime.'"'));
+
 
             $data['nonscheduled'] = Config::model()->findAll(array('condition' => 'processrun_id is null and system_id in '.$systemlist.' and deleted =0 and create_date> "'.$startDatetime.'" and create_date < "'.$endDatetime.'"'));
 

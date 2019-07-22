@@ -106,6 +106,7 @@ if(is_null($process)){echo 'no such process';die;}
         $config->description = $processrun->summary;
         $config->system_id = $process->system_id;
         $config->processrun_id = $processrun->id;
+        $config->process_type = $process->type;
         $config->create_user = Yii::App()->user->id;
         $config->save();
 
@@ -123,12 +124,16 @@ $this->render('run',['process'=>$process]);
 
 
 
-    public function actionCreate()
+    public function actionCreate($type)
     {
         $model = new Process;
+        if($type<1 || $type >3) die;
+
         if (isset($_POST['Process'])) {
            $model->attributes = $_POST['Process'];
            $model->active=1;
+           $model->type=$type;
+           if($type !=1) $model->system_id=0;
            $model->ext = md5(uniqid(rand(), true));
            if ($model->save())
             $project = $model->getPrimaryKey();
@@ -138,7 +143,7 @@ $this->render('run',['process'=>$process]);
         }
 
         $this->render('create', array(
-            'model' => $model ));
+            'model' => $model,'type'=>$type ));
 
 
     }

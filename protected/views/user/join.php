@@ -1,7 +1,7 @@
+<div>
+<h1> Create a Squirrel Account </h1>
 
-
-
-     <div class="form" id="signupForm" >
+     <div class="form" >
          
          <?php
   $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -24,6 +24,6 @@
 
     </div><!-- form -->
 
-
+<div>
 
 

@@ -48,24 +48,7 @@ class CompanyController extends Controller
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
-
-	 public function actionLang($id)
-	{
-			User::model()->MetaStore('lang',array('id'=>$id));
-			Yii::app()->session['lang']=$id;
-			$vocab=Yii::App()->params['vocab']['en'];
-			$terms=Yii::App()->params['terms']['en'];
-			$vocab=Yii::App()->params['vocab'][$id];
-			$terms=Yii::App()->params['terms'][$id];
-			foreach($vocab as $term=>$word){ // PUT EDITABLE TERMS INTO PARAMETErs
-					Yii::App()->params[$term]=$word;
-			}
-			foreach($terms as $term=>$word){// PUT FIXED TERMS INTO PARAMETER
-					Yii::App()->params[$term]=$word;
-			}
-			$this->redirect('/req/company/mycompany');
-	}
-*/
+     */
 	public function actionView($id) {
 
         $model = $this->loadModel($id);
@@ -83,26 +66,7 @@ class CompanyController extends Controller
 	    	ReportHelper::processError('Company Controller, View Action Error');
 	    }
     }
-/*
-		    public function actiontermUpdate($term) {
-		        if ( isset($_POST['termUpdate']) ) {
-		            $data = $_POST['termUpdate'];
-		            $terms = Company::model()->metaLoad('terms', Yii::App()->params['terms']);
-		            foreach ($data as $term => $title) {
-		                $terms[$term] = $title;
-		            }
-		            if (Company::model()->MetaSave('terms', $terms)) {
-		                Yii::App()->session['setting_tab']='terms';
-		                $this->redirect(UrlHelper::getPrefixLink('project/project'));
-		            } ELSE {
-		                echo "Nope";
-		                die;
-		            }
-		        }
-		        $this->render('termUpdate',array('term'=>$term));
-		    }
 
-*/
 
 	public function actionCreate()
 	{

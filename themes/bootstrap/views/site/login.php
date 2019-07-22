@@ -1,3 +1,27 @@
+
+<h1> Squirrel </h1>
+
+Configuration management for small scale IT maintenance.
+<br />
+Squirrel allows you to:
+<ul>
+<li>Create standard procedures.</li>
+<li>Record execution of procedures.</li>
+<li>Record configuration changes to managed systems.</li>
+<li>Record time taken to do work.</li>
+<li>Get time reports.</li>
+<li>Get configuration change reports.</li>
+</ul>
+<div class="span1">	<?php
+                $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType' => 'submit',
+                    'type' => 'primary',
+                    'label' => 'Create a Free Account',
+                ));
+                ?>
+            </div>
+
+
 <?php
 /* @var $this SiteController */
 /* @var $model LoginForm */

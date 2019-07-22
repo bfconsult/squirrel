@@ -1,4 +1,6 @@
 
+<div style="margin-left:130px;">
+
 <h1>Invite a new user</h1>
 <div class="form">
 
@@ -35,3 +37,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>

@@ -185,6 +185,83 @@ endif;
 ?>
 
 
+<?php if (count($data['tests'])): ?>
+
+<tr><td colspan="3"><h4>Tests</h4></td></tr>
+<?php foreach ($data['tests']  as $item): ?>
+
+
+<tr >
+                    <td colspan="2">
+                        
+                        <strong><?php echo $item->name; ?><br/></strong>
+                        <?php echo $item->description; ?>
+                    </td>
+                    <td>
+                    <p class="text-right">
+                        <?php echo $item->create_date; ?>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td  style="border-top:0px; "></td>
+                    <td  colspan="2" style="border-top:0px; ">
+                        Test Run Detail: <?php echo $item->processrun->id; ?><br/>
+                        <?php if (count($item->processrun->results)) {
+                            foreach($item->processrun->results as $result){
+                                echo $result->step->number.'. '.$result->step->action.' '.$result->comments;
+                                echo ($result->result==1)?' (OK)<br/>':' (Failed)<br/>';
+                            }
+                        }; ?>
+                    </td>
+       
+                </tr>
+    <?php
+
+endforeach;
+endif;
+
+?>
+
+<?php if (count($data['procedures'])): ?>
+
+<tr><td colspan="3"><h4>Procedures</h4></td></tr>
+<?php foreach ($data['procedures']  as $item): ?>
+
+
+<tr >
+                    <td colspan="2">
+                        
+                        <strong><?php echo $item->name; ?><br/></strong>
+                        <?php echo $item->description; ?>
+                    </td>
+                    <td>
+                    <p class="text-right">
+                        <?php echo $item->create_date; ?>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td  style="border-top:0px; "></td>
+                    <td  colspan="2" style="border-top:0px; ">
+                        Procedure Detail: <?php echo $item->processrun->id; ?><br/>
+                        <?php if (count($item->processrun->results)) {
+                            foreach($item->processrun->results as $result){
+                                echo $result->step->number.'. '.$result->step->action.' '.$result->comments;
+                                echo ($result->result==1)?' (OK)<br/>':' (Failed)<br/>';
+                            }
+                        }; ?>
+                    </td>
+       
+                </tr>
+    <?php
+
+endforeach;
+endif;
+
+?>
+
+
         </tbody>
     </table>
 

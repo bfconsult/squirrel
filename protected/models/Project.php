@@ -207,7 +207,7 @@ public function getSystemsList($id){
         $systemlist.=$system->id.',';
     }
    
-    $systemlist='('.$systemlist.'-2)';
+    $systemlist='('.$systemlist.'-2,0)';
 return $systemlist;
 
 }

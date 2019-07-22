@@ -6,7 +6,7 @@ class UserController extends Controller
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    public $layout='//layouts/column2';
+    public $layout='main';
 
     /**
      * @return array action filters
@@ -114,29 +114,33 @@ class UserController extends Controller
                 $user->username = $user->email;
 
                 if($user->save()){
-                    /*
-                                       $link = urlencode($user->salt);
-                                    /*
-                                       $mail = new YiiMailer();
 
-                                       $mail->setFrom(Yii::app()->params['adminEmail']);
-                                       $mail->setTo($user->email);
-                                       $mail->setSubject('You have registered an account on Naild');
-                                       $mail->setBody('Dear '.$user->firstname.',
-                                       <br />
-                                       Hi, it looks like you\'ve created an account on Naild, the
-                                       online construction management system.<br />
-                                       To confirm your email address and activate your account follow the link below and complete the join form.
-                                       <br />
-                                       Click here to accept <a href="http://'.Yii::app()->params['server'].'/user/active/verifycode/'.$link.'">'.Yii::app()->params['server'].'/user/active/verifycode/'.$link.'</a>
-                                       <br />   <br />.
-                                       Thanks,
-                                       from the Naild Team.
-                                       ');
+// create a company and link it up.
 
-                                       $mail->Send();
-                                       Yii::app()->user->logout();
-                                       */
+$company = new Company;
+$company->name="My Company";
+$company->description="a new company";
+$company->owner_id=$user->getPrimaryKey();
+$company->save();
+
+$user->company_id=$company->getPrimaryKey();
+$user->save();
+
+
+$mail = new YiiMailer();
+$mail->setFrom('info@billson.com' , 'Squirrel Configuration Manager');
+$mail->AddAddress($user->email,$user->firstname.' '.$user->lastname);
+$mail->setLayout('mail');
+$mail->setData(array('user'=>$user));
+$mail->setSubject('Welcome from the Squirrel');
+$mail->setView('welcome');
+if (!$mail->send()){
+    echo 'did not send';
+    echo $mail->ErrorInfo;
+    die;
+}
+
+                    
                     $this->redirect('/');
                     /**/
                 }
@@ -257,10 +261,10 @@ class UserController extends Controller
                 $mail = new YiiMailer();
                 $mail->setFrom($sender->email, $sender->firstname.' '.$sender->lastname);
                 $mail->setTo($message->email);
-                $mail->setSubject('You have been invited to join '.$sender->company->name.' on Naild');
+                $mail->setSubject('You have been invited to join '.$sender->mycompany->name.' on Naild');
                 $mail->setBody($message->firstname.',
                     <br />
-                    You\'ve been invited to join '.$sender->company->name.' on Naild, the
+                    You\'ve been invited to join '.$sender->mycompany->name.' on Naild, the
                     online construction management system.<br />
                     To create your account follow the link below and complete the join form.
                     <br />

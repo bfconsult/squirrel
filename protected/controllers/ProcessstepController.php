@@ -86,7 +86,7 @@ if(is_null($process)){echo 'no such process';die;}
         }
 
         $this->render('create', array(
-            'model' => $model));
+            'model' => $model,'process'=>$process));
 
 
     }

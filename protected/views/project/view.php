@@ -115,7 +115,7 @@ $this->endWidget();
 
 // ####################  PROCESSES ###############
 
-$processes = Process::model()->findAll('project_id ='.$project->id.' and active = 1');
+$processes = Process::model()->findAll('project_id ='.$project->id.' and active = 1 and type=1');
 
 
 
@@ -134,7 +134,7 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                 'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
                 'label' => 'Add Process  +',
 
-                'url' => UrlHelper::getPrefixLink('/process/create/'),
+                'url' => UrlHelper::getPrefixLink('/process/create/type/1'),
             ),
 
 
@@ -228,6 +228,241 @@ echo 'last run value is '.$lastrun;
     }
         $this->endWidget();
 
+
+
+
+// ####################  PROCEDURES ###############
+
+$procedures = Process::model()->findAll('project_id ='.$project->id.' and active = 1 and type=2');
+
+
+
+
+
+    $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
+        'title' => 'Procedures',
+        'headerIcon' => 'icon-briefcase',
+        // when displaying a table, if we include bootstra-widget-table class
+        // the table will be 0-padding to the box
+        'htmlOptions' => array('class' => 'bootstrap-widget-table'),
+        'headerButtons' => array(
+
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'Add Procedure  +',
+
+                'url' => UrlHelper::getPrefixLink('/process/create/type/2'),
+            ),
+
+
+        )
+    ));
+
+    if (!empty($procedures)) {
+?>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (count($procedures)):
+
+             foreach ($procedures as $itemIdx => $item):
+
+          
+                ?>
+
+
+                <tr class="odd">
+                    <td>
+                        <a href="<?php echo UrlHelper::getPrefixLink('/process/view/id/'.$item->ext) ?>"><?php echo $item['name']; ?></a>
+                        - <?php echo $item['description']; 
+                        
+                        $lastrun = strtotime (Process::lastRun($item->id));
+                        $interval = time()-$lastrun;
+                                           
+                        
+                        ?>
+
+                    
+
+
+                    </td>
+                    <td>
+                    <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
+                    class="icon-remove-sign"></i></a>
+<?php /*
+echo '<br/>last run '.date( "m/d/Y", strtotime($lastrun));
+echo '<br/> frequency '.$item->frequency/(24*60*60).' days ';
+echo '<br/> time since last run '.$interval/(24*60*60).' days <br/>';
+echo 'last run value is '.$lastrun;
+*/
+                    if($item->frequency>0){
+                        
+                  
+
+                       if ($interval > $item->frequency){
+                          $days = floor(($item->frequency-(time()-$lastrun))/(24*60*60))*-1;
+                        
+                      echo  '<i class="icon-time text-error"></i> ';
+
+                            if (empty($lastrun)){
+                            echo 'Not run.';
+                                                } else {
+                      echo $days.' days overdue'; 
+                                                }
+                    
+                    
+                    } 
+                       ELSE 
+                        {
+                         echo   '<i class="icon-time text-success"></i> ';
+                         echo floor(($item->frequency-$interval)/(24*60*60)).' days'; 
+                        }
+                    }
+
+?>
+                    </td>
+
+                </tr>
+                <?php
+           
+            endforeach ?>
+
+
+        <?php endif; ?>
+
+
+        </tbody>
+    </table>
+
+
+    <?php
+    }
+        $this->endWidget();
+
+
+
+
+// ####################  TESTS ###############
+
+$tests = Process::model()->findAll('project_id ='.$project->id.' and active = 1 and type=3');
+
+
+
+
+
+    $box = $this->beginWidget('bootstrap.widgets.TbBox', array(
+        'title' => 'Tests',
+        'headerIcon' => 'icon-briefcase',
+        // when displaying a table, if we include bootstra-widget-table class
+        // the table will be 0-padding to the box
+        'htmlOptions' => array('class' => 'bootstrap-widget-table'),
+        'headerButtons' => array(
+
+            array(
+                'class' => 'bootstrap.widgets.TbButton',
+                'type' => 'success', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+                'label' => 'Add Test  +',
+
+                'url' => UrlHelper::getPrefixLink('/process/create/type/3'),
+            ),
+
+
+        )
+    ));
+
+    if (!empty($tests)) {
+?>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php if (count($tests)):
+
+             foreach ($tests as $itemIdx => $item):
+
+          
+                ?>
+
+
+                <tr class="odd">
+                    <td>
+                        <a href="<?php echo UrlHelper::getPrefixLink('/process/view/id/'.$item->ext) ?>"><?php echo $item['name']; ?></a>
+                        - <?php echo $item['description']; 
+                        
+                        $lastrun = strtotime (Process::lastRun($item->id));
+                        $interval = time()-$lastrun;
+                                           
+                        
+                        ?>
+
+                    
+
+
+                    </td>
+                    <td>
+                    <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
+                    class="icon-remove-sign"></i></a>
+<?php /*
+echo '<br/>last run '.date( "m/d/Y", strtotime($lastrun));
+echo '<br/> frequency '.$item->frequency/(24*60*60).' days ';
+echo '<br/> time since last run '.$interval/(24*60*60).' days <br/>';
+echo 'last run value is '.$lastrun;
+*/
+                    if($item->frequency>0){
+                        
+                  
+
+                       if ($interval > $item->frequency){
+                          $days = floor(($item->frequency-(time()-$lastrun))/(24*60*60))*-1;
+                        
+                      echo  '<i class="icon-time text-error"></i> ';
+
+                            if (empty($lastrun)){
+                            echo 'Not run.';
+                                                } else {
+                      echo $days.' days overdue'; 
+                                                }
+                    
+                    
+                    } 
+                       ELSE 
+                        {
+                         echo   '<i class="icon-time text-success"></i> ';
+                         echo floor(($item->frequency-$interval)/(24*60*60)).' days'; 
+                        }
+                    }
+
+?>
+                    </td>
+
+                </tr>
+                <?php
+           
+            endforeach ?>
+
+
+        <?php endif; ?>
+
+
+        </tbody>
+    </table>
+
+
+    <?php
+    }
+        $this->endWidget();
 
 
 

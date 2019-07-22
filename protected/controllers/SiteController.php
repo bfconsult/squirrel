@@ -103,30 +103,6 @@ $this->layout='main';
 
 
 
-
-public function actionFirst()
-    {
-        /**
-         * @var Project $project for wizard
-         */
-        $project = new Project();
-
-        $company = User::model()->myCompany();
-        $model = Company::model()->findbyPK($company);
-        $type = User::model()->myCompanyType();
-        $recentProjects = Project::model()->myRecentProjects(1);
-        $recents = Project::model()->myActivity();
-        $series = $this->_getSeries($recentProjects);
-        $this->render('index', array(
-            'company' => $company,
-            'model' => $model,
-            'type' => $type,
-            'project' => $project,
-            'recents'=>$recents,
-            'series' => $series
-        ));
-    }
-
     public function actionVerify()
     {
         // renders the view file 'protected/views/site/index.php'
