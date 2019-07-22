@@ -164,7 +164,7 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                     <td>
                         <a href="<?php echo UrlHelper::getPrefixLink('/process/view/id/'.$item->ext) ?>"><?php echo $item['name']; ?></a>
                         - <?php echo $item['description']; 
-                        
+                      
                         $lastrun = strtotime (Process::lastRun($item->id));
                         $interval = time()-$lastrun;
                                            
@@ -178,8 +178,9 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
                     <td>
                     <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
                     class="icon-remove-sign"></i></a>
-<?php /*
-echo '<br/>last run '.date( "m/d/Y", strtotime($lastrun));
+<?php 
+/*
+echo '<br/>last run '.$lastrun;
 echo '<br/> frequency '.$item->frequency/(24*60*60).' days ';
 echo '<br/> time since last run '.$interval/(24*60*60).' days <br/>';
 echo 'last run value is '.$lastrun;

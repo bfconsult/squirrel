@@ -129,18 +129,20 @@ class Process extends CActiveRecord
     {
     
         $sql="
-        select * from `processrun` `r`
+        select max(date) as date from `processrun` `r`
         join `processresult` `p`
         on `p`.`processrun_id`=`r`.`id`
         where `r`.`process_id` = $id
-        group by `r`.`process_id`
-        order by `p`.`date` DESC
+       
 
         ";
+        // group by `r`.`process_id`
+       // order by `p`.`date` DESC
 
         $connection=Yii::app()->db;
         $command = $connection->createCommand($sql);
         $result = $command->queryAll();
+        
         if (!empty($result)) {
             return $result[0]['date'];
         } ELSE {
