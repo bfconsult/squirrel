@@ -1,4 +1,4 @@
-<h1>Create a New Process</h1>
+<h1>Add a Process</h1>
 
 
 
@@ -6,13 +6,32 @@
 
 $projectId=Yii::app()->session['project'];
 $project=Project::model()->findByPk($projectId);
+$processes = Process::model()->findAll('project_id = '.$projectId.' and active = 1');
 if (is_null($project)) {'echo no project';die;}
-            echo '<h3>'.$project->name.'</h3';
+echo '<h3>'.$project->name.'</h3>'; ?>
 
-echo $this->renderPartial('_form', array('model'=>$model,'project'=>$project)); ?>
-<div class="form">
+<div class="wrapper" style=" display: flex; display: -webkit-flex; flex-direction: row;">
+    <div class="flexrow">
+    <h4> Create New </h4>
+    <?php
+    echo $this->renderPartial('_form', array('model'=>$model,'project'=>$project)); ?>
+    </div>
 
-<h2> Copy from another project</h2>
+    <div class="flexrow" style="margin-left:24px;">
+    <h4>List of existing processes</h4>
+<?php
+foreach($processes as $process){
+
+    echo $process->name.'<br>';
+}
+
+?>
+    </div>
+</div>
+
+<div style="display:block;" class="form">
+
+<h4> Copy from another project</h4>
 <?php
 $user = User::model()->findbyPK(Yii::App()->user->id);
 $data = $user->mycompany->project;
