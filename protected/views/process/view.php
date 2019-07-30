@@ -12,7 +12,7 @@ echo '<h1>'.$project->name;
 <?php
 
     echo '<h2>Process: '.$process->name.' <a href="/process/edit/ext/'.$process->ext.'"><i class="icon-edit"></i></a></h2>';
-    echo '<h3>System: '.$system->name.'</h3>';
+    echo (!is_null($system))?'<h3>System: '.$system->name.'</h3>':'';
 echo 'Repeats: ';
 echo (isset(Process::$frequencies[$process->frequency]))?Process::$frequencies[$process->frequency]:'Custom';
 

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+  
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
@@ -23,6 +24,11 @@
 
     <?php Yii::app()->bootstrap->register(); ?>
     <script type="text/javascript" src="/themes/bootstrap/js/jquery.tmpl.min.js"></script>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 </head>
 
 <body class="<?php echo $this->getBodyClasses(); ?>">

@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete','getSystemOptions','report'),
+                'actions' => array('todo','set','view','edit','create','unlink','history','systemDelete','delete','getSystemOptions','report','getProcessOptions','copyProcess'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -196,6 +196,57 @@ $this->render('view');
 
     }
 
+    public function actiongetProcessOptions($vars)
+    {
+        $user = User::model()->findbyPK(Yii::App()->user->id);
+        $data = $user->mycompany->project;
+        $allProjects = [];
+        foreach($data as $project){
+            array_push($allProjects,$project->id);
+        }
+        if(!in_array($vars,$allProjects)) die; // security check
+
+        $model = Project::model()->findbypk($vars);
+        $processes = $model->processes;
+        echo '<select name="process">';
+        foreach ($processes as $process){
+            echo '<option value="'.$process->id.'">'.$process->name.'</option>';
+
+        }
+        echo '</select><br/><input type="submit" value="Add">';
+
+    }
+    public function actioncopyProcess()
+    {
+     try {
+        $project=Project::model()->findByPk($_GET['project']);
+        $process=Process::model()->findByPk($_GET['process']);
+        if(is_null($process)) throw new Exception("No such process");
+        if(is_null($project)) throw new Exception("No such project");
+        $newProcess = new Process;
+        $newProcess->attributes = $process->attributes;
+        $newProcess->project_id = Yii::App()->session['project'];
+        $newProcess->ext = md5(uniqid(rand(), true));
+        $newProcess->active = 1;
+        $newProcess->save();
+
+        $newProcessId = $newProcess->getPrimaryKey();
+
+        $steps = Processstep::model()->findAll('process_id = '.$process->id);
+        foreach($steps as $step){
+            $newStep = new Processstep;
+            $newStep->attributes = $step->attributes;
+            $newStep->process_id = $newProcessId;
+            $newStep->save();
+        }
+
+    } catch (Exception $ex) {
+    echo 'Error '.$ex; 
+    die;
+    }
+$this->redirect('/process/view/id/'.$newProcess->ext);
+
+    }
     public function actionUnlink($id)
 
     {

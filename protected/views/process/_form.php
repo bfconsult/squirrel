@@ -10,40 +10,32 @@
 
 ?>
  	<div class="row ">
-            <p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
+        <p class="note">Fields with <span class="required">*</span> are required.</p>
+		<?php echo $form->errorSummary($model); ?>
  	</div>      
+
 	<div class="row">
-	<select name="Process[system_id]" id="system_id">
-		
-<?php
-$systems= $project->systems;
+		<select name="Process[system_id]" id="system_id">
+			<?php $systems= $project->systems;
 
-foreach ($systems as $system){
-	if ($system->deleted == 0){
-
-	?>
-
-	<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
-<?php
-	}
-}
-
-?>
-
-</select>
-
+			foreach ($systems as $system){
+				if ($system->deleted == 0){
+				?>
+					<option value="<?php echo $system->id?>"><?php echo $system->name?></option>
+				<?php
+				}
+			}
+			?>
+		</select>
 	</div>
 
 	<div class="row ">
 		<select name="Process[frequency]">
-		<?php 
-		$freqs=Process::$frequencies;
-		
-		foreach($freqs as $time=>$freq) {?>
-		<option value="<?php echo $time;?>" <?php echo (isset($model->frequency) && $model->frequency==$time)?'selected':''; ?>   ><?php echo $freq ?></option>
-		<?php }  ?>
+			<?php 
+			$freqs=Process::$frequencies;
+				foreach($freqs as $time=>$freq) {?>
+				<option value="<?php echo $time;?>" <?php echo (isset($model->frequency) && $model->frequency==$time)?'selected':''; ?>   ><?php echo $freq ?></option>
+				<?php }  ?>
 
 		</select>
 	</div>
@@ -54,7 +46,8 @@ foreach ($systems as $system){
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
-        <div class="row">
+
+    <div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
@@ -62,15 +55,10 @@ foreach ($systems as $system){
 	
 	<?php echo $form->hiddenField($model,'project_id',array('value'=>$project->id)); ?>
 
-        
-       
-
-       
-	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+<!-- form -->
