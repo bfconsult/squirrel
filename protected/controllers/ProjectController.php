@@ -237,6 +237,7 @@ $this->render('view');
             $newStep = new Processstep;
             $newStep->attributes = $step->attributes;
             $newStep->process_id = $newProcessId;
+            $newStep->ext = md5(uniqid(rand(), true));
             $newStep->save();
         }
 
