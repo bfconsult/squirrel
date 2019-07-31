@@ -102,33 +102,21 @@ if(is_null($process)){echo 'no such process';die;}
 
     }
 
-    public function actionDelete()
+    public function actionDelete($id)
 
     {
-        $model=Project::model()->findByPk(Yii::App()->session['project']);
-        $model->deleted=1;
-        if($model->save()) {
+        $project = Project::model()->findbyPk(Yii::App()->session['project']);
+        
+        $model=Processstep::model()->findByPk($id);
+      
+        $process = Process::model()->findbyPk($model->process_id);
+        if($process->project_id != Yii::App()->session['project']) die;
+        $model->delete();
+        $this->redirect('/process/view/id/'.$process->ext);
 
-
-        $this->redirect('/');
+        
     }
-echo 'oops, something went wrong';
-    }
-    public function actionSystemDelete($id)
 
-    {
-        $model=Projectsystem::model()->find('system_id = '.$id.' and project_id = '.Yii::App()->session['project']);
-        $model->deleted=1;
-        if($model->save()) {
-
-            $system = System::model()->findbyPk($id);
-            $system->deleted=1;
-            $system->save();
-        }
-        $this->redirect('/project/view');
-
-
-    }
 
     public function actionEdit($id)
     {
