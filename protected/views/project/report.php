@@ -136,7 +136,7 @@ To:
                         <?php if (count($item->processrun->results)) {
                             foreach($item->processrun->results as $result){
                                 echo $result->step->number.'. '.$result->step->action.' '.$result->comments;
-                                echo ($result->result==1)?' (OK)<br/>':' (Failed)<br/>';
+                                echo ($result->result==1)?' (OK)<br/>':' (Not Done)<br/>';
                             }
                         }; ?>
                     </td>
