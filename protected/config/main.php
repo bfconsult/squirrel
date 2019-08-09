@@ -33,7 +33,7 @@ return array(
               //  'application.extensions.iwi.*',
                 'application.widgets.bootstrap.*',
                 'application.modules.auth.components.*',
-				'application.controllers.*',
+				//'application.controllers.*',
                 'ext.YiiMailer.YiiMailer',
 				'editable.*',
 			//	'application.extensions.imperavi-redactor-widget.*',
