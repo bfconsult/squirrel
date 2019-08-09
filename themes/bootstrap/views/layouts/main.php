@@ -1,5 +1,5 @@
 <?php /* @var $this Controller */
-
+header("Content-type: text/html");
 
 ?>
 <!DOCTYPE html>
