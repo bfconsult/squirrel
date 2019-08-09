@@ -4,9 +4,7 @@
 /* @var $form CActiveForm  */
 
 $this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
+
 ?>
 
 <h1>Login</h1>
@@ -22,7 +20,6 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>

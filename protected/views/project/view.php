@@ -298,7 +298,7 @@ $data = $project->systems;
 
 
                foreach ($groups as $key=>$group) {
-                   $item=$systems[$key];
+                   $item=isset($systems[$key])?$systems[$key]:null;
 
                    $link = Projectsystem::model()->find('system_id = ' . $item['id'] . ' and project_id = ' . Yii::App()->session['project'] . ' order by id desc');
                    if ($item->deleted == 0 && $link->deleted == 0)

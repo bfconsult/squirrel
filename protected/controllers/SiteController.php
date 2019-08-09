@@ -262,7 +262,8 @@ public function actionFirst()
         // display the login form
         // CHECK IF A USER IS LOGGED IN AND REDIRECT TO INDEX IF NOT, REDIRECT TO LOGIN
         if (Yii::app()->user->isGuest) { // not logged in
-            $this->render('login', array(
+
+                        $this->render('login', array(
                 'model' => $model
             )); //
                                                                   // $this->redirect(array('site/login')); /// redirect to target page

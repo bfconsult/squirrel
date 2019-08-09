@@ -1,14 +1,7 @@
 <?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
-
 $this->pageTitle = Yii::app()->name . ' - Login';
-$this->breadcrumbs = array(
-    'Login',
-);
 ?>
-
+<h1></h1>
 
 <div class="well " style="width:300px; margin: 0 auto;">
     <strong>Sign in:</strong>    
