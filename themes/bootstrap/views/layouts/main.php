@@ -1,7 +1,3 @@
-<?php /* @var $this Controller */
-header("Content-type: text/html");
-
-?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -130,7 +126,7 @@ header("Content-type: text/html");
 
         Copyright &copy; <?php echo date('Y'); ?> by BFC P/L.<br/>
         All Rights Reserved.<br/>
-        </font>
+        
     </div>
     <!-- footer -->
 
