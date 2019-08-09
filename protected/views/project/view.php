@@ -282,8 +282,10 @@ $data = $project->systems;
             
             //sort the systems into groups
             foreach ($data as $item) {
-            //index the systems by their id    
+            //index the systems by their id  
+            if($item->deleted==0){  
                 $systems[$item->id]=$item;
+            }
             // create an index of arrays of groups with item id's in their groups.
                 if ($item->parent_id == -1) {
                         $groups[$item->id]=(!isset($groups[$item->id]))?array():$groups[$item->id];
@@ -299,10 +301,10 @@ $data = $project->systems;
 
                foreach ($groups as $key=>$group) {
                    $item=isset($systems[$key])?$systems[$key]:null;
-                   
 
-                   $link = Projectsystem::model()->find('system_id = ' . $item['id'] . ' and project_id = ' . Yii::App()->session['project'] . ' order by id desc');
-                   if ($item->deleted == 0 && $link->deleted == 0)
+
+                   $link = (isset($item['id']))? Projectsystem::model()->find('system_id = ' . $item['id'] . ' and project_id = ' . Yii::App()->session['project'] . ' order by id desc'):null;
+                   if ((!is_null($link)) && ($item->deleted == 0 && $link->deleted == 0))
 
                    echo $this->renderPartial('_system', array('item'=>$item));
 
