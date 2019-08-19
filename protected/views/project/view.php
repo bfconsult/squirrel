@@ -202,13 +202,15 @@ echo 'last run value is '.$lastrun;
                     
                     
                     } 
-                       ELSEIF (($item->frequency-$interval)/2 > $lastrun ) 
+                       ELSE //IF (($item->frequency-$interval)/2 > $lastrun ) 
                         {
                          echo   '<i class="icon-time text-success"></i> due in ';
                          echo floor(($item->frequency-$interval)/(24*60*60)).' days'; 
+                         /*
                         } ELSE {
                             echo '<i class="icon-ok text-success"></i> good';
                         }
+                        */
                     }
 
 ?>
