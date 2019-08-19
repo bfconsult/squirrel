@@ -209,8 +209,9 @@ echo 'last run value is '.$lastrun;
                          /*
                         } ELSE {
                             echo '<i class="icon-ok text-success"></i> good';
-                        }
                         */
+                        }
+                       
                     }
 
 ?>
