@@ -176,8 +176,8 @@ $processes = Process::model()->findAll('project_id ='.$project->id.' and active 
 
                     </td>
                     <td>
-                    <a href="/process/delete/ext/<?php echo  $item['ext']; ?>"><i
-                    class="icon-remove-sign"></i></a>
+                    <a href="/process/run/id/<?php echo  $item['ext']; ?>"><i
+                    class="icon-play-circle"></i></a>
 <?php 
 /*
 echo '<br/>last run '.$lastrun;
@@ -204,7 +204,7 @@ echo 'last run value is '.$lastrun;
                     } 
                        ELSE 
                         {
-                         echo   '<i class="icon-time text-success"></i> ';
+                         echo   '<i class="icon-time text-success"></i> due in ';
                          echo floor(($item->frequency-$interval)/(24*60*60)).' days'; 
                         }
                     }
