@@ -69,7 +69,7 @@ To:
             </select>
             
             <select  class="input-mini" name="Date[end_day]">
-            <?php for($m=1; $m <31 ; $m++) { ?>
+            <?php for($m=1; $m <32 ; $m++) { ?>
             <option value="<?php echo $m; ?>" <?php if ($m == $endDay) echo 'selected'; ?> >
             <?php echo $m;?>
             </option>
